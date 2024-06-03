@@ -8,4 +8,6 @@ urlpatterns = [
     path('linelist/', views.linelist, name='linelist'),
     path('update_line_target/', views.update_line_target, name='update_line_target'),
     path('operatortarget/<int:id>/', views.operatortarget, name='operatortarget'),
+    path('operatoratt/<int:id>/', views.operatoratt, name='operatoratt'),
+    path('save_att_daily/', views.save_att_daily, name='save_att_daily'),
 ]

@@ -117,6 +117,36 @@ $("#linelistTbl").on('click', '.uptLineTarget', function() {
 
 });//end update line target
 
+
+//start operator attendance
+$("#optattend").on('click', '.optattbtn', function() {
+  var currenttr = $(this).closest(".opattr");
+  var oid = currenttr.find(".oid").html();
+  
+  $.ajax({
+    url: "/save_att_daily/",
+    method: "GET",
+    data:{oid:oid},
+    success: function(data){
+  
+        // alert('Attendance Successfully');
+        window.setTimeout(function(){ } ,2000);
+                        location.reload();      
+    },
+    error:function(){
+        alert('Error contact to 09-969255445');
+    },
+                    
+  });//end ajax
+
+});//end operator attendance
+
+
+
+
+
+
+
 $('#operatortargettbl').DataTable();
 
 </script>

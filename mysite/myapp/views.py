@@ -46,3 +46,18 @@ def operatortarget(request,id):
     context = {'lis':lis, 'op':op}
     return render(request, 'operatortarget.html', context)
 
+def operatoratt(request,id):
+    op = operator.objects.filter(line=id)
+    context = {'op':op}
+    return render(request, 'operatoratt.html', context)
+
+def save_att_daily(request):
+    opi = request.GET.get('oid')
+    iop = int(opi)
+    op_obj = operator.objects.get(id=iop)
+    lie = op_obj.line
+    l_obj = line.objects.get(line_name=lie)
+    # print(l_obj)
+    dr = daily_report(operator_name=op_obj, line=l_obj)
+    dr.save()
+    return JsonResponse({'status':'success'})

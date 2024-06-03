@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+
+<div class="card border-info mb-3">
+  <div class="card-body">
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#createNewInv">
+  + Create New
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="createNewInv" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" id="createCus">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Operator</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form action="{% url 'myapp:save_operator' %}" method="post"> {% csrf_token %}
+      <div class="modal-body">
+<!--        <input type="text" name="newCustomer" class="form-control" id="cusName">-->
+        {{form}}
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success invModal">Save Operator</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+      </div>
+        </form>
+
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<table class="table table-striped" id="optattend">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">EID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Line</th>
+      
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for i in op %}
+    <tr class="opattr">
+      <th scope="row" class="oid">{{i.id}}</th>
+      <td>{{i.employee_code}}</td>
+      <td>{{i.name}}</td>
+
+      <td>{{i.line}}</td>
+      
+      <td>
+      	<button type="button" class="btn btn-sm btn-warning optattbtn">attendance</button>
+      </td>
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+
+
+
+  </div>
+</div>
+
+
+
+
+{% endblock content %}
