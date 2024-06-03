@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+
+<div class="card border-info mb-3">
+  <div class="card-body">
+<h4>Production Line</h4>
+
+<table class="table table-striped" id="invlist">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Line</th>
+      <th scope="col">Target</th>
+            
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody id="linelistTbl">
+  	{% for i in lis %}
+    <tr class="linetr">
+      <th scope="row" class="lid">{{i.id}}</th>
+      <td>{{i.line_name}}</td>
+      <td>{{i.target}}</td>      
+      <td>
+   
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#lineu-{{i.id}}">
+  Update Target
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="lineu-{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{i.line_name}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      
+      <div class="modal-body">
+
+        <input type="number" name="" class="form-control ltarget">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info uptLineTarget">Update</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+      </div>
+       
+
+    </div>
+  </div>
+</div>
+
+    <a href="{% url 'myapp:operatortarget' i.id %}" class="btn btn-sm btn-warning">view operators</a>
+
+      </td>
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+
+  </div>
+</div>
+
+
+
+
+{% endblock content %}

@@ -15,7 +15,7 @@ class operator(models.Model):
     line = models.ForeignKey(line, on_delete=models.CASCADE)
     employee_code = models.CharField(max_length=255, blank=True, null=True)
     daily_target = models.PositiveIntegerField(default=0)
-    status = models.BooleanField(default=True)
+    status = models.BooleanField(default=False)
     def __str__(self):
         return self.name
 
@@ -40,5 +40,5 @@ class daily_report(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.operator_name
+        return self.operator_name.name
     
