@@ -10,9 +10,10 @@ class ULoginForm(forms.Form):
 class OptForm(forms.ModelForm):
     class Meta:
         model = operator
-        fields = ['name', 'line', 'employee_code']
+        fields = ['name', 'burmese', 'line', 'employee_code']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'burmese': forms.TextInput(attrs={'class': 'form-control'}),
             'line': forms.Select(attrs={'class': 'form-control'}),
             'employee_code': forms.TextInput(attrs={'class': 'form-control'}),
 

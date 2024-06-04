@@ -14,6 +14,7 @@ class operator(models.Model):
     name = models.CharField(max_length=255)
     line = models.ForeignKey(line, on_delete=models.CASCADE)
     employee_code = models.CharField(max_length=255, blank=True, null=True)
+    burmese = models.CharField(max_length=255, blank=True, null=True)
     daily_target = models.PositiveIntegerField(default=0)
     status = models.BooleanField(default=False)
     def __str__(self):

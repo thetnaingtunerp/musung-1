@@ -128,3 +128,7 @@ def daily_rep_filter_bydate(request):
     else:
         return HttpResponse('error')
     
+def monthly_report(request):
+    opr = daily_report.objects.all()
+    context = {'op':opr,}
+    return render(request, 'monthly_report.html', context)
