@@ -35,7 +35,10 @@
         <a class="nav-link text-white" href="{% url 'myapp:linelist' %}">Line <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="#">Daily Report <span class="sr-only">(current)</span></a>
+        <a class="nav-link text-white" href="{% url 'myapp:daily_rep_view' %}">Daily Report <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="{% url 'myapp:daily_rep_view' %}">Monthly Report <span class="sr-only">(current)</span></a>
       </li>
 
     </ul>
@@ -113,7 +116,7 @@ $("#linelistTbl").on('click', '.uptLineTarget', function() {
     },
                     
   });//end ajax
-});
+
 
 });//end update line target
 
@@ -129,7 +132,7 @@ $("#optattend").on('click', '.optattbtn', function() {
     data:{oid:oid},
     success: function(data){
   
-        // alert('Attendance Successfully');
+        alert('Attendance Successfully');
         window.setTimeout(function(){ } ,2000);
                         location.reload();      
     },
@@ -141,13 +144,60 @@ $("#optattend").on('click', '.optattbtn', function() {
 
 });//end operator attendance
 
+//start daily operator target update
+$("#drvtbl").on('click', '.savopttarget', function() {
+  var drvcurrenttr = $(this).closest(".drvtbltr");
+  var ot1 = drvcurrenttr.find(".t1").val();
+  var ot2 = drvcurrenttr.find(".t2").val();
+  var ot3 = drvcurrenttr.find(".t3").val();
+  var ot4 = drvcurrenttr.find(".t4").val();
+  var ot5 = drvcurrenttr.find(".t5").val();
+  var ot6 = drvcurrenttr.find(".t6").val();
+  var ot7 = drvcurrenttr.find(".t7").val();
+  var ot8 = drvcurrenttr.find(".t8").val();
+  var ot9 = drvcurrenttr.find(".t9").val();
+  var ot10 = drvcurrenttr.find(".t10").val();
+  var ot11 = drvcurrenttr.find(".t11").val();
+  var dvrtblid = drvcurrenttr.find(".dvrtblid").val();
+
+  // console.log(ot1);
+  $.ajax({
+    url: "/save_daily_rep_view/",
+    method: "GET",
+    data:{ot1:ot1,ot2:ot2,ot3:ot3, ot4:ot4,ot5:ot5, ot6:ot6, ot7:ot7, ot8:ot8, ot9:ot9, ot10:ot10, ot11:ot11, dvrtblid:dvrtblid},
+    success: function(data){
+  
+        // alert('Update Successfully');
+        window.setTimeout(function(){ } ,2000);
+                        location.reload();      
+    },
+    error:function(){
+        alert('Error contact to 09-969255445');
+    },
+                    
+  });//end ajax
+});//end daily operator target update
 
 
 
 
+});//Ready Function
+
+
+new DataTable('#dvrbydate', {
+    layout: {
+        topStart: {
+            buttons: ['excel', 'pdf', 'print']
+        }
+    }
+});
 
 
 $('#operatortargettbl').DataTable();
+$('#drvtbl').DataTable();
+$('#optattend').DataTable();
+$('#operatorlist').DataTable();
+// $('#dvrbydate').DataTable();
 
 </script>
 

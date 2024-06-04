@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div>
+  {% for i in lis %}
+  <a href="{% url 'myapp:daily_rep_filter_by_line' i.id %}" class="btn btn-success m-2">{{i.line_name}}</a>
+  {% endfor %}
+  
+</div>
+
+<div class="card border-info mb-3">
+  <div class="card-body">
+
+<h4>Operators</h4>
+
+<table class="table table-striped" id="drvtbl">
+  <thead>
+    <tr>
+      
+      <th scope="col">Name</th>
+      
+      
+      <th scope="col">8:30 AM</th>
+      <th scope="col">9:30 AM</th>
+      <th scope="col">10:30 AM</th>
+      <th scope="col">11:30 AM</th>
+      <th scope="col">1:00 PM</th>
+      <th scope="col">2:00 PM</th>
+      <th scope="col">3:00 PM</th>
+      <th scope="col">4:00 PM</th>
+      <th scope="col">5:00 PM</th>
+      <th scope="col">6:00 PM</th>
+      <th scope="col">7:00 PM</th>
+      <th scope="col">Total</th>
+      <th scope="col">%</th>
+      <th scope="col">Target</th>
+
+
+      
+    </tr>
+  </thead>
+  <tbody>
+  	{% for i in op %}
+    <tr class="drvtbltr">
+      
+      
+      <td>{{i.operator_name}}</td>
+
+      <td>{{i.h1}}</td>
+      <td>{{i.h2}}</td>
+      <td>{{i.h3}}</td>
+      <td>{{i.h4}}</td>
+      <td>{{i.h5}}</td>
+      <td>{{i.h6}}</td>
+      <td>{{i.h7}}</td>
+      <td>{{i.h8}}</td>
+      <td>{{i.h9}}</td>
+      <td>{{i.h10}}</td>
+      <td>{{i.h11}}</td>
+      <td>{{i.target_qty}}</td>
+      <td>
+        
+         {{i.target_per}}%
+        
+      </td>
+      
+      <td>
+      	
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#optTargetMoal-{{i.id}}">
+  Target
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="optTargetMoal-{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content" id="createCus">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{i.name}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      
+      <div class="modal-body">
+        <input type="number" class="dvrtblid" value="{{i.id}}" hidden>
+        <label>8:30 AM</label>
+        <input type="number" name="" class="form-control t1" value="{{i.h1}}">
+        <label>9:30 AM</label>
+        <input type="number" name="" class="form-control t2" value="{{i.h2}}">
+        <label>10:30 AM</label>
+        <input type="number" name="" class="form-control t3" value="{{i.h3}}">
+        <label>11:30 AM</label>
+        <input type="number" name="" class="form-control t4" value="{{i.h4}}">
+        <label>1:00 PM</label>
+        <input type="number" name="" class="form-control t5" value="{{i.h5}}">
+        <label>2:00 PM</label>
+        <input type="number" name="" class="form-control t6" value="{{i.h6}}">
+        <label>3:00 PM</label>
+        <input type="number" name="" class="form-control t7" value="{{i.h7}}">
+        <label>4:00 PM</label>
+        <input type="number" name="" class="form-control t8" value="{{i.h8}}">
+        <label>5:00 PM</label>
+        <input type="number" name="" class="form-control t9" value="{{i.h9}}">
+        <label>6:00 PM</label>
+        <input type="number" name="" class="form-control t10" value="{{i.h10}}">
+        <label>7:00 PM</label>
+        <input type="number" name="" class="form-control t11" value="{{i.h11}}">
+
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info savopttarget">Submit</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+      </div>
+        
+
+    </div>
+  </div>
+</div>
+
+      </td>
+      
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+
+
+
+  </div>
+</div>
+
+
+
+
+{% endblock content %}

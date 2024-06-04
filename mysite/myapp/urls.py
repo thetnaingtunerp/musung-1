@@ -10,4 +10,9 @@ urlpatterns = [
     path('operatortarget/<int:id>/', views.operatortarget, name='operatortarget'),
     path('operatoratt/<int:id>/', views.operatoratt, name='operatoratt'),
     path('save_att_daily/', views.save_att_daily, name='save_att_daily'),
+    path('daily_rep_view/', views.daily_rep_view, name='daily_rep_view'),
+    path('save_daily_rep_view/', views.save_daily_rep_view, name='save_daily_rep_view'),
+    path('daily_rep_filter_by_line/<int:id>/', views.daily_rep_filter_by_line, name='daily_rep_filter_by_line'),
+    path('daily_rep_filter_operator/<int:id>/', views.daily_rep_filter_operator, name='daily_rep_filter_operator'),
+    path('daily_rep_filter_bydate/', views.daily_rep_filter_bydate, name='daily_rep_filter_bydate'),
 ]

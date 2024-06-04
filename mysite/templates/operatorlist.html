@@ -42,7 +42,7 @@
 
 <hr>
 
-<table class="table table-striped" id="invlist">
+<table class="table table-striped" id="operatorlist">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -63,7 +63,7 @@
       <td>{{i.line}}</td>
       
       <td>
-      	{{i.status}}
+      	<a href="{% url 'myapp:daily_rep_filter_operator' i.id %}" class="btn btn-sm btn-info">view target</a>
       </td>
     </tr>
     {% endfor %}

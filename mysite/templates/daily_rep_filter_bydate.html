@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<div class="card border-info">
+  <div class="card-body">
+
+<h4>Operators</h4>
+
+<table class="table table-striped" id="dvrbydate">
+  <thead>
+    <tr>
+      
+      <th scope="col">Name</th>
+      
+      <th scope="col">8:30 AM</th>
+      <th scope="col">9:30 AM</th>
+      <th scope="col">10:30 AM</th>
+      <th scope="col">11:30 AM</th>
+      <th scope="col">1:00 PM</th>
+      <th scope="col">2:00 PM</th>
+      <th scope="col">3:00 PM</th>
+      <th scope="col">4:00 PM</th>
+      <th scope="col">5:00 PM</th>
+      <th scope="col">6:00 PM</th>
+      <th scope="col">7:00 PM</th>
+      <th scope="col">Total</th>
+      <th scope="col">%</th>
+      <th scope="col">Date</th>
+
+
+      
+    </tr>
+  </thead>
+  <tbody>
+  	{% for i in op %}
+    <tr class="drvtbltr">
+      
+      
+      <td>{{i.operator_name}}</td>
+
+      
+      <td>{{i.h1}}</td>
+      <td>{{i.h2}}</td>
+      <td>{{i.h3}}</td>
+      <td>{{i.h4}}</td>
+      <td>{{i.h5}}</td>
+      <td>{{i.h6}}</td>
+      <td>{{i.h7}}</td>
+      <td>{{i.h8}}</td>
+      <td>{{i.h9}}</td>
+      <td>{{i.h10}}</td>
+      <td>{{i.h11}}</td>
+      <td>{{i.target_qty}}</td>
+      <td>{{i.target_per}}%</td>
+      
+      <td>{{i.created_date}}</td>
+   
+      
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+
+
+
+  </div>
+</div>
+
+
+
+
+{% endblock content %}
