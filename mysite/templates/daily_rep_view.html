@@ -49,8 +49,14 @@
       <td>{{i.operator_name}}</td>
 
       <td>{{i.h1}}</td>
-      <td>{{i.h2}}</td>
-      <td>{{i.h3}}</td>
+      <td>
+        <input type="text" name="" value="{{i.h2}}" class="form-control">
+        
+      </td>
+      <td>
+        <input type="text" name="" value="{{i.h3}}" class="form-control">
+      
+    </td>
       <td>{{i.h4}}</td>
       <td>{{i.h5}}</td>
       <td>{{i.h6}}</td>
@@ -60,11 +66,19 @@
       <td>{{i.h10}}</td>
       <td>{{i.h11}}</td>
       <td>{{i.target_qty}}</td>
-      <td>
-        
+      {% if i.target_per > 80 %}
+      <td class="bg-success">
          {{i.target_per}}%
-        
       </td>
+      {% elif i.target_per < 20 %}
+      <td class="bg-danger">
+         {{i.target_per}}%
+      </td>
+      {% else %}
+      <td>
+         {{i.target_per}}%
+      </td>
+      {%  endif %}
       
       <td>
       	

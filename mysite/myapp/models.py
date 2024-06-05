@@ -15,6 +15,7 @@ class operator(models.Model):
     line = models.ForeignKey(line, on_delete=models.CASCADE)
     employee_code = models.CharField(max_length=255, blank=True, null=True)
     burmese = models.CharField(max_length=255, blank=True, null=True)
+    role = models.CharField(max_length=255, blank=True, null=True)
     daily_target = models.PositiveIntegerField(default=0)
     status = models.BooleanField(default=False)
     def __str__(self):
@@ -43,3 +44,7 @@ class daily_report(models.Model):
     def __str__(self):
         return self.operator_name.name
     
+# //Test Data
+class workinghour(models.Model):
+    name = models.TimeField()
+    status = models.BooleanField(default=False)

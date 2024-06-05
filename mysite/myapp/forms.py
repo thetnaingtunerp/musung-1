@@ -7,14 +7,23 @@ class ULoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput())
 
 
+class workinghourform(forms.ModelForm):
+    class Meta:
+        model = workinghour
+        fields = ['name', 'status']
+        
+
+
+
 class OptForm(forms.ModelForm):
     class Meta:
         model = operator
-        fields = ['name', 'burmese', 'line', 'employee_code']
+        fields = ['name', 'burmese', 'line', 'employee_code','role']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'burmese': forms.TextInput(attrs={'class': 'form-control'}),
             'line': forms.Select(attrs={'class': 'form-control'}),
             'employee_code': forms.TextInput(attrs={'class': 'form-control'}),
+            'role': forms.TextInput(attrs={'class': 'form-control'}),
 
         }

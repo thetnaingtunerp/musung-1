@@ -129,6 +129,29 @@ def daily_rep_filter_bydate(request):
         return HttpResponse('error')
     
 def monthly_report(request):
-    opr = daily_report.objects.all()
-    context = {'op':opr,}
-    return render(request, 'monthly_report.html', context)
+    if request.method=="POST":
+        fd = request.POST.get('fdate')
+        ed = request.POST.get('edate')
+        opr = daily_report.objects.filter(created_date__range=[fd, ed])
+        context = {'op':opr,}
+        return render(request, 'monthly_report.html', context)
+    else:
+        opr = daily_report.objects.all()
+        context = {'op':opr,}
+        return render(request, 'monthly_report.html', context)
+
+
+def testfor(request):
+    if request.method =='POST':
+        fd = request.POST.get('t1')
+        h = workinghour(name=fd)
+        h.save()
+        th = workinghour.objects.all()
+        return render(request, 'test/test.html', {'th': th})
+
+    else:
+        th = workinghour.objects.all()
+        return render(request, 'test/test.html', {'th': th})
+
+
+    

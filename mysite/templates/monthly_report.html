@@ -4,10 +4,10 @@
 
 
 
-<div class="card border-info">
+<div class="card border-info"  style="max-width: 100%;">
   <div class="card-body">
 <div class="col-md-4">
-    <form action="" method="post">
+    <form action="" method="post">{% csrf_token %}
 <label>from date</label>
 <input type="date" name="fdate" class="form-control">
 <label>from date</label>
@@ -16,13 +16,14 @@
 </form>
 </div>
 
-<table class="table table-striped" id="monthlyrpt">
+<table class="table table-striped nowrap" id="monthlyrpt">
   <thead>
     <tr>
       
       <th scope="col">Code</th>
       <th scope="col">Name</th>
       <th scope="col">အမည်</th>
+      <th scope="col">Line</th>
       
       <th scope="col">8:30 AM</th>
       <th scope="col">9:30 AM</th>
@@ -51,6 +52,7 @@
       <td>{{i.operator_name.employee_code}}</td>
       <td>{{i.operator_name}}</td>
       <td>{{i.operator_name.burmese}}</td>
+      <td>{{i.line}}</td>
 
       
       <td>{{i.h1}}</td>
