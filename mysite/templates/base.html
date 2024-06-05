@@ -40,6 +40,9 @@
       <li class="nav-item">
         <a class="nav-link text-white" href="{% url 'myapp:monthly_report' %}">Monthly Report <span class="sr-only">(current)</span></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="{% url 'myapp:workhour' %}">Working Hour</a>
+      </li>
 
     </ul>
   </div>
@@ -178,7 +181,28 @@ $("#drvtbl").on('click', '.savopttarget', function() {
   });//end ajax
 });//end daily operator target update
 
+//start workhour change status
+$("#workhourtbl").on('click', '.tch', function() {
+    var currenttr = $(this).closest(".wtr");
+    var hid = currenttr.find(".hid").html();
+    // console.log('Check Click')
+    $.ajax({
+    url: "{% url 'myapp:changehrstatus' %}",
+    method: "GET",
+    data:{hid:hid},
+    success: function(data){
+  
+        // alert('Status Change Successfully');
+        window.setTimeout(function(){ } ,2000);
+                        location.reload();      
+    },
+    error:function(){
+        alert('Error contact to 09-969255445');
+    },
+                    
+  });//end ajax
 
+});//end workhour change status
 
 
 });//Ready Function

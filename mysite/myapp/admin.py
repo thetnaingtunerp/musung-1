@@ -4,3 +4,4 @@ from .models import *
 admin.site.register(line)
 admin.site.register(operator)
 admin.site.register(daily_report)
+admin.site.register(workinghour)

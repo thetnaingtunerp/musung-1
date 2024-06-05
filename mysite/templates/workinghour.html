@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+
+<form action="{% url 'myapp:workhour' %}" method="post">{% csrf_token %}
+<div class="row ml-5">
+<input type="time" name="t1" id="" class="form-control col-md-2">
+<input type="submit" name="" class="btn btn-success">
+</div>
+</form>
+
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th class="text-center">Time</th>
+			<th>Status</th>
+		</tr>
+		
+	</thead>
+	<tbody id="workhourtbl">
+		{% for i in th %}
+		<tr class="wtr">
+			<td class="hid">{{i.id}}</td>
+			<td class="text-center">{{i.name}}</td>
+			{% if i.status == False %}
+			
+			<td><input type="checkbox" class="tch"></td>
+			{% else %}
+			<td><input type="checkbox" checked class="tch"></td>
+			{% endif %}
+		</tr>
+		{% endfor %}
+		
+	</tbody>
+</table>
+
+
+
+
+{% endblock content %}

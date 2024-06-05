@@ -141,17 +141,29 @@ def monthly_report(request):
         return render(request, 'monthly_report.html', context)
 
 
-def testfor(request):
+def workhour(request):
     if request.method =='POST':
         fd = request.POST.get('t1')
         h = workinghour(name=fd)
         h.save()
         th = workinghour.objects.all()
-        return render(request, 'test/test.html', {'th': th})
+        return render(request, 'workinghour.html', {'th': th})
 
     else:
         th = workinghour.objects.all()
-        return render(request, 'test/test.html', {'th': th})
+        return render(request, 'workinghour.html', {'th': th})
+
+def changehrstatus(request):
+    i = int(request.GET.get('hid'))
+    h = workinghour.objects.get(id=i)
+    s = h.status
+    # print(s)
+    if s==True:
+        h = workinghour.objects.filter(id=i).update(status=False)
+    if s==False:
+        h = workinghour.objects.filter(id=i).update(status=True)
+    return JsonResponse({'status':'success'})
+
 
 
     

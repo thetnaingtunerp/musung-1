@@ -17,5 +17,6 @@ urlpatterns = [
     path('daily_rep_filter_bydate/', views.daily_rep_filter_bydate, name='daily_rep_filter_bydate'),
     path('monthly_report/', views.monthly_report, name='monthly_report'),
 
-    path('testfor/', views.testfor, name='testfor'),
+    path('workhour/', views.workhour, name='workhour'),
+    path('changehrstatus/', views.changehrstatus,name='changehrstatus'),
 ]
