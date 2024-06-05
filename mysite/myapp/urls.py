@@ -19,4 +19,5 @@ urlpatterns = [
 
     path('workhour/', views.workhour, name='workhour'),
     path('changehrstatus/', views.changehrstatus,name='changehrstatus'),
+    path('optortargetrep/', views.optortargetrep, name='optortargetrep'),
 ]

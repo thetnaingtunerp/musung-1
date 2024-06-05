@@ -205,6 +205,34 @@ $("#workhourtbl").on('click', '.tch', function() {
 });//end workhour change status
 
 
+
+
+//start operator attendance
+$("#optattend").on('click', '.optatten', function() {
+  var currenttr = $(this).closest(".opattr");
+  var oid = currenttr.find(".oid").html();
+  
+  $.ajax({
+    url: "/optortargetrep/",
+    method: "GET",
+    data:{oid:oid},
+    success: function(data){
+  
+        alert('Attendance Successfully');
+        window.setTimeout(function(){ } ,2000);
+                        location.reload();      
+    },
+    error:function(){
+        alert('Error contact to 09-969255445');
+    },
+                    
+  });//end ajax
+
+});//end operator attendance
+
+
+
+
 });//Ready Function
 
 

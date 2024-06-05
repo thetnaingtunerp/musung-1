@@ -51,3 +51,26 @@ class workinghour(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+
+
+class operatortargetrep(models.Model):
+    operatorname = models.ForeignKey(operator, on_delete=models.CASCADE)
+    line = models.ForeignKey(line, on_delete=models.CASCADE)
+    optarget = models.PositiveIntegerField(default=0)
+    totalqty = models.PositiveIntegerField(default=0)
+    percent = models.PositiveIntegerField(default=0)
+    created_date = models.DateField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f'{self.id}'
+
+class hourlytargetrep(models.Model):
+    optname = models.ForeignKey(operatortargetrep, on_delete=models.CASCADE)
+    timehr = models.ForeignKey(workinghour, on_delete=models.CASCADE)
+    hrqty = models.PositiveIntegerField(default=0)
+    created_date = models.DateField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f'{self.id}'

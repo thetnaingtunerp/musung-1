@@ -8,11 +8,16 @@ import datetime
 from .models import *
 from .forms import *
 
+
+
 def operatorlist(request):
     op = operator.objects.all()
     form = OptForm()
     context = {'op':op, 'form':form}
     return render(request, 'operatorlist.html', context)
+
+
+
 
 def save_operator(request):
     if request.method == 'POST':
@@ -164,6 +169,32 @@ def changehrstatus(request):
         h = workinghour.objects.filter(id=i).update(status=True)
     return JsonResponse({'status':'success'})
 
+def optortargetrep(request):
+    opi = request.GET.get('oid')
+    iop = int(opi)
+    op_obj = operator.objects.get(id=iop)
+    lie = op_obj.line
+    l_obj = line.objects.get(line_name=lie)
+    today = datetime.date.today()
+    otr = operatortargetrep.objects.filter(operatorname=op_obj,created_date=today)
+    if otr:
+        return JsonResponse({'status':'error'})
+    else:
+        o = operatortargetrep(operatorname=op_obj,line=l_obj)
+        o.save()
+        # operatortargetrep id
+        oprep = o.id
+        hr = workinghour.objects.filter(status=True)
+        
+        for h in hr:
+            opr = operatortargetrep.objects.get(id=oprep)
+            hrp = hourlytargetrep(optname=opr, timehr=h)
+            hrp.save()
+            # h+=1
 
+        return JsonResponse({'status':'success'})
+    
+            
+    
 
     
