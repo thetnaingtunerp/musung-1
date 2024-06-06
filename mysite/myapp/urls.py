@@ -20,4 +20,11 @@ urlpatterns = [
     path('workhour/', views.workhour, name='workhour'),
     path('changehrstatus/', views.changehrstatus,name='changehrstatus'),
     path('optortargetrep/', views.optortargetrep, name='optortargetrep'),
+    path('hourlydata/', views.hourlydata, name='hourlydata'),
+
+    #update hour
+    path('update_h1/', views.update_h1, name='update_h1'),
+    path('update_h2/', views.update_h2, name='update_h2'),
+    path('update_h3/', views.update_h3, name='update_h3'),
+
 ]

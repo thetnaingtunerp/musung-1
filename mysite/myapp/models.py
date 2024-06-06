@@ -63,14 +63,21 @@ class operatortargetrep(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f'{self.id}'
+        return str(self.id)
+
+    
 
 class hourlytargetrep(models.Model):
-    optname = models.ForeignKey(operatortargetrep, on_delete=models.CASCADE)
+    optname = models.ForeignKey(operatortargetrep,on_delete=models.CASCADE, null=True, blank=True)
     timehr = models.ForeignKey(workinghour, on_delete=models.CASCADE)
     hrqty = models.PositiveIntegerField(default=0)
     created_date = models.DateField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f'{self.id}'
+        return str(self.id)
+
+class opreport(models.Model):
+    operatortargetrep = models.OneToOneField(operatortargetrep, on_delete=models.CASCADE)
+    created_date = models.DateField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

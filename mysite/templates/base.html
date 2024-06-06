@@ -43,6 +43,9 @@
       <li class="nav-item">
         <a class="nav-link text-white" href="{% url 'myapp:workhour' %}">Working Hour</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="{% url 'myapp:hourlydata' %}">Hour Data</a>
+      </li>
 
     </ul>
   </div>
@@ -181,6 +184,77 @@ $("#drvtbl").on('click', '.savopttarget', function() {
   });//end ajax
 });//end daily operator target update
 
+//Hour1
+$(".ih1").change(function(){
+    var a1=$(this).val();
+    var drvcurrenttr = $(this).closest(".drvtbltr");
+    var dvrtblid = drvcurrenttr.find(".dvrtblid").val();
+    $.ajax({
+    url: "/update_h1/",
+    method: "GET",
+    data:{a1:a1, dvrtblid:dvrtblid},
+    success: function(data){
+  
+        // alert('Update Successfully');
+        window.setTimeout(function(){ } ,2000);
+                        location.reload();      
+    },
+    error:function(){
+        alert('Error contact to 09-969255445');
+    },
+                    
+  });//end ajax
+ 
+});//End Hour1
+
+//Hour2
+$(".ih2").change(function(){
+    var a2=$(this).val();
+    var drvcurrenttr = $(this).closest(".drvtbltr");
+    var dvrtblid = drvcurrenttr.find(".dvrtblid").val();
+    $.ajax({
+    url: "/update_h2/",
+    method: "GET",
+    data:{a2:a2, dvrtblid:dvrtblid},
+    success: function(data){
+  
+        // alert('Update Successfully');
+        window.setTimeout(function(){ } ,2000);
+                        location.reload();      
+    },
+    error:function(){
+        alert('Error contact to 09-969255445');
+    },
+                    
+  });//end ajax
+ 
+});//End Hour2
+
+//Hour3
+$(".ih3").change(function(){
+    var a3=$(this).val();
+    var drvcurrenttr = $(this).closest(".drvtbltr");
+    var dvrtblid = drvcurrenttr.find(".dvrtblid").val();
+    $.ajax({
+    url: "/update_h3/",
+    method: "GET",
+    data:{a3:a3, dvrtblid:dvrtblid},
+    success: function(data){
+  
+        // alert('Update Successfully');
+        window.setTimeout(function(){ } ,2000);
+                        location.reload();      
+    },
+    error:function(){
+        alert('Error contact to 09-969255445');
+    },
+                    
+  });//end ajax
+ 
+});//End Hour3
+
+
+
 //start workhour change status
 $("#workhourtbl").on('click', '.tch', function() {
     var currenttr = $(this).closest(".wtr");
@@ -229,6 +303,11 @@ $("#optattend").on('click', '.optatten', function() {
   });//end ajax
 
 });//end operator attendance
+
+
+
+
+
 
 
 

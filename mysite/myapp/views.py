@@ -184,6 +184,9 @@ def optortargetrep(request):
         o.save()
         # operatortargetrep id
         oprep = o.id
+        oprobj = operatortargetrep.objects.get(id=oprep)
+        por = opreport(operatortargetrep=oprobj)
+        por.save()
         hr = workinghour.objects.filter(status=True)
         
         for h in hr:
@@ -194,7 +197,94 @@ def optortargetrep(request):
 
         return JsonResponse({'status':'success'})
     
-            
-    
+
+def update_h1(request):
+    dvrtblid = request.GET.get('dvrtblid')
+    a1 = request.GET.get('a1')
+    rid = int(dvrtblid)
+    h1 = int(a1)
+    rr = daily_report.objects.filter(id=rid)
+    rr.update(h1=h1)
+    rg = daily_report.objects.get(id=rid)
+    u1 = rg.h1
+    u2 = rg.h2
+    u3 = rg.h3
+    u4 = rg.h4
+    u5 = rg.h5
+    u6 = rg.h6
+    u7 = rg.h7
+    u8 = rg.h8
+    u9 = rg.h9
+    u10 = rg.h10
+    u11 = rg.h11
+    u12 = rg.h12
+    total = u1+u2+u3+u4+u5+u6+u7+u8+u9+u10+u11+u12
+    rr.update(target_qty=total)
+    return JsonResponse({'status':'success'})
+
+def update_h2(request):
+    dvrtblid = request.GET.get('dvrtblid')
+    a2 = request.GET.get('a2')
+    rid = int(dvrtblid)
+    h2 = int(a2)
+    rr = daily_report.objects.filter(id=rid)
+    rr.update(h2=h2)
+    rg = daily_report.objects.get(id=rid)
+    u1 = rg.h1
+    u2 = rg.h2
+    u3 = rg.h3
+    u4 = rg.h4
+    u5 = rg.h5
+    u6 = rg.h6
+    u7 = rg.h7
+    u8 = rg.h8
+    u9 = rg.h9
+    u10 = rg.h10
+    u11 = rg.h11
+    u12 = rg.h12
+    total = u1+u2+u3+u4+u5+u6+u7+u8+u9+u10+u11+u12
+    rr.update(target_qty=total)
+    return JsonResponse({'status':'success'})
+
+def update_h3(request):
+    dvrtblid = request.GET.get('dvrtblid')
+    a3 = request.GET.get('a3')
+    rid = int(dvrtblid)
+    h3 = int(a3)
+    rr = daily_report.objects.filter(id=rid)
+    rr.update(h3=h3)
+    rg = daily_report.objects.get(id=rid)
+    u1 = rg.h1
+    u2 = rg.h2
+    u3 = rg.h3
+    u4 = rg.h4
+    u5 = rg.h5
+    u6 = rg.h6
+    u7 = rg.h7
+    u8 = rg.h8
+    u9 = rg.h9
+    u10 = rg.h10
+    u11 = rg.h11
+    u12 = rg.h12
+    total = u1+u2+u3+u4+u5+u6+u7+u8+u9+u10+u11+u12
+    rr.update(target_qty=total)
+    return JsonResponse({'status':'success'})
+
+
+#Have Error            
+def hourlydata(request):
+    op = operatortargetrep.objects.all()
+    htr = hourlytargetrep.objects.all()
+    opo = opreport.objects.all()
+    hr = workinghour.objects.filter(status=True)
+
+    oplist = list(op)
+
+    print(type(oplist))
+    context = {'op':op, 'htr':htr, 'hr':hr, 'opo':opo}
+    return render(request, 'hourlydata.html',context)
+
+
+
 
     
