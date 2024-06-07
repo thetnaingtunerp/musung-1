@@ -253,6 +253,215 @@ $(".ih3").change(function(){
  
 });//End Hour3
 
+//Hour4
+$(".ih4").change(function(){
+    var a4=$(this).val();
+    var drvcurrenttr = $(this).closest(".drvtbltr");
+    var dvrtblid = drvcurrenttr.find(".dvrtblid").val();
+    $.ajax({
+    url: "/update_h4/",
+    method: "GET",
+    data:{a4:a4, dvrtblid:dvrtblid},
+    success: function(data){
+  
+        // alert('Update Successfully');
+        window.setTimeout(function(){ } ,2000);
+                        location.reload();      
+    },
+    error:function(){
+        alert('Error contact to 09-969255445');
+    },
+                    
+  });//end ajax
+ 
+});//End Hour4
+
+//Hour5
+$(".ih5").change(function(){
+    var a5=$(this).val();
+    var drvcurrenttr = $(this).closest(".drvtbltr");
+    var dvrtblid = drvcurrenttr.find(".dvrtblid").val();
+    $.ajax({
+    url: "/update_h5/",
+    method: "GET",
+    data:{a5:a5, dvrtblid:dvrtblid},
+    success: function(data){
+  
+        // alert('Update Successfully');
+        window.setTimeout(function(){ } ,2000);
+                        location.reload();      
+    },
+    error:function(){
+        alert('Error contact to 09-969255445');
+    },
+                    
+  });//end ajax
+ 
+});//End Hour5
+
+//Hour6
+$(".ih6").change(function(){
+    var a6=$(this).val();
+    var drvcurrenttr = $(this).closest(".drvtbltr");
+    var dvrtblid = drvcurrenttr.find(".dvrtblid").val();
+    $.ajax({
+    url: "/update_h6/",
+    method: "GET",
+    data:{a6:a6, dvrtblid:dvrtblid},
+    success: function(data){
+  
+        // alert('Update Successfully');
+        window.setTimeout(function(){ } ,2000);
+                        location.reload();      
+    },
+    error:function(){
+        alert('Error contact to 09-969255445');
+    },
+                    
+  });//end ajax
+ 
+});//End Hour6
+
+
+//Hour7
+$(".ih7").change(function(){
+    var a7=$(this).val();
+    var drvcurrenttr = $(this).closest(".drvtbltr");
+    var dvrtblid = drvcurrenttr.find(".dvrtblid").val();
+    $.ajax({
+    url: "/update_h7/",
+    method: "GET",
+    data:{a7:a7, dvrtblid:dvrtblid},
+    success: function(data){
+  
+        // alert('Update Successfully');
+        window.setTimeout(function(){ } ,2000);
+                        location.reload();      
+    },
+    error:function(){
+        alert('Error contact to 09-969255445');
+    },
+                    
+  });//end ajax
+ 
+});//End Hour7
+
+
+//Hour8
+$(".ih8").change(function(){
+    var a8=$(this).val();
+    var drvcurrenttr = $(this).closest(".drvtbltr");
+    var dvrtblid = drvcurrenttr.find(".dvrtblid").val();
+    $.ajax({
+    url: "/update_h8/",
+    method: "GET",
+    data:{a8:a8, dvrtblid:dvrtblid},
+    success: function(data){
+  
+        // alert('Update Successfully');
+        window.setTimeout(function(){ } ,2000);
+                        location.reload();      
+    },
+    error:function(){
+        alert('Error contact to 09-969255445');
+    },
+                    
+  });//end ajax
+ 
+});//End Hour8
+
+//Hour9
+$(".ih9").change(function(){
+    var a9=$(this).val();
+    var drvcurrenttr = $(this).closest(".drvtbltr");
+    var dvrtblid = drvcurrenttr.find(".dvrtblid").val();
+    $.ajax({
+    url: "/update_h9/",
+    method: "GET",
+    data:{a9:a9, dvrtblid:dvrtblid},
+    success: function(data){
+  
+        // alert('Update Successfully');
+        window.setTimeout(function(){ } ,2000);
+                        location.reload();      
+    },
+    error:function(){
+        alert('Error contact to 09-969255445');
+    },
+                    
+  });//end ajax
+ 
+});//End Hour9
+
+//Hour10
+$(".ih10").change(function(){
+    var a10=$(this).val();
+    var drvcurrenttr = $(this).closest(".drvtbltr");
+    var dvrtblid = drvcurrenttr.find(".dvrtblid").val();
+    $.ajax({
+    url: "/update_h10/",
+    method: "GET",
+    data:{a10:a10, dvrtblid:dvrtblid},
+    success: function(data){
+  
+        // alert('Update Successfully');
+        window.setTimeout(function(){ } ,2000);
+                        location.reload();      
+    },
+    error:function(){
+        alert('Error contact to 09-969255445');
+    },
+                    
+  });//end ajax
+ 
+});//End Hour10
+
+//Hour11
+$(".ih11").change(function(){
+    var a11=$(this).val();
+    var drvcurrenttr = $(this).closest(".drvtbltr");
+    var dvrtblid = drvcurrenttr.find(".dvrtblid").val();
+    $.ajax({
+    url: "/update_h11/",
+    method: "GET",
+    data:{a11:a11, dvrtblid:dvrtblid},
+    success: function(data){
+  
+        // alert('Update Successfully');
+        window.setTimeout(function(){ } ,2000);
+                        location.reload();      
+    },
+    error:function(){
+        alert('Error contact to 09-969255445');
+    },
+                    
+  });//end ajax
+ 
+});//End Hour11
+
+
+//Hour12
+$(".ih12").change(function(){
+    var a12=$(this).val();
+    var drvcurrenttr = $(this).closest(".drvtbltr");
+    var dvrtblid = drvcurrenttr.find(".dvrtblid").val();
+    $.ajax({
+    url: "/update_h12/",
+    method: "GET",
+    data:{a12:a12, dvrtblid:dvrtblid},
+    success: function(data){
+  
+        // alert('Update Successfully');
+        window.setTimeout(function(){ } ,2000);
+                        location.reload();      
+    },
+    error:function(){
+        alert('Error contact to 09-969255445');
+    },
+                    
+  });//end ajax
+ 
+});//End Hour12
 
 
 //start workhour change status
@@ -304,8 +513,14 @@ $("#optattend").on('click', '.optatten', function() {
 
 });//end operator attendance
 
-
-
+//monthly report filterby line
+$("#filterbtngroup").on('click', '.flbtn', function() {
+    var lnrow=$(this).closest('.btnrow');
+    var bid = lnrow.find(".bid").html();
+    var fd = $('.fdf').val();
+    var ed = $('.edf').val();
+    
+});//end monthly report filterby line
 
 
 

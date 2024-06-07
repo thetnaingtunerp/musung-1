@@ -138,7 +138,8 @@ def monthly_report(request):
         fd = request.POST.get('fdate')
         ed = request.POST.get('edate')
         opr = daily_report.objects.filter(created_date__range=[fd, ed])
-        context = {'op':opr,}
+        lis = line.objects.all()
+        context = {'op':opr, 'fd':fd, 'ed':ed, 'lis':lis}
         return render(request, 'monthly_report.html', context)
     else:
         opr = daily_report.objects.all()
@@ -269,6 +270,231 @@ def update_h3(request):
     total = u1+u2+u3+u4+u5+u6+u7+u8+u9+u10+u11+u12
     rr.update(target_qty=total)
     return JsonResponse({'status':'success'})
+
+def update_h4(request):
+    dvrtblid = request.GET.get('dvrtblid')
+    a4 = request.GET.get('a4')
+    rid = int(dvrtblid)
+    h4 = int(a4)
+    rr = daily_report.objects.filter(id=rid)
+    rr.update(h4=h4)
+    rg = daily_report.objects.get(id=rid)
+    u1 = rg.h1
+    u2 = rg.h2
+    u3 = rg.h3
+    u4 = rg.h4
+    u5 = rg.h5
+    u6 = rg.h6
+    u7 = rg.h7
+    u8 = rg.h8
+    u9 = rg.h9
+    u10 = rg.h10
+    u11 = rg.h11
+    u12 = rg.h12
+    total = u1+u2+u3+u4+u5+u6+u7+u8+u9+u10+u11+u12
+    rr.update(target_qty=total)
+    return JsonResponse({'status':'success'})
+
+
+def update_h5(request):
+    dvrtblid = request.GET.get('dvrtblid')
+    a5 = request.GET.get('a5')
+    rid = int(dvrtblid)
+    h5 = int(a5)
+    rr = daily_report.objects.filter(id=rid)
+    rr.update(h5=h5)
+    rg = daily_report.objects.get(id=rid)
+    u1 = rg.h1
+    u2 = rg.h2
+    u3 = rg.h3
+    u4 = rg.h4
+    u5 = rg.h5
+    u6 = rg.h6
+    u7 = rg.h7
+    u8 = rg.h8
+    u9 = rg.h9
+    u10 = rg.h10
+    u11 = rg.h11
+    u12 = rg.h12
+    total = u1+u2+u3+u4+u5+u6+u7+u8+u9+u10+u11+u12
+    rr.update(target_qty=total)
+    return JsonResponse({'status':'success'})
+
+def update_h6(request):
+    dvrtblid = request.GET.get('dvrtblid')
+    a6 = request.GET.get('a6')
+    rid = int(dvrtblid)
+    h6 = int(a6)
+    rr = daily_report.objects.filter(id=rid)
+    rr.update(h6=h6)
+    rg = daily_report.objects.get(id=rid)
+    u1 = rg.h1
+    u2 = rg.h2
+    u3 = rg.h3
+    u4 = rg.h4
+    u5 = rg.h5
+    u6 = rg.h6
+    u7 = rg.h7
+    u8 = rg.h8
+    u9 = rg.h9
+    u10 = rg.h10
+    u11 = rg.h11
+    u12 = rg.h12
+    total = u1+u2+u3+u4+u5+u6+u7+u8+u9+u10+u11+u12
+    rr.update(target_qty=total)
+    return JsonResponse({'status':'success'})
+
+def update_h7(request):
+    dvrtblid = request.GET.get('dvrtblid')
+    a7 = request.GET.get('a7')
+    rid = int(dvrtblid)
+    h7 = int(a7)
+    rr = daily_report.objects.filter(id=rid)
+    rr.update(h7=h7)
+    rg = daily_report.objects.get(id=rid)
+    u1 = rg.h1
+    u2 = rg.h2
+    u3 = rg.h3
+    u4 = rg.h4
+    u5 = rg.h5
+    u6 = rg.h6
+    u7 = rg.h7
+    u8 = rg.h8
+    u9 = rg.h9
+    u10 = rg.h10
+    u11 = rg.h11
+    u12 = rg.h12
+    total = u1+u2+u3+u4+u5+u6+u7+u8+u9+u10+u11+u12
+    rr.update(target_qty=total)
+    return JsonResponse({'status':'success'})
+
+def update_h8(request):
+    dvrtblid = request.GET.get('dvrtblid')
+    a8 = request.GET.get('a8')
+    rid = int(dvrtblid)
+    h8 = int(a8)
+    rr = daily_report.objects.filter(id=rid)
+    rr.update(h8=h8)
+    rg = daily_report.objects.get(id=rid)
+    u1 = rg.h1
+    u2 = rg.h2
+    u3 = rg.h3
+    u4 = rg.h4
+    u5 = rg.h5
+    u6 = rg.h6
+    u7 = rg.h7
+    u8 = rg.h8
+    u9 = rg.h9
+    u10 = rg.h10
+    u11 = rg.h11
+    u12 = rg.h12
+    total = u1+u2+u3+u4+u5+u6+u7+u8+u9+u10+u11+u12
+    rr.update(target_qty=total)
+    return JsonResponse({'status':'success'})
+
+def update_h9(request):
+    dvrtblid = request.GET.get('dvrtblid')
+    a9 = request.GET.get('a9')
+    rid = int(dvrtblid)
+    h9 = int(a9)
+    rr = daily_report.objects.filter(id=rid)
+    rr.update(h9=h9)
+    rg = daily_report.objects.get(id=rid)
+    u1 = rg.h1
+    u2 = rg.h2
+    u3 = rg.h3
+    u4 = rg.h4
+    u5 = rg.h5
+    u6 = rg.h6
+    u7 = rg.h7
+    u8 = rg.h8
+    u9 = rg.h9
+    u10 = rg.h10
+    u11 = rg.h11
+    u12 = rg.h12
+    total = u1+u2+u3+u4+u5+u6+u7+u8+u9+u10+u11+u12
+    rr.update(target_qty=total)
+    return JsonResponse({'status':'success'})
+
+def update_h10(request):
+    dvrtblid = request.GET.get('dvrtblid')
+    a10 = request.GET.get('a10')
+    rid = int(dvrtblid)
+    h10 = int(a10)
+    rr = daily_report.objects.filter(id=rid)
+    rr.update(h10=h10)
+    rg = daily_report.objects.get(id=rid)
+    u1 = rg.h1
+    u2 = rg.h2
+    u3 = rg.h3
+    u4 = rg.h4
+    u5 = rg.h5
+    u6 = rg.h6
+    u7 = rg.h7
+    u8 = rg.h8
+    u9 = rg.h9
+    u10 = rg.h10
+    u11 = rg.h11
+    u12 = rg.h12
+    total = u1+u2+u3+u4+u5+u6+u7+u8+u9+u10+u11+u12
+    rr.update(target_qty=total)
+    return JsonResponse({'status':'success'})
+
+def update_h11(request):
+    dvrtblid = request.GET.get('dvrtblid')
+    a11 = request.GET.get('a11')
+    rid = int(dvrtblid)
+    h11 = int(a11)
+    rr = daily_report.objects.filter(id=rid)
+    rr.update(h11=h11)
+    rg = daily_report.objects.get(id=rid)
+    u1 = rg.h1
+    u2 = rg.h2
+    u3 = rg.h3
+    u4 = rg.h4
+    u5 = rg.h5
+    u6 = rg.h6
+    u7 = rg.h7
+    u8 = rg.h8
+    u9 = rg.h9
+    u10 = rg.h10
+    u11 = rg.h11
+    u12 = rg.h12
+    total = u1+u2+u3+u4+u5+u6+u7+u8+u9+u10+u11+u12
+    rr.update(target_qty=total)
+    return JsonResponse({'status':'success'})
+
+def update_h12(request):
+    dvrtblid = request.GET.get('dvrtblid')
+    a12 = request.GET.get('a12')
+    rid = int(dvrtblid)
+    h12 = int(a12)
+    rr = daily_report.objects.filter(id=rid)
+    rr.update(h12=h12)
+    rg = daily_report.objects.get(id=rid)
+    u1 = rg.h1
+    u2 = rg.h2
+    u3 = rg.h3
+    u4 = rg.h4
+    u5 = rg.h5
+    u6 = rg.h6
+    u7 = rg.h7
+    u8 = rg.h8
+    u9 = rg.h9
+    u10 = rg.h10
+    u11 = rg.h11
+    u12 = rg.h12
+    total = u1+u2+u3+u4+u5+u6+u7+u8+u9+u10+u11+u12
+    rr.update(target_qty=total)
+    return JsonResponse({'status':'success'})
+
+
+def rank_by_line(request):
+    rep = daily_report.objects.all()
+    context ={}
+    return render(request, 'rank_by_line.html',context)
+
+
 
 
 #Have Error            

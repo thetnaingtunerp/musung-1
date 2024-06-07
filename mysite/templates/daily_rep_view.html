@@ -20,6 +20,7 @@
     <tr>
       
       <th scope="col">Name</th>
+
       
       
       <th scope="col">8:30 AM</th>
@@ -33,9 +34,9 @@
       <th scope="col">5:00 PM</th>
       <th scope="col">6:00 PM</th>
       <th scope="col">7:00 PM</th>
+      <th scope="col">8:00 PM</th>
       <th scope="col">Total</th>
-      <th scope="col">%</th>
-      <th scope="col">Target</th>
+      
 
 
       
@@ -46,117 +47,112 @@
     <tr class="drvtbltr">
       
       
+      
       <td>{{i.operator_name}}</td>
 
       
       <td>
-        <input type="text" name="" value="{{i.h1}}" class="form-control ih1">
-      </td>
-      <td>
-        <input type="text" name="" value="{{i.h2}}" class="form-control ih2">
-        
-      </td>
-      <td>
-        <input type="text" name="" value="{{i.h3}}" class="form-control ih3">
-      </td>
-      <td>
-        <input type="text" name="" value="{{i.h4}}" class="form-control ih4">
-      </td>
-      <td>
-        <input type="text" name="" value="{{i.h5}}" class="form-control ih5">
-      </td>
-      <td>
-        <input type="text" name="" value="{{i.h6}}" class="form-control ih6">
-      </td>
-      <td>
-        <input type="text" name="" value="{{i.h7}}" class="form-control ih7">
-      </td>
-      <td>
-        <input type="text" name="" value="{{i.h8}}" class="form-control ih8">
-      </td>
-      <td>
-        <input type="text" name="" value="{{i.h9}}" class="form-control ih9">
-      </td>
-      <td>
-        <input type="text" name="" value="{{i.h10}}" class="form-control ih10">
-      </td>
-      <td>
-        <input type="text" name="" value="{{i.h11}}" class="form-control ih11">
-      </td>
-      
-      <td>{{i.target_qty}}</td>
-      {% if i.target_per > 80 %}
-      <td class="bg-success">
-         {{i.target_per}}%
-      </td>
-      {% elif i.target_per < 20 %}
-      <td class="bg-danger">
-         {{i.target_per}}%
-      </td>
-      {% else %}
-      <td>
-         {{i.target_per}}%
-      </td>
-      {%  endif %}
-      
-      <td>
-      	
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#optTargetMoal-{{i.id}}">
-  Target
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="optTargetMoal-{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable">
-    <div class="modal-content" id="createCus">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">{{i.name}}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-      
-      <div class="modal-body">
         <input type="number" class="dvrtblid" value="{{i.id}}" hidden>
-        <label>8:30 AM</label>
-        <input type="number" name="" class="form-control t1" value="{{i.h1}}">
-        <label>9:30 AM</label>
-        <input type="number" name="" class="form-control t2" value="{{i.h2}}">
-        <label>10:30 AM</label>
-        <input type="number" name="" class="form-control t3" value="{{i.h3}}">
-        <label>11:30 AM</label>
-        <input type="number" name="" class="form-control t4" value="{{i.h4}}">
-        <label>1:00 PM</label>
-        <input type="number" name="" class="form-control t5" value="{{i.h5}}">
-        <label>2:00 PM</label>
-        <input type="number" name="" class="form-control t6" value="{{i.h6}}">
-        <label>3:00 PM</label>
-        <input type="number" name="" class="form-control t7" value="{{i.h7}}">
-        <label>4:00 PM</label>
-        <input type="number" name="" class="form-control t8" value="{{i.h8}}">
-        <label>5:00 PM</label>
-        <input type="number" name="" class="form-control t9" value="{{i.h9}}">
-        <label>6:00 PM</label>
-        <input type="number" name="" class="form-control t10" value="{{i.h10}}">
-        <label>7:00 PM</label>
-        <input type="number" name="" class="form-control t11" value="{{i.h11}}">
-
         
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-info savopttarget">Submit</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-      </div>
-        
-
-    </div>
-  </div>
-</div>
-
+        {% if i.h1 == 0 %}
+        <input type="text" name="" value="" class="form-control ih1">
+        {% else %}
+        <input type="text" name="" value="{{i.h1}}" class="form-control ih1">
+        {% endif %}
       </td>
+      <td>
+        
+       {% if i.h2 == 0 %}
+        <input type="text" name="" value="" class="form-control ih2">
+        {% else %}
+        <input type="text" name="" value="{{i.h2}}" class="form-control ih2">
+        {% endif %}
+        
+      </td>
+      <td>
+        
+       {% if i.h3 == 0 %}
+        <input type="text" name="" value="" class="form-control ih3">
+        {% else %}
+        <input type="text" name="" value="{{i.h3}}" class="form-control ih3">
+        {% endif %}
+      </td>
+      <td>
+        
+        {% if i.h4 == 0 %}
+        <input type="text" name="" value="" class="form-control ih4">
+        {% else %}
+        <input type="text" name="" value="{{i.h4}}" class="form-control ih4">
+        {% endif %}
+      </td>
+      <td>
+        
+        {% if i.h5 == 0 %}
+        <input type="text" name="" value="" class="form-control ih5">
+        {% else %}
+        <input type="text" name="" value="{{i.h5}}" class="form-control ih5">
+        {% endif %}
+      </td>
+      <td>
+        
+        {% if i.h6 == 0 %}
+        <input type="text" name="" value="" class="form-control ih6">
+        {% else %}
+        <input type="text" name="" value="{{i.h6}}" class="form-control ih6">
+        {% endif %}
+      </td>
+      <td>
+        
+        {% if i.h7 == 0 %}
+        <input type="text" name="" value="" class="form-control ih7">
+        {% else %}
+        <input type="text" name="" value="{{i.h7}}" class="form-control ih7">
+        {% endif %}
+      </td>
+      <td>
+        
+        {% if i.h8 == 0 %}
+        <input type="text" name="" value="" class="form-control ih8">
+        {% else %}
+        <input type="text" name="" value="{{i.h8}}" class="form-control ih8">
+        {% endif %}
+      </td>
+      <td>
+        
+        {% if i.h9 == 0 %}
+        <input type="text" name="" value="" class="form-control ih9">
+        {% else %}
+        <input type="text" name="" value="{{i.h9}}" class="form-control ih9">
+        {% endif %}
+      </td>
+      <td>
+        
+        {% if i.h10 == 0 %}
+        <input type="text" name="" value="" class="form-control ih10">
+        {% else %}
+        <input type="text" name="" value="{{i.h10}}" class="form-control ih10">
+        {% endif %}
+      </td>
+      <td>
+        
+        {% if i.h11 == 0 %}
+        <input type="text" name="" value="" class="form-control ih11">
+        {% else %}
+        <input type="text" name="" value="{{i.h11}}" class="form-control ih11">
+        {% endif %}
+      </td>
+
+
+      <td>
+        {% if i.h12 == 0 %}
+        <input type="text" name="" value="" class="form-control ih12">
+        {% else %}
+        <input type="text" name="" value="{{i.h12}}" class="form-control ih12">
+        {% endif %}
+      </td>
+      
+      <td><strong style="font-size:20px;">{{i.target_qty}}</strong></td>
+
       
     </tr>
     {% endfor %}

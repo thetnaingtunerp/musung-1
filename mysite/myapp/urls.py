@@ -26,5 +26,15 @@ urlpatterns = [
     path('update_h1/', views.update_h1, name='update_h1'),
     path('update_h2/', views.update_h2, name='update_h2'),
     path('update_h3/', views.update_h3, name='update_h3'),
+    path('update_h4/', views.update_h4, name='update_h4'),
+    path('update_h5/', views.update_h5, name='update_h5'),
+    path('update_h6/', views.update_h6, name='update_h6'),
+    path('update_h7/', views.update_h7, name='update_h7'),
+    path('update_h8/', views.update_h8, name='update_h8'),
+    path('update_h9/', views.update_h9, name='update_h9'),
+    path('update_h10/', views.update_h10, name='update_h10'),
+    path('update_h11/', views.update_h11, name='update_h11'),
+    path('update_h12/', views.update_h12, name='update_h12'),
+
 
 ]

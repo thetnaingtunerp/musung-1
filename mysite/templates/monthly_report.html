@@ -12,8 +12,26 @@
 <input type="date" name="fdate" class="form-control">
 <label>from date</label>
 <input type="date" name="edate" class="form-control">
+
 <input type="submit" class="btn btn-primary btn-block m-2">
 </form>
+</div>
+<div id="filterbtngroup" class="row">
+<input type="date" name="" value="{{fd}}" class="fdf" hidden>
+<input type="date" name="" value="{{ed}}" class="edf" hidden>
+{% if lis %}
+
+  {% for l in lis %}
+  <div class="btnrow">
+    <span class="bid" hidden>{{l.id}}</span>
+    <button type="button" class="btn btn-info flbtn">
+    {{l.line_name}}</button>
+    </div>
+
+  {% endfor %}
+
+{% endif %}
+
 </div>
 
 <table class="table table-striped nowrap" id="monthlyrpt">
