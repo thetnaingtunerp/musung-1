@@ -4,6 +4,7 @@ from django.shortcuts import (get_object_or_404,
                             render,
                             HttpResponseRedirect)
 import datetime
+from datetime import datetime
 # today = datetime.date.today()
 from .models import *
 from .forms import *
@@ -490,8 +491,17 @@ def update_h12(request):
 
 
 def rank_by_line(request):
-    rep = daily_report.objects.all()
-    context ={}
+    bid = request.GET.get('bid')
+    fd = request.GET.get('fd')
+    ed = request.GET.get('ed')
+    format = '%Y-%m-%d'
+    # print(fd)
+    ffd = datetime.strptime(fd, '%Y-%m-%d').date()
+    eed = datetime.strptime(ed, '%Y-%m-%d').date()
+    
+    # print(date_object.date())
+    op = daily_report.objects.filter(created_date__range=[ffd, eed])
+    context ={'op':op}
     return render(request, 'rank_by_line.html',context)
 
 
