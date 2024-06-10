@@ -4,7 +4,7 @@ from django.shortcuts import (get_object_or_404,
                             render,
                             HttpResponseRedirect)
 import datetime
-from datetime import datetime
+# from datetime import datetime
 # today = datetime.date.today()
 from .models import *
 from .forms import *
@@ -144,7 +144,8 @@ def monthly_report(request):
         return render(request, 'monthly_report.html', context)
     else:
         opr = daily_report.objects.all()
-        context = {'op':opr,}
+        lis = line.objects.all()
+        context = {'op':opr, 'lis':lis}
         return render(request, 'monthly_report.html', context)
 
 
@@ -221,7 +222,14 @@ def update_h1(request):
     u11 = rg.h11
     u12 = rg.h12
     total = u1+u2+u3+u4+u5+u6+u7+u8+u9+u10+u11+u12
-    rr.update(target_qty=total)
+
+
+    a= rg.line
+    l = line.objects.filter(line_name=a)
+    lt = l[0].target
+    comb = rg.combine
+    percen = (total/lt)*100*comb
+    rr.update(target_qty=total, target_per=percen)
     return JsonResponse({'status':'success'})
 
 def update_h2(request):
@@ -245,7 +253,12 @@ def update_h2(request):
     u11 = rg.h11
     u12 = rg.h12
     total = u1+u2+u3+u4+u5+u6+u7+u8+u9+u10+u11+u12
-    rr.update(target_qty=total)
+    a= rg.line
+    l = line.objects.filter(line_name=a)
+    lt = l[0].target
+    comb = rg.combine
+    percen = (total/lt)*100*comb
+    rr.update(target_qty=total, target_per=percen)
     return JsonResponse({'status':'success'})
 
 def update_h3(request):
@@ -269,7 +282,12 @@ def update_h3(request):
     u11 = rg.h11
     u12 = rg.h12
     total = u1+u2+u3+u4+u5+u6+u7+u8+u9+u10+u11+u12
-    rr.update(target_qty=total)
+    a= rg.line
+    l = line.objects.filter(line_name=a)
+    lt = l[0].target
+    comb = rg.combine
+    percen = (total/lt)*100*comb
+    rr.update(target_qty=total, target_per=percen)
     return JsonResponse({'status':'success'})
 
 def update_h4(request):
@@ -293,7 +311,12 @@ def update_h4(request):
     u11 = rg.h11
     u12 = rg.h12
     total = u1+u2+u3+u4+u5+u6+u7+u8+u9+u10+u11+u12
-    rr.update(target_qty=total)
+    a= rg.line
+    l = line.objects.filter(line_name=a)
+    lt = l[0].target
+    comb = rg.combine
+    percen = (total/lt)*100*comb
+    rr.update(target_qty=total, target_per=percen)
     return JsonResponse({'status':'success'})
 
 
@@ -318,7 +341,12 @@ def update_h5(request):
     u11 = rg.h11
     u12 = rg.h12
     total = u1+u2+u3+u4+u5+u6+u7+u8+u9+u10+u11+u12
-    rr.update(target_qty=total)
+    a= rg.line
+    l = line.objects.filter(line_name=a)
+    lt = l[0].target
+    comb = rg.combine
+    percen = (total/lt)*100*comb
+    rr.update(target_qty=total, target_per=percen)
     return JsonResponse({'status':'success'})
 
 def update_h6(request):
@@ -342,7 +370,12 @@ def update_h6(request):
     u11 = rg.h11
     u12 = rg.h12
     total = u1+u2+u3+u4+u5+u6+u7+u8+u9+u10+u11+u12
-    rr.update(target_qty=total)
+    a= rg.line
+    l = line.objects.filter(line_name=a)
+    lt = l[0].target
+    comb = rg.combine
+    percen = (total/lt)*100*comb
+    rr.update(target_qty=total, target_per=percen)
     return JsonResponse({'status':'success'})
 
 def update_h7(request):
@@ -366,7 +399,12 @@ def update_h7(request):
     u11 = rg.h11
     u12 = rg.h12
     total = u1+u2+u3+u4+u5+u6+u7+u8+u9+u10+u11+u12
-    rr.update(target_qty=total)
+    a= rg.line
+    l = line.objects.filter(line_name=a)
+    lt = l[0].target
+    comb = rg.combine
+    percen = (total/lt)*100*comb
+    rr.update(target_qty=total, target_per=percen)
     return JsonResponse({'status':'success'})
 
 def update_h8(request):
@@ -390,7 +428,12 @@ def update_h8(request):
     u11 = rg.h11
     u12 = rg.h12
     total = u1+u2+u3+u4+u5+u6+u7+u8+u9+u10+u11+u12
-    rr.update(target_qty=total)
+    a= rg.line
+    l = line.objects.filter(line_name=a)
+    lt = l[0].target
+    comb = rg.combine
+    percen = (total/lt)*100*comb
+    rr.update(target_qty=total, target_per=percen)
     return JsonResponse({'status':'success'})
 
 def update_h9(request):
@@ -414,7 +457,12 @@ def update_h9(request):
     u11 = rg.h11
     u12 = rg.h12
     total = u1+u2+u3+u4+u5+u6+u7+u8+u9+u10+u11+u12
-    rr.update(target_qty=total)
+    a= rg.line
+    l = line.objects.filter(line_name=a)
+    lt = l[0].target
+    comb = rg.combine
+    percen = (total/lt)*100*comb
+    rr.update(target_qty=total, target_per=percen)
     return JsonResponse({'status':'success'})
 
 def update_h10(request):
@@ -438,7 +486,12 @@ def update_h10(request):
     u11 = rg.h11
     u12 = rg.h12
     total = u1+u2+u3+u4+u5+u6+u7+u8+u9+u10+u11+u12
-    rr.update(target_qty=total)
+    a= rg.line
+    l = line.objects.filter(line_name=a)
+    lt = l[0].target
+    comb = rg.combine
+    percen = (total/lt)*100*comb
+    rr.update(target_qty=total, target_per=percen)
     return JsonResponse({'status':'success'})
 
 def update_h11(request):
@@ -462,7 +515,12 @@ def update_h11(request):
     u11 = rg.h11
     u12 = rg.h12
     total = u1+u2+u3+u4+u5+u6+u7+u8+u9+u10+u11+u12
-    rr.update(target_qty=total)
+    a= rg.line
+    l = line.objects.filter(line_name=a)
+    lt = l[0].target
+    comb = rg.combine
+    percen = (total/lt)*100*comb
+    rr.update(target_qty=total, target_per=percen)
     return JsonResponse({'status':'success'})
 
 def update_h12(request):
@@ -486,23 +544,54 @@ def update_h12(request):
     u11 = rg.h11
     u12 = rg.h12
     total = u1+u2+u3+u4+u5+u6+u7+u8+u9+u10+u11+u12
-    rr.update(target_qty=total)
+    a= rg.line
+    l = line.objects.filter(line_name=a)
+    lt = l[0].target
+    comb = rg.combine
+    percen = (total/lt)*100*comb
+    rr.update(target_qty=total, target_per=percen)
     return JsonResponse({'status':'success'})
 
 
-def rank_by_line(request):
-    bid = request.GET.get('bid')
-    fd = request.GET.get('fd')
-    ed = request.GET.get('ed')
-    format = '%Y-%m-%d'
-    # print(fd)
-    ffd = datetime.strptime(fd, '%Y-%m-%d').date()
-    eed = datetime.strptime(ed, '%Y-%m-%d').date()
+def monthly_filterby_line(request):
+    if request.method=="POST":
+        fd = request.POST.get('filterdate')
+        lie = request.POST.get('lineanme')
+        opr = daily_report.objects.filter(created_date=fd, line=lie).order_by('-target_qty')
+        lis = line.objects.all()
+        total_count = opr.count()
+        print(total_count)
+        uprank = round(total_count * 0.8)
+        downrank = round(total_count * 0.2)
+        underrank = total_count - downrank
+        context = {'op':opr, 'lis':lis, 'uprank':uprank, 'downrank':downrank, 'underrank':underrank}
+        return render(request, 'monthly_filterby_line.html', context)
+    else:
+        opr = daily_report.objects.all()
+        lis = line.objects.all()
+        context = {'op':opr, 'lis':lis}
+        return render(request, 'monthly_filterby_line.html', context)
+
+
+def reportbyoperator(request,id):
+    optr = operator.objects.get(id=id)
+    op = daily_report.objects.filter(operator_name=optr)
+    context = {'op':op, 'optr':optr}
+    return render(request, 'reportbyoperator.html', context)
+
+# def rank_by_line(request):
+#     bid = request.GET.get('bid')
+#     fd = request.GET.get('fd')
+#     ed = request.GET.get('ed')
+#     format = '%Y-%m-%d'
+#     # print(fd)
+#     ffd = datetime.strptime(fd, '%Y-%m-%d').date()
+#     eed = datetime.strptime(ed, '%Y-%m-%d').date()
     
-    # print(date_object.date())
-    op = daily_report.objects.filter(created_date__range=[ffd, eed])
-    context ={'op':op}
-    return render(request, 'rank_by_line.html',context)
+#     # print(date_object.date())
+#     op = daily_report.objects.filter(created_date__range=[ffd, eed])
+#     context ={'op':op}
+#     return render(request, 'rank_by_line.html',context)
 
 
 

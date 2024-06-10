@@ -40,12 +40,19 @@
       <li class="nav-item">
         <a class="nav-link text-white" href="{% url 'myapp:monthly_report' %}">Monthly Report <span class="sr-only">(current)</span></a>
       </li>
+
       <li class="nav-item">
+        <a class="nav-link text-white" href="{% url 'myapp:monthly_filterby_line' %}">Report Filter Line</a>
+      </li>
+
+      
+
+      <!-- <li class="nav-item">
         <a class="nav-link text-white" href="{% url 'myapp:workhour' %}">Working Hour</a>
       </li>
       <li class="nav-item">
         <a class="nav-link text-white" href="{% url 'myapp:hourlydata' %}">Hour Data</a>
-      </li>
+      </li> -->
 
     </ul>
   </div>
@@ -530,14 +537,14 @@ new DataTable('#dvrbydate', {
     }
 });
 
-// new DataTable('#monthlyrpt', {
-//     layout: {
-//         topStart: {
-//             buttons: ['excel', 'pdf', 'print']
-//         },
+new DataTable('#monthlyrpt1', {
+    layout: {
+        topStart: {
+            buttons: ['excel', 'pdf', 'print']
+        },
 
-//     }
-// });
+    }
+});
 
 new DataTable('#monthlyrpt', {
     scrollX: true,

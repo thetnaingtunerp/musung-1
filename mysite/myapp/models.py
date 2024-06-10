@@ -38,6 +38,7 @@ class daily_report(models.Model):
     h12 = models.PositiveIntegerField(default=0)
     target_qty = models.PositiveIntegerField(default=0)
     target_per = models.PositiveIntegerField(default=0)
+    combine = models.PositiveIntegerField(default=1)
     created_date = models.DateField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

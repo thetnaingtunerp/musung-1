@@ -21,7 +21,9 @@ urlpatterns = [
     path('changehrstatus/', views.changehrstatus,name='changehrstatus'),
     path('optortargetrep/', views.optortargetrep, name='optortargetrep'),
     path('hourlydata/', views.hourlydata, name='hourlydata'),
-    path('rank_by_line/', views.rank_by_line, name='rank_by_line'),
+    path('monthly_filterby_line/', views.monthly_filterby_line, name='monthly_filterby_line'),
+    path('reportbyoperator/<int:id>/', views.reportbyoperator, name='reportbyoperator'),
+    
 
     #update hour
     path('update_h1/', views.update_h1, name='update_h1'),

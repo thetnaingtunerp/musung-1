@@ -6,19 +6,10 @@
 
 <div class="card border-info"  style="max-width: 100%;">
   <div class="card-body">
- <div class="row">   
-<div class="col-md-4">
-<form action="" method="post">{% csrf_token %}
-<label>from date</label>
-<input type="date" name="fdate" class="form-control">
-<label>from date</label>
-<input type="date" name="edate" class="form-control">
 
-<input type="submit" class="btn btn-primary btn-block m-2">
-</form>
-</div>
 
-<div class="col-md-4"></div>
+<div class="row">   
+
 
 <div class="col-md-3">
 <form action="{% url 'myapp:monthly_filterby_line' %}" method="post">{% csrf_token %}
@@ -33,21 +24,28 @@
   
 </select>
 
-<input type="submit" class="btn btn-outline-primary btn-block mt-2" value="Filter">
+<input type="submit" class="btn btn-outline-primary btn-block mt-2 mb-5" value="Filter">
 </form>
 </div>
 
 </div>
 
 
-<table class="table table-striped nowrap" id="monthlyrpt">
+
+
+
+
+
+
+<table class="table table-striped" id="monthlyrpt">
   <thead>
     <tr>
       
-      <th scope="col">Code</th>
-      <th scope="col">Name</th>
-      <th scope="col">အမည်</th>
+      
+      
+      
       <th scope="col">Line</th>
+      <th scope="col">Name</th>
       
       <th scope="col">8:30 AM</th>
       <th scope="col">9:30 AM</th>
@@ -61,7 +59,7 @@
       <th scope="col">6:00 PM</th>
       <th scope="col">7:00 PM</th>
       <th scope="col">Total</th>
-      <th scope="col">%</th>
+      
       <th scope="col">Date</th>
 
 
@@ -73,10 +71,8 @@
     <tr class="drvtbltr">
       
       
-      <td>{{i.operator_name.employee_code}}</td>
-      <td>{{i.operator_name}}</td>
-      <td>{{i.operator_name.burmese}}</td>
       <td>{{i.line}}</td>
+      <td>{{i.operator_name}}</td>
 
       
       <td>{{i.h1}}</td>
@@ -90,15 +86,15 @@
       <td>{{i.h9}}</td>
       <td>{{i.h10}}</td>
       <td>{{i.h11}}</td>
-      <td>{{i.target_qty}}</td>
-
-      {% if i.target_per > 80 %}
-      <td class="bg-success">{{i.target_per}}%</td>
-      {% elif i.target_per < 20 %}
-      <td class="bg-danger">{{i.target_per}}%</td>
+      {% if forloop.counter <= downrank %}
+      <td class="bg-success">{{i.target_qty}}</td>
+      {% elif forloop.counter > underrank %}
+      <td class="bg-danger">{{i.target_qty}}</td>
       {% else %}
-      <td>{{i.target_per}}%</td>
+      <td>{{i.target_qty}}</td>
       {% endif %}
+
+      
       
       <td>{{i.created_date}}</td>
    

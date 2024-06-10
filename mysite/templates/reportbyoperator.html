@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="{% url 'myapp:daily_rep_filter_bydate' %}" method="post">{% csrf_token %}
+<div class="ml-2">
+  <div class="col-md-4">
+    <label>From</label>
+    <input type="date" name="fdate" class="form-control">
+  </div>
+
+  <div class="col-md-4">
+    <label>End</label>
+    <input type="date" name="edate" class="form-control">
+  </div>
+
+</div>
+<div class="col-md-4 m-2">
+  
+  <input type="number" name="oj" value="{{optr.id}}">
+  <input type="submit" name="" class="btn btn-info btn-block">
+</div>
+</form>
+
+
+<div class="card border-info mb-3">
+  <div class="card-body">
+
+<h4>Operators</h4>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      
+      <th scope="col">Name</th>
+      
+      <th scope="col">Total</th>
+      <th scope="col">%</th>
+      <th scope="col">Date</th>
+      
+
+
+      
+    </tr>
+  </thead>
+  <tbody>
+  	{% for i in op %}
+    <tr class="drvtbltr">
+      
+      
+      <td>{{i.operator_name}}</td>
+
+      
+      <td>{{i.target_qty}}</td>
+      {% if i.target_per > 80 %}
+      <td class="bg-success">{{i.target_per}}</td>
+      {% elif i.target_per < 20 %}
+      <td class="bg-danger">{{i.target_per}}</td>
+      {% else %}
+      <td>{{i.target_per}}%</td>
+      {% endif %}
+
+      <td>{{i.created_date}}</td>
+      
+      
+      
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+
+
+
+  </div>
+</div>
+
+
+
+
+{% endblock content %}
