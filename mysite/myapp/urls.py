@@ -23,6 +23,7 @@ urlpatterns = [
     path('hourlydata/', views.hourlydata, name='hourlydata'),
     path('monthly_filterby_line/', views.monthly_filterby_line, name='monthly_filterby_line'),
     path('reportbyoperator/<int:id>/', views.reportbyoperator, name='reportbyoperator'),
+    path('update_combine/<int:id>/', views.update_combine, name='update_combine'),
     
 
     #update hour

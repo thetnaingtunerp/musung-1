@@ -579,6 +579,29 @@ def reportbyoperator(request,id):
     context = {'op':op, 'optr':optr}
     return render(request, 'reportbyoperator.html', context)
 
+
+def update_combine(request,id):
+    context ={}
+ 
+    # fetch the object related to passed id
+    obj = get_object_or_404(daily_report, id = id)
+ 
+    # pass the object as instance in form
+    form = update_combine_form(request.POST or None, instance = obj)
+ 
+    # save the data from the form and
+    # redirect to detail_view
+    if form.is_valid():
+        form.save()
+        return redirect('myapp:daily_rep_view')
+ 
+    # add form dictionary to context
+    context["form"] = form
+ 
+    return render(request, "update_combine.html", context)
+
+
+
 # def rank_by_line(request):
 #     bid = request.GET.get('bid')
 #     fd = request.GET.get('fd')

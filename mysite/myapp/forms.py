@@ -12,7 +12,10 @@ class workinghourform(forms.ModelForm):
         model = workinghour
         fields = ['name', 'status']
         
-
+class update_combine_form(forms.ModelForm):
+    class Meta:
+        model = daily_report
+        fields = ['combine',]
 
 
 class OptForm(forms.ModelForm):

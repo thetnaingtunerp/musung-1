@@ -38,6 +38,7 @@
       <th scope="col">Total</th>
       <th scope="col">%</th>
       
+      
 
 
       
@@ -49,7 +50,11 @@
       
       
       
-      <td>{{i.operator_name}}</td>
+      <td>
+        <a href="{% url 'myapp:update_combine' i.id %}">{{i.operator_name}}</a>
+        
+        
+      </td>
 
       
       <td>
@@ -157,6 +162,7 @@
       <td>
         <strong style="font-size:20px;">{{i.target_per}}</strong>
       </td>
+
 
       
     </tr>
