@@ -14,6 +14,17 @@
 <label>from date</label>
 <input type="date" name="edate" class="form-control">
 
+<label>Select Line</label>
+<select class="form-select form-control" aria-label="Default select example" name="lineanme">
+  <option selected></option>
+  {% for l in lis %}
+  <option value="{{l.id}}">{{l.line_name}}</option>
+  {% endfor %}
+  
+</select>
+
+
+
 <input type="submit" class="btn btn-primary btn-block m-2">
 </form>
 </div>
@@ -21,20 +32,7 @@
 <div class="col-md-4"></div>
 
 <div class="col-md-3">
-<form action="{% url 'myapp:monthly_filterby_line' %}" method="post">{% csrf_token %}
-<label>Date</label>
-<input type="date" name="filterdate" class="form-control">
-<label>Line</label>
-<select class="form-select form-control" aria-label="Default select example" name="lineanme">
-  <option selected>Select Line Name</option>
-  {% for l in lis %}
-  <option value="{{l.id}}">{{l.line_name}}</option>
-  {% endfor %}
-  
-</select>
 
-<input type="submit" class="btn btn-outline-primary btn-block mt-2" value="Filter">
-</form>
 </div>
 
 </div>
@@ -42,11 +40,11 @@
 
 <table class="table table-striped nowrap" id="monthlyrpt">
   <thead>
-    <tr>
+    <tr class="bg-info">
       
-      <th scope="col">Code</th>
+      <th scope="col">Sr</th>
       <th scope="col">Name</th>
-      <th scope="col">အမည်</th>
+      <!-- <th scope="col">အမည်</th> -->
       <th scope="col">Line</th>
       
       <th scope="col">8:30 AM</th>
@@ -73,9 +71,10 @@
     <tr class="drvtbltr">
       
       
-      <td>{{i.operator_name.employee_code}}</td>
+      <!-- <td>{{i.operator_name.employee_code}}</td> -->
+      <td>{{forloop.counter}}</td>
       <td>{{i.operator_name}}</td>
-      <td>{{i.operator_name.burmese}}</td>
+      <!-- <td>{{i.operator_name.burmese}}</td> -->
       <td>{{i.line}}</td>
 
       

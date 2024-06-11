@@ -64,6 +64,7 @@
       <th scope="col">Burmese</th>
       <th scope="col">Line</th>
       <th scope="col">Role</th>
+      
       <th scope="col">Status</th>
     </tr>
   </thead>
@@ -72,10 +73,15 @@
     <tr>
       
       <td>{{i.employee_code}}</td>
-      <td>{{i.name}}</td>
+      <td>
+
+        <a href="{% url 'myapp:operatorupdate' i.id %}">{{i.name}}</a>
+      
+    </td>
       <td>{{i.burmese}}</td>
       <td>{{i.line}}</td>
       <td>{{i.role}}</td>
+      
       <td>
       	<a href="{% url 'myapp:daily_rep_filter_operator' i.id %}" class="btn btn-sm btn-info">view target</a>
       </td>

@@ -36,6 +36,7 @@ class daily_report(models.Model):
     h10 = models.PositiveIntegerField(default=0)
     h11 = models.PositiveIntegerField(default=0)
     h12 = models.PositiveIntegerField(default=0)
+    target = models.PositiveIntegerField(default=0)
     target_qty = models.PositiveIntegerField(default=0)
     target_per = models.PositiveIntegerField(default=0)
     combine = models.PositiveIntegerField(default=1)

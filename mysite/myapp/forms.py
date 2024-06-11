@@ -15,8 +15,19 @@ class workinghourform(forms.ModelForm):
 class update_combine_form(forms.ModelForm):
     class Meta:
         model = daily_report
-        fields = ['combine',]
+        fields = ['combine','target']
+        widgets = {
+            'combine': forms.NumberInput(attrs={'class': 'form-control'}),
+            'target': forms.NumberInput(attrs={'class': 'form-control'}),
+           
+        }
 
+
+class operatorform(forms.ModelForm):
+    class Meta:
+        model = operator
+        fields = ['name', 'employee_code','burmese', 'role']
+        
 
 class OptForm(forms.ModelForm):
     class Meta:

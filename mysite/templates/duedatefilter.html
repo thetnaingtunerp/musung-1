@@ -3,9 +3,14 @@
 {% block content %}
 
 
-<div>
+<div class="row">
   {% for i in lis %}
-  <a href="{% url 'myapp:daily_rep_filter_by_line' i.id %}" class="btn btn-success m-2">{{i.line_name}}</a>
+  <!-- <a href="{% url 'myapp:daily_rep_filter_by_line' i.id %}" class="btn btn-info m-2">{{i.line_name}}</a> -->
+  <form action="{% url 'myapp:duedatefilter_by_line' %}" method="post">{% csrf_token %}
+  	<input type="date" name="ddate" value="{{duedate}}" hidden>
+  	<input type="number" name="line" value="{{i.id}}" hidden>
+  	<input type="submit" value="{{i.line_name}}" class="btn btn-md btn-info m-2">
+  </form>
   {% endfor %}
   
 </div>
@@ -27,7 +32,6 @@
   <thead>
     <tr>
       
-      <th scope="col">#</th>
       <th scope="col">Name</th>
 
       
@@ -43,7 +47,7 @@
       <th scope="col">5:00 PM</th>
       <th scope="col">6:00 PM</th>
       <th scope="col">7:00 PM</th>
-      <th scope="col">Target</th>
+      <th scope="col">8:00 PM</th>
       <th scope="col">Total</th>
       <th scope="col">%</th>
       
@@ -58,9 +62,10 @@
     <tr class="drvtbltr">
       
       
-      <td><a href="{% url 'myapp:dailyrep_delete' i.id %}">{{i.id}}</a></td>
+      
       <td>
         <a href="{% url 'myapp:update_combine' i.id %}">{{i.operator_name}}</a>
+        
         
       </td>
 
@@ -158,13 +163,17 @@
 
 
       <td>
-        <strong style="font-size:18px;">{{i.target}}</strong>
+        {% if i.h12 == 0 %}
+        <input type="text" name="" value="" class="form-control ih12">
+        {% else %}
+        <input type="text" name="" value="{{i.h12}}" class="form-control ih12">
+        {% endif %}
       </td>
       
-      <td><strong style="font-size:18px;">{{i.target_qty}}</strong></td>
+      <td><strong style="font-size:20px;">{{i.target_qty}}</strong></td>
 
       <td>
-        <strong style="font-size:18px;">{{i.target_per}}</strong>
+        <strong style="font-size:20px;">{{i.target_per}}</strong>
       </td>
 
 

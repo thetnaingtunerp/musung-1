@@ -4,8 +4,9 @@ from . import views
 app_name = 'myapp'
 urlpatterns = [
     path('operatorlist/', views.operatorlist, name='operatorlist'),
+    path('operatorupdate/<int:id>/', views.operatorupdate, name='operatorupdate'),
     path('save_operator/', views.save_operator, name='save_operator'),
-    path('linelist/', views.linelist, name='linelist'),
+    path('', views.linelist, name='linelist'),
     path('update_line_target/', views.update_line_target, name='update_line_target'),
     path('operatortarget/<int:id>/', views.operatortarget, name='operatortarget'),
     path('operatoratt/<int:id>/', views.operatoratt, name='operatoratt'),
@@ -16,6 +17,7 @@ urlpatterns = [
     path('daily_rep_filter_operator/<int:id>/', views.daily_rep_filter_operator, name='daily_rep_filter_operator'),
     path('daily_rep_filter_bydate/', views.daily_rep_filter_bydate, name='daily_rep_filter_bydate'),
     path('monthly_report/', views.monthly_report, name='monthly_report'),
+    path('dailyrep_delete/<int:id>/', views.dailyrep_delete, name='dailyrep_delete'),
 
     path('workhour/', views.workhour, name='workhour'),
     path('changehrstatus/', views.changehrstatus,name='changehrstatus'),
@@ -24,6 +26,10 @@ urlpatterns = [
     path('monthly_filterby_line/', views.monthly_filterby_line, name='monthly_filterby_line'),
     path('reportbyoperator/<int:id>/', views.reportbyoperator, name='reportbyoperator'),
     path('update_combine/<int:id>/', views.update_combine, name='update_combine'),
+
+    #DueDate
+    path('duedatefilter/', views.duedatefilter, name='duedatefilter'),
+    path('duedatefilter_by_line/', views.duedatefilter_by_line, name='duedatefilter_by_line'),
     
 
     #update hour
@@ -39,6 +45,5 @@ urlpatterns = [
     path('update_h10/', views.update_h10, name='update_h10'),
     path('update_h11/', views.update_h11, name='update_h11'),
     path('update_h12/', views.update_h12, name='update_h12'),
-
 
 ]

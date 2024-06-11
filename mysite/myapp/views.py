@@ -64,7 +64,7 @@ def save_att_daily(request):
     lie = op_obj.line
     l_obj = line.objects.get(line_name=lie)
     # print(l_obj)
-    dr = daily_report(operator_name=op_obj, line=l_obj)
+    dr = daily_report(operator_name=op_obj, line=l_obj, target=l_obj.target)
     dr.save()
     return JsonResponse({'status':'success'})
 
@@ -138,10 +138,20 @@ def monthly_report(request):
     if request.method=="POST":
         fd = request.POST.get('fdate')
         ed = request.POST.get('edate')
-        opr = daily_report.objects.filter(created_date__range=[fd, ed])
-        lis = line.objects.all()
-        context = {'op':opr, 'fd':fd, 'ed':ed, 'lis':lis}
-        return render(request, 'monthly_report.html', context)
+        li = request.POST.get('lineanme')
+        print(li)
+        if li == "":
+            opr = daily_report.objects.filter(created_date__range=[fd, ed])
+            lis = line.objects.all()
+            context = {'op':opr, 'fd':fd, 'ed':ed, 'lis':lis}
+            return render(request, 'monthly_report.html', context)
+        else:
+            lin = line.objects.get(id=li)
+            opr = daily_report.objects.filter(created_date__range=[fd, ed],line=lin)
+            lis = line.objects.all()
+            context = {'op':opr, 'fd':fd, 'ed':ed, 'lis':lis}
+            return render(request, 'monthly_report.html', context)
+        
     else:
         opr = daily_report.objects.all()
         lis = line.objects.all()
@@ -225,10 +235,12 @@ def update_h1(request):
 
 
     a= rg.line
+
     l = line.objects.filter(line_name=a)
     lt = l[0].target
     comb = rg.combine
-    percen = (total/lt)*100*comb
+    optar = rg.target
+    percen = (total/optar)*100*comb
     rr.update(target_qty=total, target_per=percen)
     return JsonResponse({'status':'success'})
 
@@ -257,7 +269,8 @@ def update_h2(request):
     l = line.objects.filter(line_name=a)
     lt = l[0].target
     comb = rg.combine
-    percen = (total/lt)*100*comb
+    optar = rg.target
+    percen = (total/optar)*100*comb
     rr.update(target_qty=total, target_per=percen)
     return JsonResponse({'status':'success'})
 
@@ -286,7 +299,8 @@ def update_h3(request):
     l = line.objects.filter(line_name=a)
     lt = l[0].target
     comb = rg.combine
-    percen = (total/lt)*100*comb
+    optar = rg.target
+    percen = (total/optar)*100*comb
     rr.update(target_qty=total, target_per=percen)
     return JsonResponse({'status':'success'})
 
@@ -315,7 +329,8 @@ def update_h4(request):
     l = line.objects.filter(line_name=a)
     lt = l[0].target
     comb = rg.combine
-    percen = (total/lt)*100*comb
+    optar = rg.target
+    percen = (total/optar)*100*comb
     rr.update(target_qty=total, target_per=percen)
     return JsonResponse({'status':'success'})
 
@@ -345,7 +360,8 @@ def update_h5(request):
     l = line.objects.filter(line_name=a)
     lt = l[0].target
     comb = rg.combine
-    percen = (total/lt)*100*comb
+    optar = rg.target
+    percen = (total/optar)*100*comb
     rr.update(target_qty=total, target_per=percen)
     return JsonResponse({'status':'success'})
 
@@ -374,7 +390,8 @@ def update_h6(request):
     l = line.objects.filter(line_name=a)
     lt = l[0].target
     comb = rg.combine
-    percen = (total/lt)*100*comb
+    optar = rg.target
+    percen = (total/optar)*100*comb
     rr.update(target_qty=total, target_per=percen)
     return JsonResponse({'status':'success'})
 
@@ -403,7 +420,8 @@ def update_h7(request):
     l = line.objects.filter(line_name=a)
     lt = l[0].target
     comb = rg.combine
-    percen = (total/lt)*100*comb
+    optar = rg.target
+    percen = (total/optar)*100*comb
     rr.update(target_qty=total, target_per=percen)
     return JsonResponse({'status':'success'})
 
@@ -432,7 +450,8 @@ def update_h8(request):
     l = line.objects.filter(line_name=a)
     lt = l[0].target
     comb = rg.combine
-    percen = (total/lt)*100*comb
+    optar = rg.target
+    percen = (total/optar)*100*comb
     rr.update(target_qty=total, target_per=percen)
     return JsonResponse({'status':'success'})
 
@@ -461,7 +480,8 @@ def update_h9(request):
     l = line.objects.filter(line_name=a)
     lt = l[0].target
     comb = rg.combine
-    percen = (total/lt)*100*comb
+    optar = rg.target
+    percen = (total/optar)*100*comb
     rr.update(target_qty=total, target_per=percen)
     return JsonResponse({'status':'success'})
 
@@ -490,7 +510,8 @@ def update_h10(request):
     l = line.objects.filter(line_name=a)
     lt = l[0].target
     comb = rg.combine
-    percen = (total/lt)*100*comb
+    optar = rg.target
+    percen = (total/optar)*100*comb
     rr.update(target_qty=total, target_per=percen)
     return JsonResponse({'status':'success'})
 
@@ -519,7 +540,8 @@ def update_h11(request):
     l = line.objects.filter(line_name=a)
     lt = l[0].target
     comb = rg.combine
-    percen = (total/lt)*100*comb
+    optar = rg.target
+    percen = (total/optar)*100*comb
     rr.update(target_qty=total, target_per=percen)
     return JsonResponse({'status':'success'})
 
@@ -548,7 +570,8 @@ def update_h12(request):
     l = line.objects.filter(line_name=a)
     lt = l[0].target
     comb = rg.combine
-    percen = (total/lt)*100*comb
+    optar = rg.target
+    percen = (total/optar)*100*comb
     rr.update(target_qty=total, target_per=percen)
     return JsonResponse({'status':'success'})
 
@@ -599,6 +622,78 @@ def update_combine(request,id):
     context["form"] = form
  
     return render(request, "update_combine.html", context)
+
+
+def operatorupdate(request,id):
+    context ={}
+    # fetch the object related to passed id
+    obj = get_object_or_404(operator, id = id)
+ 
+    # pass the object as instance in form
+    form = operatorform(request.POST or None, instance = obj)
+ 
+    # save the data from the form and
+    # redirect to detail_view
+    if form.is_valid():
+        form.save()
+        return redirect('myapp:operatorlist')
+ 
+    # add form dictionary to context
+    context["form"] = form
+ 
+    return render(request, "operatorupdate.html", context)
+
+
+# delete view for details
+def dailyrep_delete(request, id):
+    # dictionary for initial data with 
+    # field names as keys
+    context ={}
+ 
+    # fetch the object related to passed id
+    obj = get_object_or_404(daily_report, id = id)
+ 
+ 
+    if request.method =="POST":
+        # delete object
+        obj.delete()
+        # after deleting redirect to 
+        # home page
+        return redirect('myapp:daily_rep_view')
+ 
+    return render(request, "dailyrep_delete.html", context)
+
+
+def duedatefilter(request):
+    if request.method=="POST":
+        duedate = request.POST.get('duedate')
+        lis = line.objects.all()
+        op = daily_report.objects.filter(created_date=duedate)
+        context = {'op':op, 'lis':lis, 'duedate':duedate}
+        return render(request, "duedatefilter.html", context)
+    else:
+        op = daily_report.objects.all()
+        lis = line.objects.all()
+        context = {'op':op, 'lis':lis}
+        return render(request, "duedatefilter.html", context)
+
+
+def duedatefilter_by_line(request):
+    if request.method=="POST":
+        duedate = request.POST.get('ddate')
+        l = request.POST.get('line')
+        gl = line.objects.get(id=l)
+        lis = line.objects.all()
+        op = daily_report.objects.filter(created_date=duedate,line=gl)
+        context = {'op':op, 'lis':lis, 'duedate':duedate}
+        return render(request, "duedatefilter.html", context)
+    else:
+        op = daily_report.objects.all()
+        lis = line.objects.all()
+        context = {'op':op, 'lis':lis}
+        return render(request, "duedatefilter.html", context)
+
+
 
 
 

@@ -45,6 +45,7 @@
         <a class="nav-link text-white" href="{% url 'myapp:monthly_filterby_line' %}">Report Filter Line</a>
       </li>
 
+
       
 
       <!-- <li class="nav-item">
@@ -203,8 +204,11 @@ $(".ih1").change(function(){
     success: function(data){
   
         // alert('Update Successfully');
-        window.setTimeout(function(){ } ,500);
-                        location.reload();      
+        window.setTimeout(function(){ 
+
+        } ,100);
+        location.reload(); 
+
     },
     error:function(){
         alert('Error contact to 09-969255445');
@@ -226,7 +230,7 @@ $(".ih2").change(function(){
     success: function(data){
   
         // alert('Update Successfully');
-        window.setTimeout(function(){ } ,2000);
+        window.setTimeout(function(){ } ,100);
                         location.reload();      
     },
     error:function(){
@@ -249,7 +253,7 @@ $(".ih3").change(function(){
     success: function(data){
   
         // alert('Update Successfully');
-        window.setTimeout(function(){ } ,2000);
+        window.setTimeout(function(){ } ,100);
                         location.reload();      
     },
     error:function(){
@@ -272,7 +276,7 @@ $(".ih4").change(function(){
     success: function(data){
   
         // alert('Update Successfully');
-        window.setTimeout(function(){ } ,2000);
+        window.setTimeout(function(){ } ,100);
                         location.reload();      
     },
     error:function(){
@@ -295,7 +299,7 @@ $(".ih5").change(function(){
     success: function(data){
   
         // alert('Update Successfully');
-        window.setTimeout(function(){ } ,1000);
+        window.setTimeout(function(){ } ,100);
                         location.reload();      
     },
     error:function(){
@@ -318,7 +322,7 @@ $(".ih6").change(function(){
     success: function(data){
   
         // alert('Update Successfully');
-        window.setTimeout(function(){ } ,2000);
+        window.setTimeout(function(){ } ,100);
                         location.reload();      
     },
     error:function(){
@@ -342,7 +346,7 @@ $(".ih7").change(function(){
     success: function(data){
   
         // alert('Update Successfully');
-        window.setTimeout(function(){ } ,2000);
+        window.setTimeout(function(){ } ,100);
                         location.reload();      
     },
     error:function(){
@@ -366,7 +370,7 @@ $(".ih8").change(function(){
     success: function(data){
   
         // alert('Update Successfully');
-        window.setTimeout(function(){ } ,2000);
+        window.setTimeout(function(){ } ,100);
                         location.reload();      
     },
     error:function(){
@@ -389,7 +393,7 @@ $(".ih9").change(function(){
     success: function(data){
   
         // alert('Update Successfully');
-        window.setTimeout(function(){ } ,2000);
+        window.setTimeout(function(){ } ,100);
                         location.reload();      
     },
     error:function(){
@@ -412,7 +416,7 @@ $(".ih10").change(function(){
     success: function(data){
   
         // alert('Update Successfully');
-        window.setTimeout(function(){ } ,2000);
+        window.setTimeout(function(){ } ,100);
                         location.reload();      
     },
     error:function(){
@@ -435,7 +439,7 @@ $(".ih11").change(function(){
     success: function(data){
   
         // alert('Update Successfully');
-        window.setTimeout(function(){ } ,2000);
+        window.setTimeout(function(){ } ,100);
                         location.reload();      
     },
     error:function(){
@@ -459,7 +463,7 @@ $(".ih12").change(function(){
     success: function(data){
   
         // alert('Update Successfully');
-        window.setTimeout(function(){ } ,2000);
+        window.setTimeout(function(){ } ,100);
                         location.reload();      
     },
     error:function(){
@@ -483,7 +487,7 @@ $("#workhourtbl").on('click', '.tch', function() {
     success: function(data){
   
         // alert('Status Change Successfully');
-        window.setTimeout(function(){ } ,2000);
+        window.setTimeout(function(){ } ,100);
                         location.reload();      
     },
     error:function(){
@@ -509,7 +513,7 @@ $("#optattend").on('click', '.optatten', function() {
     success: function(data){
   
         alert('Attendance Successfully');
-        window.setTimeout(function(){ } ,2000);
+        window.setTimeout(function(){ } ,100);
                         location.reload();      
     },
     error:function(){
@@ -519,8 +523,6 @@ $("#optattend").on('click', '.optatten', function() {
   });//end ajax
 
 });//end operator attendance
-
-
 
 
 
@@ -546,15 +548,15 @@ new DataTable('#monthlyrpt1', {
     }
 });
 
-new DataTable('#monthlyrpt', {
-    scrollX: true,
+// new DataTable('#monthlyrpt', {
+//     scrollX: true,
     
-});
+// });
 
 
 $('#operatortargettbl').DataTable();
-$('#drvtbl').DataTable();
-$('#optattend').DataTable();
+// $('#drvtbl').DataTable();
+// $('#optattend').DataTable();
 $('#operatorlist').DataTable();
 // $('#monthlyrpt').DataTable();
 
