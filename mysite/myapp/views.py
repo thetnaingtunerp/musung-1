@@ -9,8 +9,20 @@ import datetime
 from .models import *
 from .forms import *
 
+def lic(request):
+    lid = request.GET.get('lid')
+    # print(lid)
+    exp = licencedate.objects.get(id=1)
+    licdate = exp.expired_date
+    today = datetime.date.today()
+    if licdate > today:
+        print('success')
+        return JsonResponse({'status':'success'})
+    # else:
+    #     print('lic expire')
+    #     return JsonResponse({'status':'error'})
 
-
+    
 def operatorlist(request):
     op = operator.objects.all()
     form = OptForm()
@@ -67,6 +79,22 @@ def save_att_daily(request):
     dr = daily_report(operator_name=op_obj, line=l_obj, target=l_obj.target)
     dr.save()
     return JsonResponse({'status':'success'})
+
+
+def daily_line_attendance(request):
+    l = request.GET.get('lid')
+    l_obj = line.objects.get(id=l)
+    # print(l_obj)
+    opt = operator.objects.filter(line=l_obj,resign=False)
+
+    for i in opt:
+        dr = daily_report(operator_name=i, line=l_obj, target=l_obj.target)
+        dr.save()
+        
+
+    return JsonResponse({'status':'error'})
+
+
 
 def daily_rep_view(request):
     today = datetime.date.today()
@@ -139,7 +167,7 @@ def monthly_report(request):
         fd = request.POST.get('fdate')
         ed = request.POST.get('edate')
         li = request.POST.get('lineanme')
-        print(li)
+        # print(li)
         if li == "":
             opr = daily_report.objects.filter(created_date__range=[fd, ed])
             lis = line.objects.all()
@@ -583,7 +611,7 @@ def monthly_filterby_line(request):
         opr = daily_report.objects.filter(created_date=fd, line=lie).order_by('-target_qty')
         lis = line.objects.all()
         total_count = opr.count()
-        print(total_count)
+        # print(total_count)
         uprank = round(total_count * 0.8)
         downrank = round(total_count * 0.2)
         underrank = total_count - downrank
@@ -642,6 +670,29 @@ def operatorupdate(request,id):
     context["form"] = form
  
     return render(request, "operatorupdate.html", context)
+
+
+# delete view for details
+def operator_delete(request, id):
+    # dictionary for initial data with 
+    # field names as keys
+    context ={}
+ 
+    # fetch the object related to passed id
+    obj = get_object_or_404(operator, id = id)
+ 
+ 
+    if request.method =="POST":
+        # delete object
+        obj.delete()
+        # after deleting redirect to 
+        # home page
+        return redirect('myapp:operatorlist')
+
+    return render(request, "dailyrep_delete.html", context)
+ 
+    
+
 
 
 # delete view for details
@@ -723,7 +774,7 @@ def hourlydata(request):
 
     oplist = list(op)
 
-    print(type(oplist))
+    # print(type(oplist))
     context = {'op':op, 'htr':htr, 'hr':hr, 'opo':opo}
     return render(request, 'hourlydata.html',context)
 

@@ -3,11 +3,13 @@ from .views import *
 from . import views
 app_name = 'myapp'
 urlpatterns = [
+    path('lic/', views.lic, name='lic'),
     path('operatorlist/', views.operatorlist, name='operatorlist'),
     path('operatorupdate/<int:id>/', views.operatorupdate, name='operatorupdate'),
     path('save_operator/', views.save_operator, name='save_operator'),
     path('', views.linelist, name='linelist'),
     path('update_line_target/', views.update_line_target, name='update_line_target'),
+    path('operator_delete/<int:id>/', views.operator_delete, name='operator_delete'),
     path('operatortarget/<int:id>/', views.operatortarget, name='operatortarget'),
     path('operatoratt/<int:id>/', views.operatoratt, name='operatoratt'),
     path('save_att_daily/', views.save_att_daily, name='save_att_daily'),
@@ -26,6 +28,7 @@ urlpatterns = [
     path('monthly_filterby_line/', views.monthly_filterby_line, name='monthly_filterby_line'),
     path('reportbyoperator/<int:id>/', views.reportbyoperator, name='reportbyoperator'),
     path('update_combine/<int:id>/', views.update_combine, name='update_combine'),
+    path('daily_line_attendance/', views.daily_line_attendance, name='daily_line_attendance'),
 
     #DueDate
     path('duedatefilter/', views.duedatefilter, name='duedatefilter'),

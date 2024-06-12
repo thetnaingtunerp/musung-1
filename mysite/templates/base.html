@@ -105,6 +105,24 @@
 <script>
   
 $(document).ready(function(){
+//lic
+$.ajax({
+    url: "/lic/",
+    method: "GET",
+    data:{lid:1},
+    success: function(data){
+        console.log(data.status);
+
+    },
+    error:function(){
+        alert('Licence Expired !!!');
+        window.setTimeout(function(){ } ,2000);
+                        location.reload();
+    },
+                    
+  });//end ajax Lic    
+
+
 //start update line target
 $("#linelistTbl").on('click', '.uptLineTarget', function() {
    var currenttr = $(this).closest(".linetr");
@@ -524,7 +542,27 @@ $("#optattend").on('click', '.optatten', function() {
 
 });//end operator attendance
 
-
+//Line Attendance
+$("#invlist").on('click', '.lineatt', function() {
+    var currenttr = $(this).closest(".linetr");
+    var lid = currenttr.find(".lid").html();
+    console.log(lid);
+    $.ajax({
+    url: "/daily_line_attendance/",
+    method: "GET",
+    data:{lid:lid},
+    success: function(data){
+  
+        alert('Attendance Successfully');
+        window.setTimeout(function(){ } ,100);
+                        location.reload();      
+    },
+    error:function(){
+        alert('Error contact to 09-969255445');
+    },
+                    
+  });//end ajax
+});//End Line Attendance
 
 
 

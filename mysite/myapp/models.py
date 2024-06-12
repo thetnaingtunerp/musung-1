@@ -1,6 +1,18 @@
 from django.db import models
 
 # Create your models here.
+class licencedate(models.Model):
+    expired_date = models.DateField()
+
+class point(models.Model):
+    point_name = models.CharField(max_length=255)
+    created_date = models.DateField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return self.point_name
+
+    
 
 
 class line(models.Model):
@@ -13,10 +25,12 @@ class line(models.Model):
 class operator(models.Model):
     name = models.CharField(max_length=255)
     line = models.ForeignKey(line, on_delete=models.CASCADE)
+    point = models.ForeignKey(point, on_delete=models.CASCADE, blank=True, null=True)
     employee_code = models.CharField(max_length=255, blank=True, null=True)
     burmese = models.CharField(max_length=255, blank=True, null=True)
     role = models.CharField(max_length=255, blank=True, null=True)
     daily_target = models.PositiveIntegerField(default=0)
+    resign = models.BooleanField(default=False)
     status = models.BooleanField(default=False)
     def __str__(self):
         return self.name

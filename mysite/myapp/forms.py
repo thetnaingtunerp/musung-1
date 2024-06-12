@@ -26,17 +26,18 @@ class update_combine_form(forms.ModelForm):
 class operatorform(forms.ModelForm):
     class Meta:
         model = operator
-        fields = ['name', 'employee_code','burmese', 'role']
+        fields = ['name', 'employee_code','burmese', 'point','resign']
         
 
 class OptForm(forms.ModelForm):
     class Meta:
         model = operator
-        fields = ['name', 'burmese', 'line', 'employee_code','role']
+        fields = ['name', 'burmese', 'line', 'point', 'employee_code','role']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'burmese': forms.TextInput(attrs={'class': 'form-control'}),
             'line': forms.Select(attrs={'class': 'form-control'}),
+            'point': forms.Select(attrs={'class': 'form-control'}),
             'employee_code': forms.TextInput(attrs={'class': 'form-control'}),
             'role': forms.TextInput(attrs={'class': 'form-control'}),
 
