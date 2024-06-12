@@ -609,13 +609,14 @@ def monthly_filterby_line(request):
         fd = request.POST.get('filterdate')
         lie = request.POST.get('lineanme')
         opr = daily_report.objects.filter(created_date=fd, line=lie).order_by('-target_qty')
+        lt = line.objects.get(id=lie)
         lis = line.objects.all()
         total_count = opr.count()
         # print(total_count)
         uprank = round(total_count * 0.8)
         downrank = round(total_count * 0.2)
         underrank = total_count - downrank
-        context = {'op':opr, 'lis':lis, 'uprank':uprank, 'downrank':downrank, 'underrank':underrank}
+        context = {'op':opr, 'lis':lis, 'uprank':uprank, 'downrank':downrank, 'underrank':underrank, 'lt':lt}
         return render(request, 'monthly_filterby_line.html', context)
     else:
         opr = daily_report.objects.all()
