@@ -48,12 +48,12 @@
 
       
 
-      <!-- <li class="nav-item">
-        <a class="nav-link text-white" href="{% url 'myapp:workhour' %}">Working Hour</a>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="{% url 'myapp:operator_reportgroup' %}">Ade Report</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="{% url 'myapp:hourlydata' %}">Hour Data</a>
-      </li> -->
+        <a class="nav-link text-white" href="{% url 'myapp:line_operator_dash' %}">Operator Dashboard</a>
+      </li>
 
     </ul>
   </div>
@@ -63,7 +63,7 @@
    
 <!-- Jumbotron -->
 
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron-fluid">
   <!-- <div class="container-fluid"> -->
     
 {% block content %}
@@ -593,7 +593,7 @@ new DataTable('#monthlyrpt1', {
 
 
 $('#operatortargettbl').DataTable();
-// $('#drvtbl').DataTable();
+// $('.duedatetbl').DataTable();
 // $('#optattend').DataTable();
 $('#operatorlist').DataTable();
 // $('#monthlyrpt').DataTable();

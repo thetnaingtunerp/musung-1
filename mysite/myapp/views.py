@@ -746,6 +746,22 @@ def duedatefilter_by_line(request):
         return render(request, "duedatefilter.html", context)
 
 
+def report_groupby_operator(request):
+    dr = daily_report.objects.filter(line=1)
+    context = {'dr':dr}
+    return render(request, 'report_groupby_operator.html',context)
+
+
+def line_operator_dash(request):
+    lis = line.objects.all()
+    context = {'lis':lis}
+    return render(request, 'line_operator_dash.html', context)
+
+
+def operator_reportgroup(request):
+    op = operator.objects.filter(line=1)
+    context = {'op':op}
+    return render(request, 'operator_reportgroup.html', context)
 
 
 
@@ -778,6 +794,16 @@ def hourlydata(request):
     # print(type(oplist))
     context = {'op':op, 'htr':htr, 'hr':hr, 'opo':opo}
     return render(request, 'hourlydata.html',context)
+
+
+def testpref(request):
+    # Reverse ForeignKey relationship
+    # ModelA.objects.prefetch_related('modelb_set').all()
+    dr = daily_report.objects.all()  
+    op = operator.objects.filter(line=1)
+    context = {'dr':dr, 'op':op}
+    return render(request, 'test/test.html',context)
+
 
 
 

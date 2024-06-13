@@ -26,7 +26,7 @@ class update_combine_form(forms.ModelForm):
 class operatorform(forms.ModelForm):
     class Meta:
         model = operator
-        fields = ['name', 'employee_code','burmese', 'point','resign']
+        fields = ['name', 'employee_code','burmese', 'point','role','resign']
         
 
 class OptForm(forms.ModelForm):

@@ -70,7 +70,7 @@ class workinghour(models.Model):
 
 
 class operatortargetrep(models.Model):
-    operatorname = models.ForeignKey(operator, on_delete=models.CASCADE)
+    operatorname = models.ForeignKey(operator, on_delete=models.SET_NULL,null=True, related_name = 'dailyreport')
     line = models.ForeignKey(line, on_delete=models.CASCADE)
     optarget = models.PositiveIntegerField(default=0)
     totalqty = models.PositiveIntegerField(default=0)
@@ -97,3 +97,5 @@ class opreport(models.Model):
     operatortargetrep = models.OneToOneField(operatortargetrep, on_delete=models.CASCADE)
     created_date = models.DateField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+

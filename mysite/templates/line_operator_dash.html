@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="card border-info mt-3"  style="max-width: 100%;">
+  <div class="card-body">
+ <div class="row">   
+ 	<div class="col-md-4"></div>
+<div class="col-md-4">
+<form action="" method="post">{% csrf_token %}
+<label>from date</label>
+<input type="date" name="fdate" class="form-control">
+<label>from date</label>
+<input type="date" name="edate" class="form-control">
+
+<label>Select Line</label>
+<select class="form-select form-control" aria-label="Default select example" name="lineanme">
+  <option selected></option>
+  {% for l in lis %}
+  <option value="{{l.id}}">{{l.line_name}}</option>
+  {% endfor %}
+  
+</select>
+
+
+
+<input type="submit" class="btn btn-primary btn-block m-2">
+</form>
+</div>
+
+<div class="col-md-4"></div>
+
+
+
+</div>
+
+
+
+
+{% endblock content %}

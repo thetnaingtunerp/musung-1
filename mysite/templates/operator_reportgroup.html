@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- {% for p in op %}
+    
+   <li> {{p.name}}</li>
+   {% for entry in p.daily_report_set.all %}
+              <p>-----------{{entry.created_date}}-------{{entry.target_per}}%</p>
+          {% empty %}
+             
+    {% endfor %}
+
+{% endfor %} -->
+
+
+{% for operator in op %}
+
+<table class="bg-white ml-3">
+   <tbody>
+   <tr>
+      <td width="150px;" class="h5">{{operator.name}}</td>
+      {% for entry in operator.daily_report_set.all %}
+      <td width="150px;" class="border">
+         <table>
+            <tr class="border">
+               <td>{{entry.created_date}}</td>
+            </tr>
+            <tr>
+               <td class="h5">{{entry.target_per}}%</td>
+            </tr>
+         </table>
+      
+      </td>
+      
+      {% endfor %}
+   </tr>
+   <!-- <hr> -->
+</tbody>
+</table>
+<hr>
+
+{% endfor %}
+
+{% endblock content %}

@@ -34,6 +34,10 @@ urlpatterns = [
     path('duedatefilter/', views.duedatefilter, name='duedatefilter'),
     path('duedatefilter_by_line/', views.duedatefilter_by_line, name='duedatefilter_by_line'),
     
+    #Report
+    path('report_groupby_operator/', views.report_groupby_operator, name='report_groupby_operator'),
+    path('operator_reportgroup/', views.operator_reportgroup, name='operator_reportgroup'),
+    path('line_operator_dash/', views.line_operator_dash, name='line_operator_dash'),
 
     #update hour
     path('update_h1/', views.update_h1, name='update_h1'),
@@ -48,5 +52,8 @@ urlpatterns = [
     path('update_h10/', views.update_h10, name='update_h10'),
     path('update_h11/', views.update_h11, name='update_h11'),
     path('update_h12/', views.update_h12, name='update_h12'),
+
+    #Test
+    path('testpref/', views.testpref, name='testpref'),
 
 ]
