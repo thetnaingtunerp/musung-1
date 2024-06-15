@@ -55,5 +55,7 @@ urlpatterns = [
 
     #Test
     path('testpref/', views.testpref, name='testpref'),
+    path('dailyreport_selectrelated/', views.dailyreport_selectrelated, name='dailyreport_selectrelated'),
+    
 
 ]

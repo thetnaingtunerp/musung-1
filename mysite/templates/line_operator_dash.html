@@ -35,6 +35,82 @@
 
 </div>
 
+</div>
+
+</div>
+
+
+
+
+<!-- {% regroup dr by created_date as op_list %}
+<div class="container row">
+
+  {% for created_date in op_list %}
+
+    <div class="col">{{ created_date.grouper }}
+    <div class="">
+        {% for i in created_date.list %}
+        <div class="row">
+          <div class="">{{ i.operator_name }}</div>
+          <div class="text-danger">----{{ i.target_qty }}</div>
+          
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+
+  {% endfor %}
+</div>  -->
+
+
+<!-- Result Table -->
+
+<table class="table table-bordered m-3">
+<tbody>
+ {% regroup dr by created_date as op_list %}
+
+<tr>
+
+  {% for created_date in op_list %}
+
+    <td><span class="text-primary h5">{{ created_date.grouper }}</span>
+    
+        {% for i in created_date.list %}
+        <table>
+          <tr>
+            {% if i.target_per > 80 %}
+            <td width="150px">{{ i.operator_name }}</td>
+            <td width="50px" class="bg-success">{{ i.target_per }}%</td>
+            {% elif i.target_per < 20 %}
+            <td width="150px">{{ i.operator_name }}</td>
+            <td width="50px" class="bg-danger">{{ i.target_per }}%</td>
+            {% else %}
+            <td width="150px">{{ i.operator_name }}</td>
+            <td width="50px">{{ i.target_per }}%</td>
+            {% endif %}
+          </tr>
+        </table>
+
+        <!-- <div class="row">
+          <div class="">{{ i.operator_name }}</div>
+          <div class="text-danger">----{{ i.target_qty }}</div>
+          
+        </div> -->
+
+        {% endfor %}
+    
+    </td>
+
+  {% endfor %}
+</tr>
+
+
+</tbody>
+
+</table>
+
+
+
 
 
 

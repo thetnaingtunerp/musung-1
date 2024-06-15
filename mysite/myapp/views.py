@@ -746,38 +746,6 @@ def duedatefilter_by_line(request):
         return render(request, "duedatefilter.html", context)
 
 
-def report_groupby_operator(request):
-    dr = daily_report.objects.filter(line=1)
-    context = {'dr':dr}
-    return render(request, 'report_groupby_operator.html',context)
-
-
-def line_operator_dash(request):
-    lis = line.objects.all()
-    context = {'lis':lis}
-    return render(request, 'line_operator_dash.html', context)
-
-
-def operator_reportgroup(request):
-    op = operator.objects.filter(line=1)
-    context = {'op':op}
-    return render(request, 'operator_reportgroup.html', context)
-
-
-
-# def rank_by_line(request):
-#     bid = request.GET.get('bid')
-#     fd = request.GET.get('fd')
-#     ed = request.GET.get('ed')
-#     format = '%Y-%m-%d'
-#     # print(fd)
-#     ffd = datetime.strptime(fd, '%Y-%m-%d').date()
-#     eed = datetime.strptime(ed, '%Y-%m-%d').date()
-    
-#     # print(date_object.date())
-#     op = daily_report.objects.filter(created_date__range=[ffd, eed])
-#     context ={'op':op}
-#     return render(request, 'rank_by_line.html',context)
 
 
 
@@ -804,6 +772,39 @@ def testpref(request):
     context = {'dr':dr, 'op':op}
     return render(request, 'test/test.html',context)
 
+
+def report_groupby_operator(request):
+    dr = daily_report.objects.filter(line=1)
+    context = {'dr':dr}
+    return render(request, 'report_groupby_operator.html',context)
+
+
+def line_operator_dash(request):
+    if request.method == 'POST':
+        fd = request.POST.get('fdate')
+        ed = request.POST.get('edate')
+        ln = request.POST.get('lineanme')
+        dr = daily_report.objects.filter(line=ln, created_date__range=[fd, ed])
+        lis = line.objects.all()
+        context = {'dr':dr, 'lis':lis}
+        return render(request, 'line_operator_dash.html',context)
+    else:
+        lis = line.objects.all()
+        context = {'lis':lis}
+        return render(request, 'line_operator_dash.html', context)
+
+
+def operator_reportgroup(request):
+    op = operator.objects.filter(line=1)
+    context = {'op':op}
+    return render(request, 'operator_reportgroup.html', context)
+
+
+def dailyreport_selectrelated(request):
+    today = datetime.date.today()
+    dr = operator.objects.prefetch_related('daily_report_set').all()
+    context = {'dr':dr}
+    return render(request, 'test/dailyreport_selectrelated.html', context)
 
 
 
