@@ -21,17 +21,26 @@
    <tr>
       <td width="150px;" class="h5">{{operator.name}}</td>
       {% for entry in operator.daily_report_set.all %}
+
+      {% if entry.created_date < first_date %}
+
+      {% else %}
       <td width="150px;" class="border">
-         <table>
+         <table width="150px">
             <tr class="border">
-               <td>{{entry.created_date}}</td>
+               <td class="h5">{{entry.created_date}}</td>
             </tr>
-            <tr>
-               <td class="h5">{{entry.target_per}}%</td>
+            <tr class="border">
+               {% if entry.target_per < 20 %}
+               <td class="h5 bg-danger text-center">{{entry.target_per}}%</td>
+               {% else %}
+               <td class="h5 text-center">{{entry.target_per}}%</td>
+               {% endif %}
             </tr>
          </table>
       
       </td>
+      {% endif %}
       
       {% endfor %}
    </tr>

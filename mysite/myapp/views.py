@@ -774,7 +774,7 @@ def testpref(request):
 
 
 def report_groupby_operator(request):
-    dr = daily_report.objects.filter(line=1)
+    dr = daily_report.objects.filter(line=2)
     context = {'dr':dr}
     return render(request, 'report_groupby_operator.html',context)
 
@@ -784,7 +784,8 @@ def line_operator_dash(request):
         fd = request.POST.get('fdate')
         ed = request.POST.get('edate')
         ln = request.POST.get('lineanme')
-        dr = daily_report.objects.filter(line=ln, created_date__range=[fd, ed])
+        dr = daily_report.objects.filter(line=ln, created_date__range=[fd, ed], target_per__range=[0,20])
+        # drv = daily_report.objects.all().values('operator_name__name', 'line__line_name').filter(line=ln, created_date__range=[fd, ed])
         lis = line.objects.all()
         context = {'dr':dr, 'lis':lis}
         return render(request, 'line_operator_dash.html',context)
@@ -796,7 +797,9 @@ def line_operator_dash(request):
 
 def operator_reportgroup(request):
     op = operator.objects.filter(line=1)
-    context = {'op':op}
+    today = datetime.date.today()
+    first_date = today.replace(day=1)
+    context = {'op':op, 'first_date':first_date}
     return render(request, 'operator_reportgroup.html', context)
 
 

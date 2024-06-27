@@ -19,7 +19,7 @@
 {% endfor %}
 </ul> -->
 
-{% regroup dr by created_date as op_list %}
+<!-- {% regroup dr by created_date as op_list %}
 <div class="container row">
 
 	{% for created_date in op_list %}
@@ -37,7 +37,26 @@
     </div>
 
 	{% endfor %}
-</div>
+</div> -->
+
+
+
+<hr>
+
+{% regroup dr by operator_name as op_list %}
+
+
+<ul>
+    {% for operator_name in op_list %}
+        <li>{{ operator_name.grouper }}
+            <ul>
+            {% for i in operator_name.list %}
+                <li>{{ i.target_per }}</li>
+            {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+</ul>
 
 
 {% endblock content %}
