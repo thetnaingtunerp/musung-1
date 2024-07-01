@@ -54,6 +54,7 @@ class daily_report(models.Model):
     target_qty = models.PositiveIntegerField(default=0)
     target_per = models.PositiveIntegerField(default=0)
     combine = models.PositiveIntegerField(default=1)
+    absant = models.BooleanField(default=False)
     created_date = models.DateField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

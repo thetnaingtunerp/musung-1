@@ -3,6 +3,18 @@
 {% block content %}
 
 
+<div class="mt-2 p-3">
+  <form action="{% url 'myapp:duedatefilter' %}" method="post">
+  {% csrf_token %}
+  <div class="row">
+  <input type="date" name="duedate" class="form-control col-md-2">
+  <input type="submit" class="btn btn-sm btn-info">
+  </div>
+
+
+</form>
+</div>
+
 <div class="row">
   {% for i in lis %}
   <!-- <a href="{% url 'myapp:daily_rep_filter_by_line' i.id %}" class="btn btn-info m-2">{{i.line_name}}</a> -->
@@ -18,15 +30,7 @@
 <div class="card border-info mb-3">
   <div class="card-body">
 
-<form action="{% url 'myapp:duedatefilter' %}" method="post">
-  {% csrf_token %}
-  <div class="row">
-  <input type="date" name="duedate" class="form-control col-md-2">
-  <input type="submit" class="btn btn-sm btn-info">
-  </div>
 
-
-</form>
 
 <table class="table table-striped duedatetbl" id="drvtbl">
   <thead>
@@ -181,7 +185,19 @@
       <td><strong style="font-size:20px;">{{i.target_qty}}</strong></td>
 
       <td>
+      {% if i.target_per < 30 %}
+      
+        <strong style="font-size:20px;" class="bg-danger p-3">{{i.target_per}}</strong>
+      
+      {% elif i.target_per > 80 %}
+      
+        <strong style="font-size:20px;" class="bg-success p-3">{{i.target_per}}</strong>
+      
+      {% else %}
+      
         <strong style="font-size:20px;">{{i.target_per}}</strong>
+      
+      {% endif %}
       </td>
 
 

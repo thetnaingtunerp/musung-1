@@ -16,11 +16,9 @@ def lic(request):
     licdate = exp.expired_date
     today = datetime.date.today()
     if licdate > today:
-        print('success')
+        # print('success')
         return JsonResponse({'status':'success'})
-    # else:
-    #     print('lic expire')
-    #     return JsonResponse({'status':'error'})
+    
 
     
 def operatorlist(request):
@@ -99,7 +97,7 @@ def daily_line_attendance(request):
 def daily_rep_view(request):
     today = datetime.date.today()
     lis = line.objects.all()
-    op = daily_report.objects.filter(created_date=today)
+    op = daily_report.objects.filter(created_date=today, absant=False)
     context = {'lis':lis, 'op':op}
     return render(request, 'daily_rep_view.html', context)
 
@@ -136,7 +134,7 @@ def daily_rep_filter_by_line(request,id):
     today = datetime.date.today()
     lis = line.objects.all()
     ls = line.objects.get(id=id)
-    op = daily_report.objects.filter(created_date=today,line=ls)
+    op = daily_report.objects.filter(created_date=today,line=ls, absant=False)
     context = {'lis':lis, 'op':op}
     return render(request, 'daily_rep_view.html', context)
 
@@ -621,7 +619,7 @@ def monthly_filterby_line(request):
     else:
         opr = daily_report.objects.all()
         lis = line.objects.all()
-        context = {'op':opr, 'lis':lis}
+        context = { 'lis':lis}
         return render(request, 'monthly_filterby_line.html', context)
 
 
@@ -799,8 +797,19 @@ def operator_reportgroup(request):
     op = operator.objects.filter(line=1)
     today = datetime.date.today()
     first_date = today.replace(day=1)
-    context = {'op':op, 'first_date':first_date}
+    lis = line.objects.all()
+    context = {'op':op, 'first_date':first_date, 'lis':lis}
     return render(request, 'operator_reportgroup.html', context)
+
+
+def operator_reportgroup_filter(request,id):
+    op = operator.objects.filter(line=id)
+    today = datetime.date.today()
+    first_date = today.replace(day=1)
+    lis = line.objects.all()
+    context = {'op':op, 'first_date':first_date, 'lis':lis}
+    return render(request, 'operator_reportgroup.html', context)
+
 
 
 def dailyreport_selectrelated(request):

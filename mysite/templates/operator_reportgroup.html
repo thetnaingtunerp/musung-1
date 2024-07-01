@@ -13,29 +13,51 @@
 
 {% endfor %} -->
 
+<div class="text-center p-4">
+   {% for i in lis %}
+   <a href="{% url 'myapp:operator_reportgroup_filter' i.id %}" class="btn btn-primary btn-md m-2">{{i.line_name}}</a>
+   {% endfor %}
+</div>
 
+<!-- <div style="
+            width: auto;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;" class="card"> -->
+<div>            
 {% for operator in op %}
 
-<table class="bg-white ml-3">
+<!-- {% if operator.resign == False %} -->
+
+<table class="bg-white table-responsive">
    <tbody>
    <tr>
-      <td width="150px;" class="h5">{{operator.name}}</td>
+      <td class="h5 p-2">{{forloop.counter}}</td>
+      <td style="min-width: 200px; max-width: 200px;" class="p-3 text-primary">{{operator.name}}<br><span class="text-dark">-{{operator.point}}</span></td>
       {% for entry in operator.daily_report_set.all %}
 
       {% if entry.created_date < first_date %}
 
       {% else %}
-      <td width="150px;" class="border">
-         <table width="150px">
+      <td width="130px;" class="">
+         <table width="130px">
             <tr class="border">
-               <td class="h5">{{entry.created_date}}</td>
+               <td class="">{{entry.created_date}}</td>
             </tr>
             <tr class="border">
-               {% if entry.target_per < 20 %}
-               <td class="h5 bg-danger text-center">{{entry.target_per}}%</td>
+               {% if entry.target_per < 30 %}
+               <td class=" bg-danger text-center">{{entry.target_per}}%</td>
+               {% elif entry.target_per > 100 %}
+               <td class=" bg-success text-center">{{entry.target_per}}%</td>
+               {% elif entry.target_per > 80 %}
+               <td class=" bg-warning text-center">{{entry.target_per}}%</td>
+               
                {% else %}
-               <td class="h5 text-center">{{entry.target_per}}%</td>
+               <td class=" text-center">{{entry.target_per}}%</td>
                {% endif %}
+            </tr>
+            <tr class="border">
+               <td class="text-center">{{entry.target_qty}}/{{entry.target}}</td>
             </tr>
          </table>
       
@@ -48,7 +70,11 @@
 </tbody>
 </table>
 <hr>
+<!-- {% else %} -->
+<!-- {% endif %} -->
 
 {% endfor %}
+
+</div>
 
 {% endblock content %}

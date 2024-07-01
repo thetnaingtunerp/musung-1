@@ -14,9 +14,9 @@
 </form>
 </div>
 
-<div>
+<div class="text-center">
   {% for i in lis %}
-  <a href="{% url 'myapp:daily_rep_filter_by_line' i.id %}" class="btn btn-success m-2">{{i.line_name}}</a>
+  <a href="{% url 'myapp:daily_rep_filter_by_line' i.id %}" class="btn btn-lg btn-success m-2">{{i.line_name}}</a>
   {% endfor %}
   
 </div>

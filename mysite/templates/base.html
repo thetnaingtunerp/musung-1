@@ -21,37 +21,37 @@
     <title></title>
   </head>
   <body>
-  	<nav class="navbar navbar-expand-lg navbar-light bg-info">
-  <a class="navbar-brand text-white" href="#">Company Name</a>
+  	<nav class="navbar navbar-expand-lg navbar-dark bg-info">
+  <a class="navbar-brand text-white" href="#">Musung Garment</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link text-white" href="{% url 'myapp:operatorlist' %}">Operator <span class="sr-only">(current)</span></a>
+        <a class="nav-link text-white btn-secondary btn m-2" href="{% url 'myapp:operatorlist' %}">Operator <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="{% url 'myapp:linelist' %}">Line <span class="sr-only">(current)</span></a>
+        <a class="nav-link text-white btn-secondary btn m-2" href="{% url 'myapp:linelist' %}">Line <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="{% url 'myapp:daily_rep_view' %}">Daily Report <span class="sr-only">(current)</span></a>
+        <a class="nav-link text-white btn-secondary btn m-2" href="{% url 'myapp:daily_rep_view' %}">Daily Report <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link text-white" href="{% url 'myapp:monthly_report' %}">Monthly Report <span class="sr-only">(current)</span></a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link text-white" href="{% url 'myapp:monthly_filterby_line' %}">Report Filter Line</a>
-      </li>
+      </li> -->
 
 
       
 
       <li class="nav-item">
-        <a class="nav-link text-white" href="{% url 'myapp:operator_reportgroup' %}">Ade Report</a>
+        <a class="nav-link text-white btn-warning btn m-2" href="{% url 'myapp:operator_reportgroup' %}">Operators Report</a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link text-white" href="{% url 'myapp:line_operator_dash' %}">Operator Dashboard</a>
       </li>
       <li class="nav-item dropdown">
@@ -65,7 +65,7 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">operator_reportgroup</a>
         </div>
-      </li>
+      </li> -->
 
     </ul>
   </div>
@@ -619,7 +619,7 @@ $('#operatortargettbl').DataTable();
 // $('.duedatetbl').DataTable();
 // $('#optattend').DataTable();
 $('#operatorlist').DataTable();
-// $('#monthlyrpt').DataTable();
+
 
 </script>
 
