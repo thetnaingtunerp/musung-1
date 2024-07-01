@@ -746,6 +746,32 @@ def duedatefilter_by_line(request):
 
 
 
+def operator_reportgroup_filter(request,id):
+    op = operator.objects.filter(line=id)
+    today = datetime.date.today()
+    first_date = today.replace(day=1)
+    lis = line.objects.all()
+    context = {'op':op, 'first_date':first_date, 'lis':lis}
+    return render(request, 'operator_reportgroup.html', context)
+
+def operator_report_by_date(request):
+    if request.method == "POST":
+        fdate = request.GET.get('fdate')
+        tdate = request.GET.get('tdate')
+        ln = request.GET.get('ln')
+        op = operator.objects.filter(line=ln)
+        lis = line.objects.all()
+        context = {'fdate':fdate, 'tdate':tdate, 'lis':lis, 'op':op}
+        return render(request, 'operator_report_by_date.html', context)
+    else:
+        fdate = request.GET.get('fdate')
+        tdate = request.GET.get('tdate')
+        ln = request.GET.get('ln')
+        op = operator.objects.filter(line=ln)
+        lis = line.objects.all()
+        context = {'fdate':fdate, 'tdate':tdate, 'lis':lis, 'op':op}
+        return render(request, 'operator_report_by_date.html', context)
+    
 
 
 #Have Error            
@@ -795,15 +821,6 @@ def line_operator_dash(request):
 
 def operator_reportgroup(request):
     op = operator.objects.filter(line=1)
-    today = datetime.date.today()
-    first_date = today.replace(day=1)
-    lis = line.objects.all()
-    context = {'op':op, 'first_date':first_date, 'lis':lis}
-    return render(request, 'operator_reportgroup.html', context)
-
-
-def operator_reportgroup_filter(request,id):
-    op = operator.objects.filter(line=id)
     today = datetime.date.today()
     first_date = today.replace(day=1)
     lis = line.objects.all()

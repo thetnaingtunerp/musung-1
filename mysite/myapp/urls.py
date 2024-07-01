@@ -39,6 +39,7 @@ urlpatterns = [
     path('operator_reportgroup/', views.operator_reportgroup, name='operator_reportgroup'),
     path('operator_reportgroup_filter/<int:id>/', views.operator_reportgroup_filter, name='operator_reportgroup_filter'),
     path('line_operator_dash/', views.line_operator_dash, name='line_operator_dash'),
+    path('operator_report_by_date/', views.operator_report_by_date, name='operator_report_by_date'),
 
     #update hour
     path('update_h1/', views.update_h1, name='update_h1'),
