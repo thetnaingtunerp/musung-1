@@ -774,22 +774,26 @@ def supervisor_result_filter(request):
         fdate = request.POST.get('fdate')
         tdate = request.POST.get('tdate')
         lid = request.POST.get('lid')
+        mesg = None
 
-        
-        fd = datetime.datetime.strptime(fdate, '%Y-%m-%d').date()
-        td = datetime.datetime.strptime(tdate, '%Y-%m-%d').date()
-        
-        today = datetime.date.today()
-        first_date = today.replace(day=1)
+        if not fdate:
+            mesg = "Please Select Date"
+        elif not tdate:
+            mesg = "Please Select Date"
+        elif not mesg:
 
-        print(type(fd))
-        print(type(td))
+            fd = datetime.datetime.strptime(fdate, '%Y-%m-%d').date()
+            td = datetime.datetime.strptime(tdate, '%Y-%m-%d').date()
         
-        op = operator.objects.filter(line=lid)
-        context = {'op':op, 'fd':fd, 'td':td, 'first_date':first_date }
-        return render(request, 'supervisor_result_filter.html', context)
+            today = datetime.date.today()
+            first_date = today.replace(day=1)
+            op = operator.objects.filter(line=lid)
+            context = {'op':op, 'fd':fd, 'td':td, 'first_date':first_date, "mesg":mesg }
+            return render(request, 'supervisor_result_filter.html', context)
+        else:
+            return render(request, 'supervisor_result_filter.html', context)
     else:
-        pass
+        return render(request, 'supervisor_result_filter.html', context)
 
 
 

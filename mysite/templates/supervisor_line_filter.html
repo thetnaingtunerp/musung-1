@@ -6,11 +6,11 @@
     <div class="row m-3 p-3">
       <div class="col">
          <label class="form-label">Start Date</label>
-        <input type="date" class="form-control" name="fdate">
+        <input type="date" class="form-control" name="fdate" required>
       </div>
       <div class="col">
          <label class="form-label">End Date</label>
-        <input type="date" class="form-control" name="tdate">
+        <input type="date" class="form-control" name="tdate" required>
       </div>      
       <div class="col">
          <label class="form-label">.</label>
@@ -32,7 +32,7 @@
    <tbody>
    <tr>
       <td class="h5 p-2">{{forloop.counter}}</td>
-      <td style="min-width: 200px; max-width: 200px;" class="p-3 text-primary">{{operator.name}}<br><span class="text-dark">-{{operator.point}}</span></td>
+      <td style="min-width: 200px; max-width: 200px;" class="p-3 text-primary">{{operator.name}}<br><span class="text-dark">{{operator.point}}</span></td>
       {% for entry in operator.daily_report_set.all %}
 
       {% if entry.created_date < first_date %}
