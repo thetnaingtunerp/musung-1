@@ -2,80 +2,22 @@
 
 {% block content %}
 
-<!-- {% for p in op %}
-    
-   <li> {{p.name}}</li>
-   {% for entry in p.daily_report_set.all %}
-              <p>-----------{{entry.created_date}}-------{{entry.target_per}}%</p>
-          {% empty %}
-             
-    {% endfor %}
 
-{% endfor %} -->
 
-<div class="text-center p-4">
+<div class="row text-center justify-content-md-center ">
    {% for i in lis %}
-   <a href="{% url 'myapp:operator_reportgroup_filter' i.id %}" class="btn btn-primary btn-md m-2">{{i.line_name}}</a>
+   <a href="{% url 'myapp:supervisor_line_filter' i.id %}" class="col-md-3 m-1 p-3">
+      <div class="card bg-primary text-white">
+         <div class="card-body h4">
+            {{i.line_name}}
+         </div>
+       </div>
+      
+   </a>
    {% endfor %}
 </div>
 <hr>
-<!-- <div style="
-            width: auto;
-            overflow-x: auto;
-            overflow-y: hidden;
-            white-space: nowrap;" class="card"> -->
-<div>            
-{% for operator in op %}
 
-<!-- {% if operator.resign == False %} -->
 
-<table class="bg-white table-responsive">
-   <tbody>
-   <tr>
-      <td class="h5 p-2">{{forloop.counter}}</td>
-      <td style="min-width: 200px; max-width: 200px;" class="p-3 text-primary">{{operator.name}}<br><span class="text-dark">-{{operator.point}}</span></td>
-      {% for entry in operator.daily_report_set.all %}
-
-      {% if entry.created_date > fdate && entry.created_date < tdate %}
-
-      
-      <td width="130px;" class="">
-         <table width="130px">
-            <tr class="border">
-               <td class="">{{entry.created_date}}</td>
-            </tr>
-            <tr class="border">
-               {% if entry.target_per < 30 %}
-               <td class=" bg-danger text-center">{{entry.target_per}}%</td>
-               {% elif entry.target_per > 100 %}
-               <td class=" bg-success text-center">{{entry.target_per}}%</td>
-               {% elif entry.target_per > 80 %}
-               <td class=" bg-warning text-center">{{entry.target_per}}%</td>
-               
-               {% else %}
-               <td class=" text-center">{{entry.target_per}}%</td>
-               {% endif %}
-            </tr>
-            <tr class="border">
-               <td class="text-center"><span class="text-primary h6">{{entry.target_qty}}</span>/ <span class="h6">{{entry.target}}</span> </td>
-            </tr>
-         </table>
-      
-      </td>
-      {% else %}
-      {% endif %}
-      
-      {% endfor %}
-   </tr>
-   <!-- <hr> -->
-</tbody>
-</table>
-<hr>
-<!-- {% else %} -->
-<!-- {% endif %} -->
-
-{% endfor %}
-
-</div>
 
 {% endblock content %}

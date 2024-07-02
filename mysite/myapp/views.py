@@ -755,23 +755,42 @@ def operator_reportgroup_filter(request,id):
     return render(request, 'operator_reportgroup.html', context)
 
 def operator_report_by_date(request):
-    if request.method == "POST":
-        fdate = request.GET.get('fdate')
-        tdate = request.GET.get('tdate')
-        ln = request.GET.get('ln')
-        op = operator.objects.filter(line=ln)
-        lis = line.objects.all()
-        context = {'fdate':fdate, 'tdate':tdate, 'lis':lis, 'op':op}
-        return render(request, 'operator_report_by_date.html', context)
-    else:
-        fdate = request.GET.get('fdate')
-        tdate = request.GET.get('tdate')
-        ln = request.GET.get('ln')
-        op = operator.objects.filter(line=ln)
-        lis = line.objects.all()
-        context = {'fdate':fdate, 'tdate':tdate, 'lis':lis, 'op':op}
-        return render(request, 'operator_report_by_date.html', context)
+    lis = line.objects.all()
+    context = {'lis':lis}
+    return render(request, 'operator_report_by_date.html', context)
+
+def supervisor_line_filter(request,id):
+    op = operator.objects.filter(line=id)
+    today = datetime.date.today()
+    first_date = today.replace(day=1)
+    lis = line.objects.all()
+    ln = id
+    context = {'op':op, 'first_date':first_date, 'lis':lis , 'ln':ln}
+    return render(request, 'supervisor_line_filter.html', context)
     
+# from datetime import datetime
+def supervisor_result_filter(request):
+    if request.method == "POST":
+        fdate = request.POST.get('fdate')
+        tdate = request.POST.get('tdate')
+        lid = request.POST.get('lid')
+
+        
+        fd = datetime.datetime.strptime(fdate, '%Y-%m-%d').date()
+        td = datetime.datetime.strptime(tdate, '%Y-%m-%d').date()
+        
+        today = datetime.date.today()
+        first_date = today.replace(day=1)
+
+        print(type(fd))
+        print(type(td))
+        
+        op = operator.objects.filter(line=lid)
+        context = {'op':op, 'fd':fd, 'td':td, 'first_date':first_date }
+        return render(request, 'supervisor_result_filter.html', context)
+    else:
+        pass
+
 
 
 #Have Error            

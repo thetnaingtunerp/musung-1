@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h4>Results</h4>
+
+<hr>
+
+<div>     
+
+{% for operator in op %}
+
+
+
+<table class="bg-white table-responsive">
+   <tbody>
+   <tr>
+      <td class="h5 p-2">{{forloop.counter}}</td>
+      <td style="min-width: 200px; max-width: 200px;" class="p-3 text-primary">{{operator.name}}<br><span class="text-dark">-{{operator.point}}</span></td>
+      {% for entry in operator.daily_report_set.all %}
+
+      {% if entry.created_date < fd or entry.created_date > td %}
+
+      {% else %}
+      <td width="130px;" class="">
+         <table width="130px">
+            <tr class="border">
+               <td class="">{{entry.created_date}}</td>
+            </tr>
+            <tr class="border">
+               {% if entry.target_per < 30 %}
+               <td class=" bg-danger text-center">{{entry.target_per}}%</td>
+               {% elif entry.target_per > 100 %}
+               <td class=" bg-success text-center">{{entry.target_per}}%</td>
+               {% elif entry.target_per > 80 %}
+               <td class=" bg-warning text-center">{{entry.target_per}}%</td>
+               
+               {% else %}
+               <td class=" text-center">{{entry.target_per}}%</td>
+               {% endif %}
+            </tr>
+            <tr class="border">
+               <td class="text-center"><span class="text-primary h6">{{entry.target_qty}}</span>/ <span class="h6">{{entry.target}}</span> </td>
+            </tr>
+         </table>
+      
+      </td>
+      
+      
+      {% comment %} {% else %} {% endcomment %}
+      
+      
+      {% endif %}
+      
+      {% endfor %}
+   </tr>
+   <!-- <hr> -->
+</tbody>
+</table>
+<hr>
+
+
+{% endfor %}
+
+</div>
+
+{% endblock content %}
