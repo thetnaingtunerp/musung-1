@@ -39,22 +39,16 @@
       {% if entry.created_date < fd or entry.created_date > td %}
 
       {% else %}
+      {% if entry.target_per < 40 %}
       <td width="130px;" class="">
          <table width="130px">
             <tr class="border">
                <td class="">{{entry.created_date}}</td>
             </tr>
             <tr class="border">
-               {% if entry.target_per < 40 %}
+              
                <td class=" bg-danger text-center">{{entry.target_per}}%</td>
-               {% elif entry.target_per > 100 %}
-               <td class=" bg-success text-center">{{entry.target_per}}%</td>
-               {% elif entry.target_per > 80 %}
-               <td class=" bg-success text-center">{{entry.target_per}}%</td>
-               
-               {% else %}
-               <td class=" text-center">{{entry.target_per}}%</td>
-               {% endif %}
+              
             </tr>
             <tr class="border">
                <td class="text-center"><span class="text-primary h6">{{entry.target_qty}}</span>/ <span class="h6">{{entry.target}}</span> </td>
@@ -62,7 +56,14 @@
          </table>
 
       </td>      
+      {% else %}
       
+      {% endif %}
+      
+      
+
+
+
       {% endif %}
       
       {% endfor %}

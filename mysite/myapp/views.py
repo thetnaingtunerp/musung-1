@@ -767,7 +767,28 @@ def supervisor_line_filter(request,id):
     ln = id
     context = {'op':op, 'first_date':first_date, 'lis':lis , 'ln':ln}
     return render(request, 'supervisor_line_filter.html', context)
-    
+
+
+def one_month_red_color(request):
+    lid = request.POST.get('lid')
+    op = operator.objects.filter(line=lid)
+    today = datetime.date.today()
+    first_date = today.replace(day=1)
+    lis = line.objects.all()
+    ln = lid
+    context = {'op':op, 'first_date':first_date, 'lis':lis , 'ln':ln}
+    return render(request, 'one_month_red_color.html', context)
+
+def one_month_success_color(request):
+    lid = request.POST.get('lid')
+    op = operator.objects.filter(line=lid)
+    today = datetime.date.today()
+    first_date = today.replace(day=1)
+    lis = line.objects.all()
+    ln = lid
+    context = {'op':op, 'first_date':first_date, 'lis':lis , 'ln':ln}
+    return render(request, 'one_month_success_color.html', context)
+
 # from datetime import datetime
 def supervisor_result_filter(request):
     if request.method == "POST":
@@ -788,13 +809,40 @@ def supervisor_result_filter(request):
             today = datetime.date.today()
             first_date = today.replace(day=1)
             op = operator.objects.filter(line=lid)
-            context = {'op':op, 'fd':fd, 'td':td, 'first_date':first_date, "mesg":mesg }
+            context = {'op':op, 'fd':fd, 'td':td, 'first_date':first_date, "mesg":mesg, 'fdate':fdate, 'tdate':tdate, 'ln':lid }
             return render(request, 'supervisor_result_filter.html', context)
         else:
             return render(request, 'supervisor_result_filter.html', context)
     else:
         return render(request, 'supervisor_result_filter.html', context)
 
+
+#for Red Target
+def redcolor_by_supervisor(request):
+    if request.method == "POST":
+        fdate = request.POST.get('fdate')
+        tdate = request.POST.get('tdate')
+        lid = request.POST.get('lid')
+        mesg = None
+
+        if not fdate:
+            mesg = "Please Select Date"
+        elif not tdate:
+            mesg = "Please Select Date"
+        elif not mesg:
+
+            fd = datetime.datetime.strptime(fdate, '%Y-%m-%d').date()
+            td = datetime.datetime.strptime(tdate, '%Y-%m-%d').date()
+        
+            today = datetime.date.today()
+            first_date = today.replace(day=1)
+            op = operator.objects.filter(line=lid)
+            context = {'op':op, 'fd':fd, 'td':td, 'first_date':first_date, "mesg":mesg, 'fdate':fdate, 'tdate':tdate, 'ln':lid }
+            return render(request, 'redcolor_by_supervisor.html', context)
+        else:
+            return render(request, 'redcolor_by_supervisor.html', context)
+    else:
+        return render(request, 'redcolor_by_supervisor.html', context)
 
 
 #Have Error            

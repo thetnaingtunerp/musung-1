@@ -42,6 +42,9 @@ urlpatterns = [
     path('operator_report_by_date/', views.operator_report_by_date, name='operator_report_by_date'),
     path('supervisor_line_filter/<int:id>/', views.supervisor_line_filter, name='supervisor_line_filter'),
     path('supervisor_result_filter', views.supervisor_result_filter, name='supervisor_result_filter'),
+    path('redcolor_by_supervisor/', views.redcolor_by_supervisor, name='redcolor_by_supervisor'),
+    path('one_month_red_color/', views.one_month_red_color, name='one_month_red_color'),
+    path('one_month_success_color/', views.one_month_success_color, name='one_month_success_color'),
 
     #update hour
     path('update_h1/', views.update_h1, name='update_h1'),

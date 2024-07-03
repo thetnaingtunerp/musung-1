@@ -21,24 +21,23 @@
     </div>
   </form>
 
-
-<div class="row justify-content-md-center">
+  <div class="row justify-content-md-center">
   
-<form method="post" action="{% url 'myapp:one_month_red_color' %}">{% csrf_token %}
-   <div class="col-md-12 m-2">
-     <input type="number" class="form-control" name="lid" value="{{ln}}" hidden>
-     <input type="submit" class="form-control btn btn-md btn-danger">
-   </div>
-</form>
-
-<form method="post" action="{% url 'myapp:one_month_success_color' %}">{% csrf_token %}
-   <div class="col-md-12 m-2">
-     <input type="number" class="form-control" name="lid" value="{{ln}}" hidden>
-     <input type="submit" class="form-control btn btn-md btn-success">
-   </div>
-</form>
-   
-</div>
+    <form method="post" action="{% url 'myapp:one_month_red_color' %}">{% csrf_token %}
+       <div class="col-md-12 m-2">
+         <input type="number" class="form-control" name="lid" value="{{ln}}" hidden>
+         <input type="submit" class="form-control btn btn-md btn-danger">
+       </div>
+    </form>
+    
+    <form method="post" action="{% url 'myapp:one_month_success_color' %}">{% csrf_token %}
+       <div class="col-md-12 m-2">
+         <input type="number" class="form-control" name="lid" value="{{ln}}" hidden>
+         <input type="submit" class="form-control btn btn-md btn-success">
+       </div>
+    </form>
+       
+    </div>
 <hr>
 <div>            
 {% for operator in op %}
@@ -54,23 +53,17 @@
 
       {% if entry.created_date < first_date %}
       {% else %}
-      
-      <td width="130px;" class="">
+      {% if entry.target_per > 80 %}
+      <td width="130px;">
          <table width="130px">
             <tr class="border">
                <td class="">{{entry.created_date}}</td>
             </tr>
             <tr class="border">
-               {% if entry.target_per < 40 %}
-               <td class=" bg-danger text-center">{{entry.target_per}}%</td>
-               {% elif entry.target_per > 100 %}
-               <td class=" bg-success text-center">{{entry.target_per}}%</td>
-               {% elif entry.target_per > 80 %}
-               <td class=" bg-success text-center">{{entry.target_per}}%</td>
                
-               {% else %}
-               <td class=" text-center">{{entry.target_per}}%</td>
-               {% endif %}
+               <td class=" bg-success text-center">{{entry.target_per}}%</td>
+                              
+               
             </tr>
             <tr class="border">
                <td class="text-center"><span class="text-primary h6">{{entry.target_qty}}</span>/ <span class="h6">{{entry.target}}</span> </td>
@@ -78,7 +71,9 @@
          </table>
       
       </td>
-      
+      {% else %}
+              
+        {% endif %}
       
       {% endif %}
       
