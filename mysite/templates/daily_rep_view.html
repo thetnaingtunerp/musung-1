@@ -15,11 +15,19 @@
 </div>
 
 <div class="text-center">
-  {% for i in lis %}
-  <a href="{% url 'myapp:daily_rep_filter_by_line' i.id %}" class="btn btn-lg btn-success m-2">{{i.line_name}}</a>
-  {% endfor %}
+  <h3>{{ls}}</h3>
+  {% comment %} {% for i in lis %}
+  <a href="{% url 'myapp:daily_rep_filter_by_line' i.id %}" class="btn btn-lg btn-success m-2">
+    
+         {{i.line_name}}
+     
+  </a>
+  {% endfor %} {% endcomment %}
   
 </div>
+
+
+
 
 <div class="card border-info mb-3">
   <div class="card-body">

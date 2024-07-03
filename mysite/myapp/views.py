@@ -99,7 +99,7 @@ def daily_rep_view(request):
     lis = line.objects.all()
     op = daily_report.objects.filter(created_date=today, absant=False)
     context = {'lis':lis, 'op':op}
-    return render(request, 'daily_rep_view.html', context)
+    return render(request, 'data_entry.html', context)
 
 def save_daily_rep_view(request):
     ot1 = int(request.GET.get('ot1'))
@@ -135,7 +135,7 @@ def daily_rep_filter_by_line(request,id):
     lis = line.objects.all()
     ls = line.objects.get(id=id)
     op = daily_report.objects.filter(created_date=today,line=ls, absant=False)
-    context = {'lis':lis, 'op':op}
+    context = {'lis':lis, 'op':op, 'ls':ls}
     return render(request, 'daily_rep_view.html', context)
 
 def daily_rep_filter_operator(request,id):
