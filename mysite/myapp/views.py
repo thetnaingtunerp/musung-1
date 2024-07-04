@@ -643,6 +643,7 @@ def update_combine(request,id):
     # redirect to detail_view
     if form.is_valid():
         form.save()
+        # return redirect(request.META.get('HTTP_REFERER'))
         return redirect('myapp:daily_rep_view')
  
     # add form dictionary to context
@@ -763,9 +764,10 @@ def supervisor_line_filter(request,id):
     op = operator.objects.filter(line=id)
     today = datetime.date.today()
     first_date = today.replace(day=1)
+    monday = today - datetime.timedelta(days = today.weekday())
     lis = line.objects.all()
     ln = id
-    context = {'op':op, 'first_date':first_date, 'lis':lis , 'ln':ln}
+    context = {'op':op, 'first_date':first_date, 'lis':lis , 'ln':ln, 'monday':monday}
     return render(request, 'supervisor_line_filter.html', context)
 
 
@@ -774,9 +776,10 @@ def one_month_red_color(request):
     op = operator.objects.filter(line=lid)
     today = datetime.date.today()
     first_date = today.replace(day=1)
+    monday = today - datetime.timedelta(days = today.weekday())
     lis = line.objects.all()
     ln = lid
-    context = {'op':op, 'first_date':first_date, 'lis':lis , 'ln':ln}
+    context = {'op':op, 'first_date':first_date, 'lis':lis , 'ln':ln, 'monday':monday}
     return render(request, 'one_month_red_color.html', context)
 
 def one_month_success_color(request):
@@ -784,10 +787,16 @@ def one_month_success_color(request):
     op = operator.objects.filter(line=lid)
     today = datetime.date.today()
     first_date = today.replace(day=1)
+    monday = today - datetime.timedelta(days = today.weekday())
     lis = line.objects.all()
     ln = lid
-    context = {'op':op, 'first_date':first_date, 'lis':lis , 'ln':ln}
+    context = {'op':op, 'first_date':first_date, 'lis':lis , 'ln':ln, 'monday':monday}
     return render(request, 'one_month_success_color.html', context)
+
+
+#get one week data
+
+
 
 # from datetime import datetime
 def supervisor_result_filter(request):
@@ -906,7 +915,11 @@ def dailyreport_selectrelated(request):
     context = {'dr':dr}
     return render(request, 'test/dailyreport_selectrelated.html', context)
 
-
+def monday_week(request):
+    today = datetime.date.today()
+    first_date = today.replace(day=1)
+    monday = today - datetime.timedelta(days = today.weekday())
+    return HttpResponse(monday)
 
 
     

@@ -8,10 +8,14 @@
   <div class="row">
   <input type="date" name="duedate" class="form-control col-md-2">
   <input type="submit" class="btn btn-sm btn-info">
+  <button type="button" class="btn btn-sm btn-primary ml-5" id="SaveData"><i class="fa-solid fa-cloud-arrow-up"></i> SaveData</button>
   </div>
+  
+  
 
 
 </form>
+
 </div>
 
 <div class="text-center">
@@ -57,6 +61,7 @@
       <th scope="col">Target</th>
       <th scope="col">Total</th>
       <th scope="col">%</th>
+      <th scope="col">rmk</th>
       
       
 
@@ -70,7 +75,7 @@
       
       
       <td><a href="{% url 'myapp:dailyrep_delete' i.id %}">{{forloop.counter}}</a></td>
-      <td>
+      <td style="min-width: 200px;">
         <a href="{% url 'myapp:update_combine' i.id %}">{{i.operator_name}}</a>
         
       </td>
@@ -176,6 +181,16 @@
 
       <td>
         <strong style="font-size:18px;">{{i.target_per}}</strong>
+      </td>
+      <td>
+        {% if i.remark %}
+        <!-- <button type="button" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="left" title="{{i.remark}}">
+          <i class="fa-solid fa-circle-info"></i>
+        </button> -->
+        <a href="#" class="btn btn-sm btn-outline-info"  data-toggle="tooltip" data-placement="left" title="{{i.remark}}">
+          R
+        </a>
+        {% endif %}
       </td>
 
 

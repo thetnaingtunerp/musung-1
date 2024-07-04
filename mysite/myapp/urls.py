@@ -61,6 +61,7 @@ urlpatterns = [
     path('update_h12/', views.update_h12, name='update_h12'),
 
     #Test
+    path('monday_week/', views.monday_week, name='monday_week'),
     path('testpref/', views.testpref, name='testpref'),
     path('dailyreport_selectrelated/', views.dailyreport_selectrelated, name='dailyreport_selectrelated'),
     

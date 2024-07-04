@@ -15,10 +15,11 @@ class workinghourform(forms.ModelForm):
 class update_combine_form(forms.ModelForm):
     class Meta:
         model = daily_report
-        fields = ['combine','target','absant']
+        fields = ['combine','target','absant', 'remark']
         widgets = {
             'combine': forms.NumberInput(attrs={'class': 'form-control'}),
             'target': forms.NumberInput(attrs={'class': 'form-control'}),
+            'remark': forms.Textarea(attrs={'class': 'form-control'}),
             
            
         }

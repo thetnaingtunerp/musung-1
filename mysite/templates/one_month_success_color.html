@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<form method="post" action="{% url 'myapp:supervisor_result_filter' %}">{% csrf_token %}
+<!-- <form method="post" action="{% url 'myapp:supervisor_result_filter' %}">{% csrf_token %}
     <div class="row m-3 p-3">
       <div class="col">
          <label class="form-label">Start Date</label>
@@ -19,21 +19,21 @@
       </div>
       
     </div>
-  </form>
-
+  </form> -->
+<hr>
   <div class="row justify-content-md-center">
   
     <form method="post" action="{% url 'myapp:one_month_red_color' %}">{% csrf_token %}
        <div class="col-md-12 m-2">
          <input type="number" class="form-control" name="lid" value="{{ln}}" hidden>
-         <input type="submit" class="form-control btn btn-md btn-danger">
+         <input type="submit" class="form-control btn btn-md btn-danger" value="RED">
        </div>
     </form>
     
     <form method="post" action="{% url 'myapp:one_month_success_color' %}">{% csrf_token %}
        <div class="col-md-12 m-2">
          <input type="number" class="form-control" name="lid" value="{{ln}}" hidden>
-         <input type="submit" class="form-control btn btn-md btn-success">
+         <input type="submit" class="form-control btn btn-md btn-success" value="SUCCESS">
        </div>
     </form>
        
@@ -51,7 +51,7 @@
       <td style="min-width: 200px; max-width: 200px;" class="p-3 text-primary">{{operator.name}}<br><span class="text-dark">{{operator.point}}</span></td>
       {% for entry in operator.daily_report_set.all %}
 
-      {% if entry.created_date < first_date %}
+      {% if entry.created_date < monday %}
       {% else %}
       {% if entry.target_per > 80 %}
       <td width="130px;">
