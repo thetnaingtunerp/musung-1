@@ -113,7 +113,7 @@
    <tbody>
    <tr>
       <td class="h5 p-2">{{forloop.counter}}</td>
-      <td style="min-width: 200px; max-width: 200px;" class="p-3 text-primary">{{operator.name}}<br><span class="text-dark">{{operator.point}}</span></td>
+      <td style="min-width: 200px; max-width: 200px;" class="p-3 text-primary">{{operator.name}}</td>
       {% for entry in operator.daily_report_set.all %}
 
       {% if entry.created_date < monday %}
