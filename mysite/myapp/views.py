@@ -760,15 +760,35 @@ def operator_report_by_date(request):
     context = {'lis':lis}
     return render(request, 'operator_report_by_date.html', context)
 
+
 def supervisor_line_filter(request,id):
-    op = operator.objects.filter(line=id)
+    # op = operator.objects.filter(line=id)
+    
+    today = datetime.date.today()
+    first_date = today.replace(day=1)
+    monday = today - datetime.timedelta(days = today.weekday())
+    lname = line.objects.get(id=id)
+    lis = line.objects.all()
+    ln = id
+    op = daily_report.objects.filter(created_date=today, line=id)
+    context = {'op':op, 'first_date':first_date, 'lis':lis , 'ln':ln, 'monday':monday, 'lname':lname}
+    return render(request, 'supervisor_line_filter.html', context)
+
+
+
+#get one month data
+
+def one_month_filter(request):
+    lid = request.POST.get('lid')
+    op = operator.objects.filter(line=lid)
     today = datetime.date.today()
     first_date = today.replace(day=1)
     monday = today - datetime.timedelta(days = today.weekday())
     lis = line.objects.all()
-    ln = id
+    ln = lid
     context = {'op':op, 'first_date':first_date, 'lis':lis , 'ln':ln, 'monday':monday}
-    return render(request, 'supervisor_line_filter.html', context)
+    return render(request, 'one_month_filter.html', context)
+
 
 
 def one_month_red_color(request):
@@ -795,6 +815,40 @@ def one_month_success_color(request):
 
 
 #get one week data
+def one_week_filter(request):
+    lid = request.POST.get('lid')
+    op = operator.objects.filter(line=lid)
+    today = datetime.date.today()
+    first_date = today.replace(day=1)
+    monday = today - datetime.timedelta(days = today.weekday())
+    lis = line.objects.all()
+    ln = lid
+    context = {'op':op, 'first_date':first_date, 'lis':lis , 'ln':ln, 'monday':monday}
+    return render(request, 'one_week_filter.html', context)
+
+
+def one_week_success(request):
+    lid = request.POST.get('lid')
+    op = operator.objects.filter(line=lid)
+    today = datetime.date.today()
+    first_date = today.replace(day=1)
+    monday = today - datetime.timedelta(days = today.weekday())
+    lis = line.objects.all()
+    ln = lid
+    context = {'op':op, 'first_date':first_date, 'lis':lis , 'ln':ln, 'monday':monday}
+    return render(request, 'one_week_success.html', context)
+
+def one_week_danger(request):
+    lid = request.POST.get('lid')
+    op = operator.objects.filter(line=lid)
+    today = datetime.date.today()
+    first_date = today.replace(day=1)
+    monday = today - datetime.timedelta(days = today.weekday())
+    lis = line.objects.all()
+    ln = lid
+    context = {'op':op, 'first_date':first_date, 'lis':lis , 'ln':ln, 'monday':monday}
+    return render(request, 'one_week_danger.html', context)
+
 
 
 

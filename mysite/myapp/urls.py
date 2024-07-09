@@ -43,8 +43,14 @@ urlpatterns = [
     path('supervisor_line_filter/<int:id>/', views.supervisor_line_filter, name='supervisor_line_filter'),
     path('supervisor_result_filter', views.supervisor_result_filter, name='supervisor_result_filter'),
     path('redcolor_by_supervisor/', views.redcolor_by_supervisor, name='redcolor_by_supervisor'),
+
     path('one_month_red_color/', views.one_month_red_color, name='one_month_red_color'),
     path('one_month_success_color/', views.one_month_success_color, name='one_month_success_color'),
+    path('one_month_filter/', views.one_month_filter, name='one_month_filter'),
+
+    path('one_week_filter/', views.one_week_filter, name='one_week_filter'),
+    path('one_week_success/', views.one_week_success, name='one_week_success'),
+    path('one_week_danger/', views.one_week_danger, name='one_week_danger'),
 
     #update hour
     path('update_h1/', views.update_h1, name='update_h1'),

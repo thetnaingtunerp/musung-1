@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- <form method="post" action="{% url 'myapp:supervisor_result_filter' %}">{% csrf_token %}
+    <div class="row m-3 p-3">
+      <div class="col">
+         <label class="form-label">Start Date</label>
+        <input type="date" class="form-control" name="fdate" required>
+      </div>
+      <div class="col">
+         <label class="form-label">End Date</label>
+        <input type="date" class="form-control" name="tdate" required>
+      </div>      
+      <div class="col">
+         <label class="form-label">.</label>
+        <input type="number" class="form-control" name="lid" value="{{ln}}" hidden>
+        <input type="submit" class="form-control btn btn-md btn-primary">
+      </div>
+      
+    </div>
+</form> -->
+
+<div class="row justify-content-md-center">
+  
+<form method="post" action="{% url 'myapp:one_week_danger' %}">{% csrf_token %}
+   <div class="col-md-12 m-2">
+     <input type="number" class="form-control" name="lid" value="{{ln}}" hidden>
+     <input type="submit" class="form-control btn btn-sm btn-danger" value="RED">
+   </div>
+</form>
+
+<form method="post" action="{% url 'myapp:one_week_success' %}">{% csrf_token %}
+   <div class="col-md-12 m-2">
+     <input type="number" class="form-control" name="lid" value="{{ln}}" hidden>
+     <input type="submit" class="form-control btn btn-sm btn-success" value="SUCCESS">
+   </div>
+</form>
+
+<form method="post" action="{% url 'myapp:one_week_filter' %}">{% csrf_token %}
+  <div class="col-md-12 m-2">
+    <input type="number" class="form-control" name="lid" value="{{ln}}" hidden>
+    <input type="submit" class="form-control btn btn-sm btn-warning" value="THIS WEEK">
+  </div>
+</form>
+
+<form method="post" action="{% url 'myapp:one_month_filter' %}">{% csrf_token %}
+  <div class="col-md-12 m-2">
+    <input type="number" class="form-control" name="lid" value="{{ln}}" hidden>
+    <input type="submit" class="form-control btn btn-sm btn-secondary" value="THIS MONTH">
+  </div>
+</form>
+   
+
+<!-- Filter  -->
+<!-- <a href="#" class="btn btn-sm btn-info">Fillter</a> -->
+
+<div class="m-2">
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dateFilterModal">
+   FILTER BY DATE
+ </button>
+ 
+ <!-- Modal -->
+ <div class="modal fade" id="dateFilterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLabel">Filter</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+         <form method="post" action="{% url 'myapp:supervisor_result_filter' %}">{% csrf_token %}
+            <div class="row m-3 p-3">
+              <div class="col">
+                 <label class="form-label">Start Date</label>
+                <input type="date" class="form-control" name="fdate" required>
+              </div>
+              <div class="col">
+                 <label class="form-label">End Date</label>
+                <input type="date" class="form-control" name="tdate" required>
+              </div>      
+              <div class="col">
+                 <label class="form-label">.</label>
+                <input type="number" class="form-control" name="lid" value="{{ln}}" hidden>
+                <input type="submit" class="form-control btn btn-md btn-primary">
+              </div>
+              
+            </div>
+          </form>
+
+
+
+
+
+       </div>
+       <!-- <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+         <button type="button" class="btn btn-primary">Save changes</button>
+       </div> -->
+     </div>
+   </div>
+ </div>
+<!-- End Filter  -->
+
+</div>
+
+
+
+</div>
+
+
+
+
+<hr>
+<div>            
+{% for operator in op %}
+
+
+
+<table class="bg-white table-responsive">
+   <tbody>
+   <tr>
+      <td class="h5 p-2">{{forloop.counter}}</td>
+      <td style="min-width: 200px; max-width: 200px;" class="p-3 text-primary">{{operator.name}}</td>
+      {% for entry in operator.daily_report_set.all %}
+
+      {% if entry.created_date < monday %}
+      {% else %}
+      
+      <td width="130px;" class="">
+         <table width="130px">
+            <tr class="border">
+               <td class="">{{entry.created_date}}</td>
+            </tr>
+            <tr class="border">
+               {% if entry.target_per < 40 %}
+               <td class=" bg-danger text-center">{{entry.target_per}}%</td>
+               {% elif entry.target_per > 100 %}
+               <td class=" bg-success text-center">{{entry.target_per}}%</td>
+               {% elif entry.target_per > 80 %}
+               <td class=" bg-success text-center">{{entry.target_per}}%</td>
+               
+               {% else %}
+               <td class=" text-center">{{entry.target_per}}%</td>
+               {% endif %}
+            </tr>
+            <tr class="border">
+               <td class="text-center"><span class="text-primary h6">{{entry.target_qty}}</span>/ <span class="h6">{{entry.target}}</span> </td>
+            </tr>
+         </table>
+      
+      </td>
+      
+      
+      {% endif %}
+      
+      {% endfor %}
+   </tr>
+   <!-- <hr> -->
+</tbody>
+</table>
+<hr>
+
+
+{% endfor %}
+
+</div>
+
+{% endblock content %}

@@ -2,40 +2,35 @@
 
 {% block content %}
 
-<!-- <form method="post" action="{% url 'myapp:supervisor_result_filter' %}">{% csrf_token %}
-    <div class="row m-3 p-3">
-      <div class="col">
-         <label class="form-label">Start Date</label>
-        <input type="date" class="form-control" name="fdate" required>
-      </div>
-      <div class="col">
-         <label class="form-label">End Date</label>
-        <input type="date" class="form-control" name="tdate" required>
-      </div>      
-      <div class="col">
-         <label class="form-label">.</label>
-        <input type="number" class="form-control" name="lid" value="{{ln}}" hidden>
-        <input type="submit" class="form-control btn btn-md btn-primary">
-      </div>
-      
-    </div>
-</form> -->
-<hr>
 
 <div class="row justify-content-md-center">
   
-<form method="post" action="{% url 'myapp:one_month_red_color' %}">{% csrf_token %}
+<!-- <form method="post" action="{% url 'myapp:one_month_red_color' %}">{% csrf_token %}
    <div class="col-md-12 m-2">
      <input type="number" class="form-control" name="lid" value="{{ln}}" hidden>
-     <input type="submit" class="form-control btn btn-md btn-danger" value="RED">
+     <input type="submit" class="form-control btn btn-sm btn-danger" value="RED">
    </div>
 </form>
 
 <form method="post" action="{% url 'myapp:one_month_success_color' %}">{% csrf_token %}
    <div class="col-md-12 m-2">
      <input type="number" class="form-control" name="lid" value="{{ln}}" hidden>
-     <input type="submit" class="form-control btn btn-md btn-success" value="SUCCESS">
+     <input type="submit" class="form-control btn btn-sm btn-success" value="SUCCESS">
    </div>
+</form> -->
+
+<form method="post" action="{% url 'myapp:one_week_filter' %}">{% csrf_token %}
+  <div class="col-md-12 m-2">
+    <input type="number" class="form-control" name="lid" value="{{ln}}" hidden>
+    <input type="submit" class="form-control btn btn-sm btn-warning" value="WEEKLY">
+  </div>
+</form>
+
+<form method="post" action="{% url 'myapp:one_month_filter' %}">{% csrf_token %}
+  <div class="col-md-12 m-2">
+    <input type="number" class="form-control" name="lid" value="{{ln}}" hidden>
+    <input type="submit" class="form-control btn btn-sm btn-secondary" value="MONTHLY">
+  </div>
 </form>
    
 
@@ -47,7 +42,8 @@
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dateFilterModal">
-   FILTER BY DATE
+  <i class="fa-solid fa-calendar-days"></i>
+   FILTER
  </button>
  
  <!-- Modal -->
@@ -55,7 +51,7 @@
    <div class="modal-dialog" role="document">
      <div class="modal-content">
        <div class="modal-header">
-         <h5 class="modal-title" id="exampleModalLabel">Filter</h5>
+         <h5 class="modal-title" id="exampleModalLabel"><i class="fa-solid fa-calendar-days"></i></h5>
          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
            <span aria-hidden="true">&times;</span>
          </button>
@@ -102,60 +98,180 @@
 
 
 
+<!-- table view -->
 
-<hr>
-<div>            
-{% for operator in op %}
-
-
-
-<table class="bg-white table-responsive">
-   <tbody>
-   <tr>
-      <td class="h5 p-2">{{forloop.counter}}</td>
-      <td style="min-width: 200px; max-width: 200px;" class="p-3 text-primary">{{operator.name}}</td>
-      {% for entry in operator.daily_report_set.all %}
-
-      {% if entry.created_date < monday %}
-      {% else %}
+<table class="table table-striped" id="drvtbl">
+  <h5>Line Name : <span class="text-primary">{{lname}}</span> </h5>
+  <thead>
+    <tr>
       
-      <td width="130px;" class="">
-         <table width="130px">
-            <tr class="border">
-               <td class="">{{entry.created_date}}</td>
-            </tr>
-            <tr class="border">
-               {% if entry.target_per < 40 %}
-               <td class=" bg-danger text-center">{{entry.target_per}}%</td>
-               {% elif entry.target_per > 100 %}
-               <td class=" bg-success text-center">{{entry.target_per}}%</td>
-               {% elif entry.target_per > 80 %}
-               <td class=" bg-success text-center">{{entry.target_per}}%</td>
-               
-               {% else %}
-               <td class=" text-center">{{entry.target_per}}%</td>
-               {% endif %}
-            </tr>
-            <tr class="border">
-               <td class="text-center"><span class="text-primary h6">{{entry.target_qty}}</span>/ <span class="h6">{{entry.target}}</span> </td>
-            </tr>
-         </table>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+
       
+      
+      <th scope="col">8:30 AM</th>
+      <th scope="col">9:30 AM</th>
+      <th scope="col">10:30 AM</th>
+      <th scope="col">11:30 AM</th>
+      <th scope="col">1:00 PM</th>
+      <th scope="col">2:00 PM</th>
+      <th scope="col">3:00 PM</th>
+      <th scope="col">4:00 PM</th>
+      <th scope="col">5:00 PM</th>
+      <th scope="col">6:00 PM</th>
+      <th scope="col">7:00 PM</th>
+      <th scope="col">Target <span class="text-danger">({{lname.target}})</span> </th>
+      <th scope="col">Total</th>
+      <th scope="col">%</th>
+      <th scope="col">Remark</th>
+      
+      
+
+
+      
+    </tr>
+  </thead>
+  <tbody>
+  	{% for i in op %}
+    <tr class="drvtbltr">
+      
+      
+      <td><a href="{% url 'myapp:dailyrep_delete' i.id %}">{{forloop.counter}}</a></td>
+      <td style="min-width: 200px;">
+        <a href="{% url 'myapp:update_combine' i.id %}" class="text-dark">{{i.operator_name}}</a>
+        
+      </td>
+
+      
+      <td>
+        <input type="number" class="dvrtblid" value="{{i.id}}" hidden>
+        
+        {% if i.h1 == 0 %}
+        -
+        {% else %}
+        {{i.h1}}
+        {% endif %}
+      </td>
+      <td>
+        
+       {% if i.h2 == 0 %}
+        -
+        {% else %}
+        {{i.h2}}
+        {% endif %}
+        
+      </td>
+      <td>
+        
+       {% if i.h3 == 0 %}
+       -
+        {% else %}
+        {{i.h3}}
+        {% endif %}
+      </td>
+      <td>
+        
+        {% if i.h4 == 0 %}
+        -
+        {% else %}
+        {{i.h4}}
+        {% endif %}
+      </td>
+      <td>
+        
+        {% if i.h5 == 0 %}
+        -
+        {% else %}
+        {{i.h5}}
+        {% endif %}
+      </td>
+      <td>
+        
+        {% if i.h6 == 0 %}
+        -
+        {% else %}
+        {{i.h6}}
+        {% endif %}
+      </td>
+      <td>
+        
+        {% if i.h7 == 0 %}
+        -
+        {% else %}
+        {{i.h7}}
+        {% endif %}
+      </td>
+      <td>
+        
+        {% if i.h8 == 0 %}
+        -
+        {% else %}
+        {{i.h8}}
+        {% endif %}
+      </td>
+      <td>
+        
+        {% if i.h9 == 0 %}
+        -
+        {% else %}
+        {{i.h9}}
+        {% endif %}
+      </td>
+      <td>
+        
+        {% if i.h10 == 0 %}
+        -
+        {% else %}
+        {{i.h10}}
+       
+        {% endif %}
+      </td>
+      <td>
+        
+        {% if i.h11 == 0 %}
+        -
+        {% else %}
+        {{i.h11}}
+        
+        {% endif %}
+      </td>
+
+
+      <td>
+        <strong style="font-size:18px;">{{i.target}}</strong>
       </td>
       
+      <td><strong style="font-size:18px;">{{i.target_qty}}</strong></td>
+
+      <td>
+        <strong style="font-size:18px;">{{i.target_per}}</strong>
+      </td>
+      <td>
+        {% if i.remark %}
+        <!-- <button type="button" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="left" title="{{i.remark}}">
+          <i class="fa-solid fa-circle-info"></i>
+        </button> -->
+        <a href="#" class="btn btn-sm btn-warning"  data-toggle="tooltip" data-placement="left" title="{{i.remark}}">
+          <i class="fa-solid fa-comments"></i>
+        </a>
+        {% endif %}
+
+        {% if i.absant == True %}
+        <a href="#" class="btn-sm btn-danger">absant</a>
+        {% endif %}
+      </td>
+
+
       
-      {% endif %}
-      
-      {% endfor %}
-   </tr>
-   <!-- <hr> -->
-</tbody>
+    </tr>
+    {% endfor %}
+
+  </tbody>
 </table>
-<hr>
 
 
-{% endfor %}
+<!-- end table view  -->
 
-</div>
 
 {% endblock content %}

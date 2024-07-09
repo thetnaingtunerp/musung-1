@@ -2,13 +2,19 @@
 
 {% block content %}
 
+<div class="d-flex justify-content-end">
 
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <strong>Please Check !</strong> Production Line Target and Operator List...
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+  <div class="alert alert-danger alert-dismissible fade show mt-3 d-inline-flex" role="alert">
+    <strong>Please Check ! _____" Resign / Absant / Line Taget"_____</strong> 
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+
 </div>
+
+
 
 
 <div class="card border-info mb-3">
@@ -39,7 +45,7 @@
 
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#lineu-{{i.id}}">
+<button type="button" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#lineu-{{i.id}}">
   Target
 </button>
 
@@ -71,12 +77,12 @@
   </div>
 </div>
 
-    <a href="{% url 'myapp:operatoratt' i.id %}" class="btn btn-sm btn-outline-success">view operators</a>
+    <a href="{% url 'myapp:operatoratt' i.id %}" class="btn btn-sm btn-info">operators</a>
     
 
       </td>
       <td>
-        <button type="button" class="lineatt btn btn-sm btn-success">Line Attendance</button>
+        <button type="button" class="lineatt btn btn-sm btn-warning">Attendance</button>
       </td>
     </tr>
     {% endfor %}
