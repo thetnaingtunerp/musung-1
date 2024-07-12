@@ -39,7 +39,7 @@ class OptForm(forms.ModelForm):
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'burmese': forms.TextInput(attrs={'class': 'form-control'}),
             'line': forms.Select(attrs={'class': 'form-control'}),
-            'point': forms.Select(attrs={'class': 'form-control'}),
+            'point': forms.TextInput(attrs={'class': 'form-control'}),
             'employee_code': forms.TextInput(attrs={'class': 'form-control'}),
             'role': forms.TextInput(attrs={'class': 'form-control'}),
 

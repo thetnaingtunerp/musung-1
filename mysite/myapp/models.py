@@ -25,7 +25,7 @@ class line(models.Model):
 class operator(models.Model):
     name = models.CharField(max_length=255)
     line = models.ForeignKey(line, on_delete=models.CASCADE)
-    point = models.ForeignKey(point, on_delete=models.CASCADE, blank=True, null=True)
+    point = models.CharField(max_length=255, blank=True, null=True)
     employee_code = models.CharField(max_length=255, blank=True, null=True)
     burmese = models.CharField(max_length=255, blank=True, null=True)
     role = models.CharField(max_length=255, blank=True, null=True)
