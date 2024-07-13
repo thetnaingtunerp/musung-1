@@ -61,7 +61,7 @@
       <th scope="col">Target</th>
       <th scope="col">Total</th>
       <th scope="col">%</th>
-      <th scope="col">rmk</th>
+      <th scope="col">Remark</th>
       
       
 
@@ -188,15 +188,17 @@
         <a href="#" class="btn btn-sm btn-outline-secondary d-block">{{i.target_per}}%</a>
         {% endif %}
       </td>
-      <td>
+      <td style="min-width: 130px;">
+        <a href="{% url 'myapp:update_combine' i.id %}" class="btn-sm btn-info"><i class="fas fa-edit"></i></a>
+        <a href="{% url 'myapp:dailyrep_delete' i.id %}" class="btn-sm btn-danger"><i class="fas fa-trash"></i></a>
         {% if i.remark %}
-        <!-- <button type="button" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="left" title="{{i.remark}}">
-          <i class="fa-solid fa-circle-info"></i>
-        </button> -->
-        <a href="#" class="btn btn-sm btn-outline-info"  data-toggle="tooltip" data-placement="left" title="{{i.remark}}">
+        <a href="#" class="btn-sm btn-warning"  data-toggle="tooltip" data-placement="left" title="{{i.remark}}">
           <i class="fa-solid fa-comments"></i>
         </a>
+        <!-- <a href="#" class="btn-sm btn-warning"><i class="fa-solid fa-comments"></i></a> -->
         {% endif %}
+        
+        
       </td>
 
 

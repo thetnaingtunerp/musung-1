@@ -94,6 +94,16 @@ def daily_line_attendance(request):
 
 
 
+def attendance_backdate(request):
+    bdate = request.GET.get('duedate')
+    lis = line.objects.all()
+    context = {'lis':lis, 'bdate':bdate}
+    return render(request, 'attendance_backdate.html', context)
+
+
+
+
+
 def daily_rep_view(request):
     today = datetime.date.today()
     lis = line.objects.all()

@@ -4,16 +4,22 @@
 
 <div class="d-flex justify-content-end">
 
-  <div class="alert alert-danger alert-dismissible fade show mt-3 d-inline-flex" role="alert">
+  <!-- <div class="alert alert-danger alert-dismissible fade show mt-3 d-inline-flex" role="alert">
     <strong>" Resign / Absant / Taget တို့ကို သေချာ စစ်ဆေးပြီးမှ Attendance လုပ်ပါ"</strong> 
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
-  </div>
-
-
+  </div> -->
+ 
+  <form method="post" action="#">{% csrf_token %}
+    <div class="row m-2">
+      
+      <input type="date" name="duedate"  class="form-control col datepicker">
+      <input type="submit" class="form-control btn btn-md btn-info col" value="Select Date">
+    </div>
+  </form>
+  
 </div>
-
 
 
 
@@ -23,6 +29,7 @@
    
 
 <table class="table table-striped" id="invlist">
+
   <thead>
     <tr class="lilisttr">
       <th scope="col">#</th>
