@@ -5,19 +5,6 @@
 
 <div class="row justify-content-md-center">
   
-<!-- <form method="post" action="{% url 'myapp:one_month_red_color' %}">{% csrf_token %}
-   <div class="col-md-12 m-2">
-     <input type="number" class="form-control" name="lid" value="{{ln}}" hidden>
-     <input type="submit" class="form-control btn btn-sm btn-danger" value="RED">
-   </div>
-</form>
-
-<form method="post" action="{% url 'myapp:one_month_success_color' %}">{% csrf_token %}
-   <div class="col-md-12 m-2">
-     <input type="number" class="form-control" name="lid" value="{{ln}}" hidden>
-     <input type="submit" class="form-control btn btn-sm btn-success" value="SUCCESS">
-   </div>
-</form> -->
 <form method="post" action="{% url 'myapp:supervisor_getdaily_filter' %}">{% csrf_token %}
   <div class="row m-2">
     <input type="number" class="form-control" name="lid" value="{{ln}}" hidden>

@@ -775,6 +775,19 @@ def supervisor_line_filter(request,id):
     return render(request, 'supervisor_line_filter.html', context)
 
 
+def supervisor_getdaily_filter(request):
+    dudate = request.POST.get('duedate')
+    lid = request.POST.get('lid')
+    lname = line.objects.get(id=lid)
+    ln = lid
+    op = daily_report.objects.filter(created_date=dudate, line=lname)
+    context = {'op':op, 'lname':lname, 'ln':ln}
+    return render(request, 'supervisor_getdaily_filter.html', context)
+
+
+
+
+
 
 #get one month data
 
@@ -928,7 +941,7 @@ def testpref(request):
     dr = daily_report.objects.all()  
     op = operator.objects.filter(line=1)
     context = {'dr':dr, 'op':op}
-    return render(request, 'test/test.html',context)
+    return render(request, 'test/datepicker.html',context)
 
 
 def report_groupby_operator(request):
