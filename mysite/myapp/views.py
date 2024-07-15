@@ -825,8 +825,9 @@ def one_month_filter(request):
     first_date = today.replace(day=1)
     monday = today - datetime.timedelta(days = today.weekday())
     lis = line.objects.all()
+    liname = line.objects.get(id= lid)
     ln = lid
-    context = {'op':op, 'first_date':first_date, 'lis':lis , 'ln':ln, 'monday':monday}
+    context = {'op':op, 'first_date':first_date, 'lis':lis , 'ln':ln, 'monday':monday, 'liname':liname}
     return render(request, 'one_month_filter.html', context)
 
 
@@ -862,8 +863,9 @@ def one_week_filter(request):
     first_date = today.replace(day=1)
     monday = today - datetime.timedelta(days = today.weekday())
     lis = line.objects.all()
+    liname = line.objects.get(id= lid)
     ln = lid
-    context = {'op':op, 'first_date':first_date, 'lis':lis , 'ln':ln, 'monday':monday}
+    context = {'op':op, 'first_date':first_date, 'lis':lis , 'ln':ln, 'monday':monday, 'liname':liname}
     return render(request, 'one_week_filter.html', context)
 
 

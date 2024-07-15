@@ -162,6 +162,7 @@
         -
         {% else %}
         {{i.h1}}
+       
         {% endif %}
       </td>
       <td>
@@ -292,3 +293,24 @@
 
 
 {% endblock content %}
+
+
+
+
+<!-- <script type = "text/javascript">
+  var a = {{p.t_total_output_qty}}/{{p.sum}}*100;
+  //document.write(parseFloat(a).toFixed(2))
+  if (a < 50) {
+document.getElementById("td1").style.backgroundColor ='red';
+document.getElementById("l1").innerHTML = parseFloat(a).toFixed(2);
+} else if (a < 100){
+document.getElementById("td1").style.backgroundColor ='yellow';
+document.getElementById("l1").innerHTML = parseFloat(a).toFixed(2);
+} else {
+document.getElementById("td1").style.backgroundColor ='#35fc03';
+document.getElementById("l1").innerHTML = parseFloat(a).toFixed(2);
+}
+
+
+
+</script> -->

@@ -102,3 +102,6 @@ class opreport(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 
+class dailyhour(models.Model):
+    timehr = models.PositiveIntegerField(default=0)
+    
