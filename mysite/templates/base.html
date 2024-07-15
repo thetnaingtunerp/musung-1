@@ -591,6 +591,33 @@ $("#invlist").on('click', '.lineatt', function() {
   });//end ajax
 });//End Line Attendance
 
+//Back date Line Attendance
+$("#invlist").on('click', '.dueattendance', function() {
+    var currenttr = $(this).closest(".linetr");
+    var lid = currenttr.find(".lid").html();
+
+    var backdate = currenttr.find(".bdate").val();
+    console.log(backdate);
+    $.ajax({
+    url: "/save_attendance_backdate/",
+    method: "GET",
+    data:{lid:lid, backdate:backdate},
+    success: function(data){
+  
+        alert('Back Attendance Successfully');
+        window.setTimeout(function(){ } ,100);
+                        location.reload();      
+    },
+    error:function(){
+        alert('Error contact to 09-969255445');
+    },
+                    
+  });//end ajax
+});//End Back Date Line Attendance
+
+
+
+
 // SaveData
 $("#SaveData").click(function(){
             location.reload(true);

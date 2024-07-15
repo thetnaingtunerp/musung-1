@@ -56,7 +56,8 @@ class daily_report(models.Model):
     combine = models.PositiveIntegerField(default=1)
     absant = models.BooleanField(default=False)
     remark = models.TextField(blank=True, null=True)
-    created_date = models.DateField(auto_now_add=True)
+    
+    created_date = models.DateField(blank=True, null=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):

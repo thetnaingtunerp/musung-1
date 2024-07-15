@@ -11,7 +11,7 @@
     </button>
   </div> -->
  
-  <form method="post" action="#">{% csrf_token %}
+  <form method="post" action="{% url 'myapp:attendance_backdate' %}">{% csrf_token %}
     <div class="row m-2">
       
       <input type="date" name="duedate"  class="form-control col datepicker">

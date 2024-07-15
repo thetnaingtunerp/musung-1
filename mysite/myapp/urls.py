@@ -21,6 +21,9 @@ urlpatterns = [
     path('monthly_report/', views.monthly_report, name='monthly_report'),
     path('dailyrep_delete/<int:id>/', views.dailyrep_delete, name='dailyrep_delete'),
 
+    path('attendance_backdate/', views.attendance_backdate, name='attendance_backdate'),
+    path('save_attendance_backdate/', views.save_attendance_backdate, name='save_attendance_backdate'),
+
     path('workhour/', views.workhour, name='workhour'),
     path('changehrstatus/', views.changehrstatus,name='changehrstatus'),
     path('optortargetrep/', views.optortargetrep, name='optortargetrep'),

@@ -73,20 +73,23 @@ def save_att_daily(request):
     op_obj = operator.objects.get(id=iop)
     lie = op_obj.line
     l_obj = line.objects.get(line_name=lie)
+    today = datetime.date.today()
     # print(l_obj)
-    dr = daily_report(operator_name=op_obj, line=l_obj, target=l_obj.target)
+    dr = daily_report(operator_name=op_obj, line=l_obj, target=l_obj.target, created_date=today)
     dr.save()
     return JsonResponse({'status':'success'})
 
 
 def daily_line_attendance(request):
     l = request.GET.get('lid')
+    
     l_obj = line.objects.get(id=l)
-    # print(l_obj)
+    today = datetime.date.today()
+
     opt = operator.objects.filter(line=l_obj,resign=False)
 
     for i in opt:
-        dr = daily_report(operator_name=i, line=l_obj, target=l_obj.target)
+        dr = daily_report(operator_name=i, line=l_obj, target=l_obj.target, created_date=today)
         dr.save()
         
 
@@ -95,11 +98,25 @@ def daily_line_attendance(request):
 
 
 def attendance_backdate(request):
-    bdate = request.GET.get('duedate')
+    bdate = request.POST.get('duedate')
     lis = line.objects.all()
     context = {'lis':lis, 'bdate':bdate}
     return render(request, 'attendance_backdate.html', context)
 
+
+def save_attendance_backdate(request):
+    l = request.GET.get('lid')
+    backdate = request.GET.get('backdate')
+    l_obj = line.objects.get(id=l)
+    fd = datetime.datetime.strptime(backdate, '%Y-%m-%d').date()
+    opt = operator.objects.filter(line=l_obj,resign=False)
+
+    for i in opt:
+        dr = daily_report(operator_name=i, line=l_obj, target=l_obj.target, created_date=fd)
+        dr.save()
+        
+
+    return JsonResponse({'status':'error'})
 
 
 
