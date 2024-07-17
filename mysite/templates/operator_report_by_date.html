@@ -7,7 +7,7 @@
 <div class="row text-center justify-content-md-center ">
    {% for i in lis %}
    <a href="{% url 'myapp:supervisor_line_filter' i.id %}" class="col-md-3 m-1 p-3">
-      <div class="card bg-primary text-white">
+      <div class="card bg-danger text-white">
          <div class="card-body h4">
             {{i.line_name}}
          </div>
