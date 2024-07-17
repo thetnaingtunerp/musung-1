@@ -5,6 +5,19 @@
 
 <div class="row justify-content-md-center">
   
+<!-- <form method="post" action="{% url 'myapp:one_month_red_color' %}">{% csrf_token %}
+   <div class="col-md-12 m-2">
+     <input type="number" class="form-control" name="lid" value="{{ln}}" hidden>
+     <input type="submit" class="form-control btn btn-sm btn-danger" value="RED">
+   </div>
+</form>
+
+<form method="post" action="{% url 'myapp:one_month_success_color' %}">{% csrf_token %}
+   <div class="col-md-12 m-2">
+     <input type="number" class="form-control" name="lid" value="{{ln}}" hidden>
+     <input type="submit" class="form-control btn btn-sm btn-success" value="SUCCESS">
+   </div>
+</form> -->
 <form method="post" action="{% url 'myapp:supervisor_getdaily_filter' %}">{% csrf_token %}
   <div class="row m-2">
     <input type="number" class="form-control" name="lid" value="{{ln}}" hidden>
@@ -117,9 +130,10 @@
       <th scope="col">5:00 PM</th>
       <th scope="col">6:00 PM</th>
       <th scope="col">7:00 PM</th>
-      <th scope="col">Target <span class="text-danger">({{lname.target}})</span> </th>
+      <th scope="col">Target </th>
       <th scope="col">Total</th>
-      <th scope="col">%</th>
+      <th scope="col"></th>
+      <!-- <th scope="col">%</th> -->
       <th scope="col">Remark</th>
       
       
@@ -139,98 +153,210 @@
         
       </td>
       <td><span class="text-danger">{{i.operator_name.employee_code}}</span></td>
-      <td><span class="text-primary">{{i.operator_name.point}}</span></td>
+      <td><span class="text-primary">{{i.operator_name.point}}</span>{{i.hourcount}}</td>
 
       
-      <td>
-        <input type="number" class="dvrtblid" value="{{i.id}}" hidden>
+      <td id="ih1-{{i.id}}">
+        <!-- <input type="number" class="dvrtblid" value="{{i.id}}" hidden> -->
         
         {% if i.h1 == 0 %}
         -
         {% else %}
         {{i.h1}}
+        <script type="text/javascript">
+          var s2 = {{i.h1}}
+          var t2 = {{i.target}}/11
+          var data = s2/t2*100
+                    if (data < 50) {
+                        document.getElementById("ih1-{{i.id}}").style.backgroundColor ='#f0dcda';
+                    } else if (data >= 80){
+                        document.getElementById("ih1-{{i.id}}").style.backgroundColor ='#daf0d3';
+                    }
+        </script>
+
+       
         {% endif %}
       </td>
-      <td>
+      <td id="ih2-{{i.id}}">
         
        {% if i.h2 == 0 %}
         -
         {% else %}
         {{i.h2}}
+        <script type="text/javascript">
+          var s2 = {{i.h2}}
+          var t2 = {{i.target}}/11
+          var data = s2/t2*100
+                    if (data < 50) {
+                        document.getElementById("ih2-{{i.id}}").style.backgroundColor ='#f0dcda';
+                    } else if (data >= 80){
+                        document.getElementById("ih2-{{i.id}}").style.backgroundColor ='#daf0d3';
+                    }
+        </script>
         {% endif %}
         
       </td>
-      <td>
+      <td id="ih3-{{i.id}}">
         
        {% if i.h3 == 0 %}
        -
         {% else %}
         {{i.h3}}
+        <script type="text/javascript">
+          var s2 = {{i.h3}}
+          var t2 = {{i.target}}/11
+          var data = s2/t2*100
+                    if (data < 50) {
+                        document.getElementById("ih3-{{i.id}}").style.backgroundColor ='#f0dcda';
+                    } else if (data >= 80){
+                        document.getElementById("ih3-{{i.id}}").style.backgroundColor ='#daf0d3';
+                    }
+        </script>
         {% endif %}
       </td>
-      <td>
+      <td id="ih4-{{i.id}}">
         
         {% if i.h4 == 0 %}
         -
         {% else %}
         {{i.h4}}
+        <script type="text/javascript">
+          var s2 = {{i.h4}}
+          var t2 = {{i.target}}/11
+          var data = s2/t2*100
+                    if (data < 50) {
+                        document.getElementById("ih4-{{i.id}}").style.backgroundColor ='#f0dcda';
+                    } else if (data >= 80){
+                        document.getElementById("ih4-{{i.id}}").style.backgroundColor ='#daf0d3';
+                    }
+        </script>
         {% endif %}
       </td>
-      <td>
+      <td id="ih5-{{i.id}}">
         
         {% if i.h5 == 0 %}
         -
         {% else %}
         {{i.h5}}
+        <script type="text/javascript">
+          var s2 = {{i.h5}}
+          var t2 = {{i.target}}/11
+          var data = s2/t2*100
+                    if (data < 50) {
+                        document.getElementById("ih5-{{i.id}}").style.backgroundColor ='#f0dcda';
+                    } else if (data >= 80){
+                        document.getElementById("ih5-{{i.id}}").style.backgroundColor ='#daf0d3';
+                    }
+        </script>
         {% endif %}
       </td>
-      <td>
+      <td id="ih6-{{i.id}}">
         
         {% if i.h6 == 0 %}
         -
         {% else %}
         {{i.h6}}
+        <script type="text/javascript">
+          var s2 = {{i.h6}}
+          var t2 = {{i.target}}/11
+          var data = s2/t2*100
+                    if (data < 50) {
+                        document.getElementById("ih6-{{i.id}}").style.backgroundColor ='#f0dcda';
+                    } else if (data >= 80){
+                        document.getElementById("ih6-{{i.id}}").style.backgroundColor ='#daf0d3';
+                    }
+        </script>
         {% endif %}
       </td>
-      <td>
+      <td id="ih7-{{i.id}}">
         
         {% if i.h7 == 0 %}
         -
         {% else %}
         {{i.h7}}
+        <script type="text/javascript">
+          var s2 = {{i.h7}}
+          var t2 = {{i.target}}/11
+          var data = s2/t2*100
+                    if (data < 50) {
+                        document.getElementById("ih7-{{i.id}}").style.backgroundColor ='#f0dcda';
+                    } else if (data >= 80){
+                        document.getElementById("ih7-{{i.id}}").style.backgroundColor ='#daf0d3';
+                    }
+        </script>
         {% endif %}
       </td>
-      <td>
+      <td id="ih8-{{i.id}}">
         
         {% if i.h8 == 0 %}
         -
         {% else %}
         {{i.h8}}
+        <script type="text/javascript">
+          var s2 = {{i.h8}}
+          var t2 = {{i.target}}/11
+          var data = s2/t2*100
+                    if (data < 50) {
+                        document.getElementById("ih8-{{i.id}}").style.backgroundColor ='#f0dcda';
+                    } else if (data >= 80){
+                        document.getElementById("ih8-{{i.id}}").style.backgroundColor ='#daf0d3';
+                    }
+        </script>
         {% endif %}
       </td>
-      <td>
+      <td id="ih9-{{i.id}}">
         
         {% if i.h9 == 0 %}
         -
         {% else %}
         {{i.h9}}
+        <script type="text/javascript">
+          var s2 = {{i.h9}}
+          var t2 = {{i.target}}/11
+          var data = s2/t2*100
+                    if (data < 50) {
+                        document.getElementById("ih9-{{i.id}}").style.backgroundColor ='#f0dcda';
+                    } else if (data >= 80){
+                        document.getElementById("ih9-{{i.id}}").style.backgroundColor ='#daf0d3';
+                    }
+        </script>
         {% endif %}
       </td>
-      <td>
+      <td id="ih10-{{i.id}}">
         
         {% if i.h10 == 0 %}
         -
         {% else %}
         {{i.h10}}
+        <script type="text/javascript">
+          var s2 = {{i.h10}}
+          var t2 = {{i.target}}/11
+          var data = s2/t2*100
+                    if (data < 50) {
+                        document.getElementById("ih10-{{i.id}}").style.backgroundColor ='#f0dcda';
+                    } else if (data >= 80){
+                        document.getElementById("ih10-{{i.id}}").style.backgroundColor ='#daf0d3';
+                    }
+        </script>
        
         {% endif %}
       </td>
-      <td>
+      <td id="ih11-{{i.id}}">
         
         {% if i.h11 == 0 %}
         -
         {% else %}
         {{i.h11}}
+        <script type="text/javascript">
+          var s2 = {{i.h11}}
+          var t2 = {{i.target}}/11
+          var data = s2/t2*100
+                    if (data < 50) {
+                        document.getElementById("ih11-{{i.id}}").style.backgroundColor ='#f0dcda';
+                    } else if (data >= 80){
+                        document.getElementById("ih11-{{i.id}}").style.backgroundColor ='#daf0d3';
+                    }
+        </script>
         
         {% endif %}
       </td>
@@ -242,7 +368,147 @@
       
       <td><strong style="font-size:18px;">{{i.target_qty}}</strong></td>
 
-      <td>
+      <td id="cc-{{i.id}}">      
+
+        {{i.target_per}}%
+
+<!-- get color hourly -->
+<script type="text/javascript">
+var foo ={{i.hourcount}};
+switch (foo) {
+  case 1:
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var data = s2/t2*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+        
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+        
+      }
+    break;
+  case 2: // Value of foo matches this criteria; execution starts from here
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = t2 + t2
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+      }
+    break;
+  case 3: // no break statement in 'case 0:' so this case will run as well
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = t2 + t2 + t2
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+      }
+    break;
+  case 4:
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = t2 + t2 + t2 + t2
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+      }
+    break;
+  case 5:
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = t2 + t2 + t2 + t2 + t2
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+      }
+    break;
+  case 6:
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = t2 + t2 + t2 + t2 + t2 + t2
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+      }
+    break;
+  case 7:
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = t2 + t2 + t2 + t2 + t2 + t2 + t2
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+      }
+    break;
+  case 8:
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+      }
+    break;
+  case 9:
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+      }
+    break;
+  case 10:
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+      }
+    break;
+  case 11:
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = {{i.target}}
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+      }
+    break;
+  default:
+    console.log("default");
+}
+// Logs 0 and 1
+
+</script>
+
+
+      </td>
+
+      <!-- <td>
         {% if i.target_per > 80 %}
         <a href="#" class="btn btn-sm btn-success d-block">{{i.target_per}}%</a>
         {% elif i.target_per < 50 %}
@@ -250,7 +516,7 @@
         {% else %}
         <a href="#" class="btn btn-sm btn-outline-secondary d-block">{{i.target_per}}%</a>
         {% endif %}
-      </td>
+      </td> -->
       <td>
         {% if i.remark %}
         <!-- <button type="button" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="left" title="{{i.remark}}">
@@ -279,3 +545,24 @@
 
 
 {% endblock content %}
+
+
+
+
+<!-- <script type = "text/javascript">
+  var a = {{p.t_total_output_qty}}/{{p.sum}}*100;
+  //document.write(parseFloat(a).toFixed(2))
+  if (a < 50) {
+document.getElementById("td1").style.backgroundColor ='red';
+document.getElementById("l1").innerHTML = parseFloat(a).toFixed(2);
+} else if (a < 100){
+document.getElementById("td1").style.backgroundColor ='yellow';
+document.getElementById("l1").innerHTML = parseFloat(a).toFixed(2);
+} else {
+document.getElementById("td1").style.backgroundColor ='#35fc03';
+document.getElementById("l1").innerHTML = parseFloat(a).toFixed(2);
+}
+
+
+
+</script> -->

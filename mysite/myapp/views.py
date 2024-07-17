@@ -294,7 +294,12 @@ def update_h1(request):
     comb = rg.combine
     optar = rg.target
     percen = (total/optar)*100*comb
-    rr.update(target_qty=total, target_per=percen)
+    if rg.hourcount > 1:
+        rr.update(target_qty=total, target_per=percen)
+        return JsonResponse({'status':'success'})
+    else:
+        rr.update(target_qty=total, target_per=percen, hourcount=1)
+        return JsonResponse({'status':'success'})
     return JsonResponse({'status':'success'})
 
 def update_h2(request):
@@ -325,6 +330,12 @@ def update_h2(request):
     optar = rg.target
     percen = (total/optar)*100*comb
     rr.update(target_qty=total, target_per=percen)
+    if rg.hourcount > 2:
+        rr.update(target_qty=total, target_per=percen)
+        return JsonResponse({'status':'success'})
+    else:
+        rr.update(target_qty=total, target_per=percen, hourcount=2)
+        return JsonResponse({'status':'success'})
     return JsonResponse({'status':'success'})
 
 def update_h3(request):
@@ -355,6 +366,12 @@ def update_h3(request):
     optar = rg.target
     percen = (total/optar)*100*comb
     rr.update(target_qty=total, target_per=percen)
+    if rg.hourcount > 3:
+        rr.update(target_qty=total, target_per=percen)
+        return JsonResponse({'status':'success'})
+    else:
+        rr.update(target_qty=total, target_per=percen, hourcount=3)
+        return JsonResponse({'status':'success'})
     return JsonResponse({'status':'success'})
 
 def update_h4(request):
@@ -385,6 +402,12 @@ def update_h4(request):
     optar = rg.target
     percen = (total/optar)*100*comb
     rr.update(target_qty=total, target_per=percen)
+    if rg.hourcount > 4:
+        rr.update(target_qty=total, target_per=percen)
+        return JsonResponse({'status':'success'})
+    else:
+        rr.update(target_qty=total, target_per=percen, hourcount=4)
+        return JsonResponse({'status':'success'})
     return JsonResponse({'status':'success'})
 
 
@@ -416,6 +439,12 @@ def update_h5(request):
     optar = rg.target
     percen = (total/optar)*100*comb
     rr.update(target_qty=total, target_per=percen)
+    if rg.hourcount > 5:
+        rr.update(target_qty=total, target_per=percen)
+        return JsonResponse({'status':'success'})
+    else:
+        rr.update(target_qty=total, target_per=percen, hourcount=5)
+        return JsonResponse({'status':'success'})
     return JsonResponse({'status':'success'})
 
 def update_h6(request):
@@ -446,6 +475,12 @@ def update_h6(request):
     optar = rg.target
     percen = (total/optar)*100*comb
     rr.update(target_qty=total, target_per=percen)
+    if rg.hourcount > 6:
+        rr.update(target_qty=total, target_per=percen)
+        return JsonResponse({'status':'success'})
+    else:
+        rr.update(target_qty=total, target_per=percen, hourcount=6)
+        return JsonResponse({'status':'success'})
     return JsonResponse({'status':'success'})
 
 def update_h7(request):
@@ -476,6 +511,12 @@ def update_h7(request):
     optar = rg.target
     percen = (total/optar)*100*comb
     rr.update(target_qty=total, target_per=percen)
+    if rg.hourcount > 7:
+        rr.update(target_qty=total, target_per=percen)
+        return JsonResponse({'status':'success'})
+    else:
+        rr.update(target_qty=total, target_per=percen, hourcount=7)
+        return JsonResponse({'status':'success'})
     return JsonResponse({'status':'success'})
 
 def update_h8(request):
@@ -506,6 +547,12 @@ def update_h8(request):
     optar = rg.target
     percen = (total/optar)*100*comb
     rr.update(target_qty=total, target_per=percen)
+    if rg.hourcount > 8:
+        rr.update(target_qty=total, target_per=percen)
+        return JsonResponse({'status':'success'})
+    else:
+        rr.update(target_qty=total, target_per=percen, hourcount=8)
+        return JsonResponse({'status':'success'})
     return JsonResponse({'status':'success'})
 
 def update_h9(request):
@@ -536,6 +583,12 @@ def update_h9(request):
     optar = rg.target
     percen = (total/optar)*100*comb
     rr.update(target_qty=total, target_per=percen)
+    if rg.hourcount > 9:
+        rr.update(target_qty=total, target_per=percen)
+        return JsonResponse({'status':'success'})
+    else:
+        rr.update(target_qty=total, target_per=percen, hourcount=9)
+        return JsonResponse({'status':'success'})
     return JsonResponse({'status':'success'})
 
 def update_h10(request):
@@ -566,6 +619,12 @@ def update_h10(request):
     optar = rg.target
     percen = (total/optar)*100*comb
     rr.update(target_qty=total, target_per=percen)
+    if rg.hourcount > 10:
+        rr.update(target_qty=total, target_per=percen)
+        return JsonResponse({'status':'success'})
+    else:
+        rr.update(target_qty=total, target_per=percen, hourcount=10)
+        return JsonResponse({'status':'success'})
     return JsonResponse({'status':'success'})
 
 def update_h11(request):
@@ -596,6 +655,12 @@ def update_h11(request):
     optar = rg.target
     percen = (total/optar)*100*comb
     rr.update(target_qty=total, target_per=percen)
+    if rg.hourcount > 11:
+        rr.update(target_qty=total, target_per=percen)
+        return JsonResponse({'status':'success'})
+    else:
+        rr.update(target_qty=total, target_per=percen, hourcount=11)
+        return JsonResponse({'status':'success'})
     return JsonResponse({'status':'success'})
 
 def update_h12(request):
@@ -626,6 +691,12 @@ def update_h12(request):
     optar = rg.target
     percen = (total/optar)*100*comb
     rr.update(target_qty=total, target_per=percen)
+    if rg.hourcount > 12:
+        rr.update(target_qty=total, target_per=percen)
+        return JsonResponse({'status':'success'})
+    else:
+        rr.update(target_qty=total, target_per=percen, hourcount=12)
+        return JsonResponse({'status':'success'})
     return JsonResponse({'status':'success'})
 
 
@@ -670,11 +741,13 @@ def update_combine(request,id):
     # redirect to detail_view
     if form.is_valid():
         form.save()
-        # return redirect(request.META.get('HTTP_REFERER'))
-        return redirect('myapp:daily_rep_view')
+        context["msg"] = "Update Successful"
+        # return redirect(request.META.get('HTTP_REFERER'), context["msg"])
+        # return redirect('myapp:daily_rep_view')
  
     # add form dictionary to context
     context["form"] = form
+    # context["msg"] = 'uptaee'
  
     return render(request, "update_combine.html", context)
 

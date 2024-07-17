@@ -130,7 +130,7 @@
       <th scope="col">5:00 PM</th>
       <th scope="col">6:00 PM</th>
       <th scope="col">7:00 PM</th>
-      <th scope="col">Target <span class="text-danger">({{lname.target}})</span> </th>
+      <th scope="col">Target </th>
       <th scope="col">Total</th>
       <th scope="col">%</th>
       <th scope="col">Remark</th>
@@ -155,96 +155,108 @@
       <td><span class="text-primary">{{i.operator_name.point}}</span></td>
 
       
-      <td>
-        <input type="number" class="dvrtblid" value="{{i.id}}" hidden>
+      <td id="ih1-{{i.id}}">
+        <!-- <input type="number" class="dvrtblid" value="{{i.id}}" hidden> -->
         
         {% if i.h1 == 0 %}
         -
         {% else %}
         {{i.h1}}
+        
+
        
         {% endif %}
       </td>
-      <td>
+      <td id="ih2-{{i.id}}">
         
        {% if i.h2 == 0 %}
         -
         {% else %}
         {{i.h2}}
+        
         {% endif %}
         
       </td>
-      <td>
+      <td id="ih3-{{i.id}}">
         
        {% if i.h3 == 0 %}
        -
         {% else %}
         {{i.h3}}
+        
         {% endif %}
       </td>
-      <td>
+      <td id="ih4-{{i.id}}">
         
         {% if i.h4 == 0 %}
         -
         {% else %}
         {{i.h4}}
+        
         {% endif %}
       </td>
-      <td>
+      <td id="ih5-{{i.id}}">
         
         {% if i.h5 == 0 %}
         -
         {% else %}
         {{i.h5}}
+        
         {% endif %}
       </td>
-      <td>
+      <td id="ih6-{{i.id}}">
         
         {% if i.h6 == 0 %}
         -
         {% else %}
         {{i.h6}}
+        
         {% endif %}
       </td>
-      <td>
+      <td id="ih7-{{i.id}}">
         
         {% if i.h7 == 0 %}
         -
         {% else %}
         {{i.h7}}
+        
         {% endif %}
       </td>
-      <td>
+      <td id="ih8-{{i.id}}">
         
         {% if i.h8 == 0 %}
         -
         {% else %}
         {{i.h8}}
+        
         {% endif %}
       </td>
-      <td>
+      <td id="ih9-{{i.id}}">
         
         {% if i.h9 == 0 %}
         -
         {% else %}
         {{i.h9}}
+        
         {% endif %}
       </td>
-      <td>
+      <td id="ih10-{{i.id}}">
         
         {% if i.h10 == 0 %}
         -
         {% else %}
         {{i.h10}}
+        
        
         {% endif %}
       </td>
-      <td>
+      <td id="ih11-{{i.id}}">
         
         {% if i.h11 == 0 %}
         -
         {% else %}
         {{i.h11}}
+        
         
         {% endif %}
       </td>
@@ -256,20 +268,149 @@
       
       <td><strong style="font-size:18px;">{{i.target_qty}}</strong></td>
 
-      <td>
-        {% if i.target_per > 80 %}
-        <a href="#" class="btn btn-sm btn-success d-block">{{i.target_per}}%</a>
-        {% elif i.target_per < 50 %}
-        <a href="#" class="btn btn-sm btn-danger d-block">{{i.target_per}}%</a>
-        {% else %}
-        <a href="#" class="btn btn-sm btn-outline-secondary d-block">{{i.target_per}}%</a>
-        {% endif %}
+      <td id="cc-{{i.id}}">      
+
+        {{i.target_per}}%
+       
+
+<!-- get color hourly -->
+<script type="text/javascript">
+var foo ={{i.hourcount}};
+switch (foo) {
+  case 1:
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var data = s2/t2*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+        
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+        
+      }
+    break;
+  case 2: // Value of foo matches this criteria; execution starts from here
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = t2 + t2
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+      }
+    break;
+  case 3: // no break statement in 'case 0:' so this case will run as well
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = t2 + t2 + t2
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+      }
+    break;
+  case 4:
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = t2 + t2 + t2 + t2
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+      }
+    break;
+  case 5:
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = t2 + t2 + t2 + t2 + t2
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+      }
+    break;
+  case 6:
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = t2 + t2 + t2 + t2 + t2 + t2
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+      }
+    break;
+  case 7:
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = t2 + t2 + t2 + t2 + t2 + t2 + t2
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+      }
+    break;
+  case 8:
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+      }
+    break;
+  case 9:
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+      }
+    break;
+  case 10:
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+      }
+    break;
+  case 11:
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = {{i.target}}
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+      }
+    break;
+  default:
+  document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+}
+// Logs 0 and 1
+
+</script>
+
+
       </td>
-      <td>
-        {% if i.remark %}
-        <!-- <button type="button" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="left" title="{{i.remark}}">
-          <i class="fa-solid fa-circle-info"></i>
-        </button> -->
+      <td id="rmk-{{i.id}}">
+        <!-- {% if i.remark %}
+        
         <a href="#" class="btn btn-sm btn-warning"  data-toggle="tooltip" data-placement="left" title="{{i.remark}}">
           <i class="fa-solid fa-comments"></i>
         </a>
@@ -277,7 +418,7 @@
 
         {% if i.absant == True %}
         <a href="#" class="btn-sm btn-danger">absant</a>
-        {% endif %}
+        {% endif %} -->
       </td>
 
 
