@@ -829,6 +829,17 @@ def duedatefilter(request):
         return render(request, "duedatefilter.html", context)
 
 
+def backdate_dataentry(request):
+    if request.method=="POST":
+        duedate = request.POST.get('duedate')
+        linename = request.POST.get('linename')
+        ls = line.objects.get(id=linename)
+        lis = line.objects.all()
+        op = daily_report.objects.filter(created_date=duedate, line=ls)
+        context = {'op':op, 'lis':lis, 'duedate':duedate, 'ls':ls}
+        return render(request, "backdate_dataentry.html", context)
+
+
 def duedatefilter_by_line(request):
     if request.method=="POST":
         duedate = request.POST.get('ddate')

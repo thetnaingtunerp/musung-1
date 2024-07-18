@@ -16,9 +16,9 @@
 <form action="{% url 'myapp:backdate_dataentry' %}" method="post">
   {% csrf_token %}
   <div class="row">
-  <input type="date" name="duedate" class="form-control col-md-2">
+  <input type="date" name="duedate" class="form-control col-md-2" value="{{duedate}}">
   <input type="number" name="linename" value="{{ls.id}}" hidden>
-  <input type="submit" class="btn btn-sm btn-info">
+  <input type="submit" class="btn btn-sm btn-danger">
   
   </div>
   
@@ -27,9 +27,7 @@
 </div>
 
 <div class="text-center">
- 
-  <a href="#" class="h3">{{ls}}</a>
-  <!-- <button type="button" class="btn btn-secondary">{{ls}}</button> -->
+    <a href="#" class="h3 text-danger">{{ls}}</a>
     
 </div>
 

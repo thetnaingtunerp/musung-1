@@ -20,6 +20,7 @@ urlpatterns = [
     path('daily_rep_filter_bydate/', views.daily_rep_filter_bydate, name='daily_rep_filter_bydate'),
     path('monthly_report/', views.monthly_report, name='monthly_report'),
     path('dailyrep_delete/<int:id>/', views.dailyrep_delete, name='dailyrep_delete'),
+    path('backdate_dataentry/', views.backdate_dataentry, name='backdate_dataentry'),
 
     path('attendance_backdate/', views.attendance_backdate, name='attendance_backdate'),
     path('save_attendance_backdate/', views.save_attendance_backdate, name='save_attendance_backdate'),

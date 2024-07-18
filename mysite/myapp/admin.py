@@ -19,4 +19,5 @@ admin.site.register(operator, operatorAdmin)
 
 class dailyreportadmin(admin.ModelAdmin):
   list_display = ('operator_name', 'line', 'created_date')
+  list_filter = ('created_date','line')
 admin.site.register(daily_report, dailyreportadmin)
