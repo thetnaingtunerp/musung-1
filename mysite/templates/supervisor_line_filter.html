@@ -148,10 +148,14 @@
       
       <td><a href="{% url 'myapp:dailyrep_delete' i.id %}">{{forloop.counter}}</a></td>
       <td style="min-width: 200px;">
+        {% if i.absant %}
+        <a href="{% url 'myapp:update_combine' i.id %}" class="text-danger h6">{{i.operator_name}}</a>
+        {% else %}
         <a href="{% url 'myapp:update_combine' i.id %}" class="text-dark">{{i.operator_name}}</a>
+        {% endif %}
         
       </td>
-      <td><span class="text-danger">{{i.operator_name.employee_code}}</span></td>
+      <td><span class="text-primary">{{i.operator_name.employee_code}}</span></td>
       <td><span class="text-primary">{{i.operator_name.point}}</span></td>
 
       
@@ -270,7 +274,7 @@
 
       <td id="cc-{{i.id}}">      
 
-        {{i.target_per}}%
+        {{i.target_per}}
        
 
 <!-- get color hourly -->
