@@ -34,6 +34,9 @@ urlpatterns = [
     path('update_combine/<int:id>/', views.update_combine, name='update_combine'),
     path('daily_line_attendance/', views.daily_line_attendance, name='daily_line_attendance'),
 
+    #search
+    path('daily_rep_search/', views.daily_rep_search, name='daily_rep_search'),
+
     #DueDate
     path('duedatefilter/', views.duedatefilter, name='duedatefilter'),
     path('duedatefilter_by_line/', views.duedatefilter_by_line, name='duedatefilter_by_line'),

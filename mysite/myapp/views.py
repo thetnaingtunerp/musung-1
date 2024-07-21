@@ -165,6 +165,16 @@ def daily_rep_filter_by_line(request,id):
     context = {'lis':lis, 'op':op, 'ls':ls}
     return render(request, 'daily_rep_view.html', context)
 
+def daily_rep_search(request):
+    emp = request.GET.get('emp')
+    lid = request.GET.get('lid')
+    employee = operator.objects.get(name__contains=emp, line=lid)
+    today = datetime.date.today()
+    op = daily_report.objects.filter(created_date=today, operator_name=employee.id)
+    context = {'op':op}
+    return render(request, 'daily_rep_view.html', context)
+
+
 def daily_rep_filter_operator(request,id):
     # gop = request.GET.get('id')
     p =  operator.objects.get(id=id)

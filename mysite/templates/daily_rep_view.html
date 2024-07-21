@@ -12,8 +12,8 @@
   </div>
   
 </form> -->
-
-<form action="{% url 'myapp:backdate_dataentry' %}" method="post">
+<!-- <a href="#" class="h3">{{ls}}</a> -->
+<!-- <form action="{% url 'myapp:backdate_dataentry' %}" method="post">
   {% csrf_token %}
   <div class="row">
   <input type="date" name="duedate" class="form-control col-md-2">
@@ -22,15 +22,44 @@
   
   </div>
   
-</form>
+  
+</form> -->
+
+
 
 </div>
 
-<div class="text-center">
+<div class="text-center row m-3">
  
-  <a href="#" class="h3">{{ls}}</a>
+  <!-- <a href="#" class="h3">{{ls}}</a> -->
   <!-- <button type="button" class="btn btn-secondary">{{ls}}</button> -->
+
+<div class="col-md-3">  
+<form action="{% url 'myapp:daily_rep_search' %}" method="get">
+  <input type="number" name="lid" value="{{ls.id}}" hidden>
+  <input type="text" name="emp" class="form-control" placeholder="Enter Employee Name">
+  <input type="submit" value="" hidden>
+</form>
+</div>
+
+<div class="col-md-4">
+  <a href="#" class="h3">{{ls}}</a>
+</div>
+
+<div class="col-md-4">
+  <form action="{% url 'myapp:backdate_dataentry' %}" method="post">
+    {% csrf_token %}
+    <div class="row">
+    <input type="date" name="duedate" class="form-control col-md-6">
+    <input type="number" name="linename" value="{{ls.id}}" hidden>
+    <input type="submit" class="btn btn-sm btn-info">
     
+    </div>
+    
+    
+  </form>
+</div>
+
 </div>
 
 
