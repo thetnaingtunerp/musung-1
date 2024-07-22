@@ -169,9 +169,10 @@ def daily_rep_search(request):
     emp = request.GET.get('emp')
     lid = request.GET.get('lid')
     employee = operator.objects.get(name__contains=emp, line=lid)
+    ls = line.objects.get(id=lid)
     today = datetime.date.today()
     op = daily_report.objects.filter(created_date=today, operator_name=employee.id)
-    context = {'op':op}
+    context = {'op':op, 'ls':ls}
     return render(request, 'daily_rep_view.html', context)
 
 

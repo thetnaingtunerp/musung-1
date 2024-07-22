@@ -12,23 +12,54 @@
   </div>
   
 </form> -->
-
-<form action="{% url 'myapp:backdate_dataentry' %}" method="post">
+<!-- <a href="#" class="h3">{{ls}}</a> -->
+<!-- <form action="{% url 'myapp:backdate_dataentry' %}" method="post">
   {% csrf_token %}
   <div class="row">
-  <input type="date" name="duedate" class="form-control col-md-2" value="{{duedate}}">
+  <input type="date" name="duedate" class="form-control col-md-2">
   <input type="number" name="linename" value="{{ls.id}}" hidden>
-  <input type="submit" class="btn btn-sm btn-danger">
+  <input type="submit" class="btn btn-sm btn-info">
   
   </div>
   
-</form>
+  
+</form> -->
+
+
 
 </div>
 
-<div class="text-center">
-    <a href="#" class="h3 text-danger">{{ls}}</a>
+<div class="text-center row m-3">
+ 
+  <!-- <a href="#" class="h3">{{ls}}</a> -->
+  <!-- <button type="button" class="btn btn-secondary">{{ls}}</button> -->
+
+<div class="col-md-3">  
+<form action="{% url 'myapp:daily_rep_search' %}" method="get">
+  <input type="number" name="lid" value="{{ls.id}}" hidden>
+  <input type="text" name="emp" class="form-control" placeholder="Enter Employee Name">
+  <input type="submit" value="" hidden>
+</form>
+</div>
+
+<div class="col-md-5">
+  <a href="#" class="h3">{{ls}}</a>
+</div>
+
+<div class="col-md-4">
+  <form action="{% url 'myapp:backdate_dataentry' %}" method="post">
+    {% csrf_token %}
+    <div class="row">
+    <input type="date" name="duedate" class="form-control col-md-6" value="{{duedate}}">
+    <input type="number" name="linename" value="{{ls.id}}" hidden>
+    <input type="submit" class="btn btn-sm btn-info">
     
+    </div>
+    
+    
+  </form>
+</div>
+
 </div>
 
 
@@ -77,6 +108,7 @@
       
       <td><a href="{% url 'myapp:dailyrep_delete' i.id %}">{{forloop.counter}}</a></td>
       <td style="min-width: 200px;">
+        
         <a href="{% url 'myapp:update_combine' i.id %}">{{i.operator_name}}</a>
         
       </td>
@@ -86,7 +118,7 @@
         <input type="number" class="dvrtblid" value="{{i.id}}" hidden>
         
         {% if i.h1 == 0 %}
-        <input type="text" name="" value="" class="form-control ih1">
+        <input type="text" name="" value="0" class="form-control ih1">
         {% else %}
         <input type="text" name="" value="{{i.h1}}" class="form-control ih1">
         {% endif %}
@@ -94,7 +126,7 @@
       <td>
         
        {% if i.h2 == 0 %}
-        <input type="text" name="" value="" class="form-control ih2">
+        <input type="text" name="" value="0" class="form-control ih2">
         {% else %}
         <input type="text" name="" value="{{i.h2}}" class="form-control ih2">
         {% endif %}
@@ -103,7 +135,7 @@
       <td>
         
        {% if i.h3 == 0 %}
-        <input type="text" name="" value="" class="form-control ih3">
+        <input type="text" name="" value="0" class="form-control ih3">
         {% else %}
         <input type="text" name="" value="{{i.h3}}" class="form-control ih3">
         {% endif %}
@@ -111,7 +143,7 @@
       <td>
         
         {% if i.h4 == 0 %}
-        <input type="text" name="" value="" class="form-control ih4">
+        <input type="text" name="" value="0" class="form-control ih4">
         {% else %}
         <input type="text" name="" value="{{i.h4}}" class="form-control ih4">
         {% endif %}
@@ -119,7 +151,7 @@
       <td>
         
         {% if i.h5 == 0 %}
-        <input type="text" name="" value="" class="form-control ih5">
+        <input type="text" name="" value="0" class="form-control ih5">
         {% else %}
         <input type="text" name="" value="{{i.h5}}" class="form-control ih5">
         {% endif %}
@@ -127,7 +159,7 @@
       <td>
         
         {% if i.h6 == 0 %}
-        <input type="text" name="" value="" class="form-control ih6">
+        <input type="text" name="" value="0" class="form-control ih6">
         {% else %}
         <input type="text" name="" value="{{i.h6}}" class="form-control ih6">
         {% endif %}
@@ -135,7 +167,7 @@
       <td>
         
         {% if i.h7 == 0 %}
-        <input type="text" name="" value="" class="form-control ih7">
+        <input type="text" name="" value="0" class="form-control ih7">
         {% else %}
         <input type="text" name="" value="{{i.h7}}" class="form-control ih7">
         {% endif %}
@@ -143,7 +175,7 @@
       <td>
         
         {% if i.h8 == 0 %}
-        <input type="text" name="" value="" class="form-control ih8">
+        <input type="text" name="" value="0" class="form-control ih8">
         {% else %}
         <input type="text" name="" value="{{i.h8}}" class="form-control ih8">
         {% endif %}
@@ -151,7 +183,7 @@
       <td>
         
         {% if i.h9 == 0 %}
-        <input type="text" name="" value="" class="form-control ih9">
+        <input type="text" name="" value="0" class="form-control ih9">
         {% else %}
         <input type="text" name="" value="{{i.h9}}" class="form-control ih9">
         {% endif %}
@@ -159,7 +191,7 @@
       <td>
         
         {% if i.h10 == 0 %}
-        <input type="text" name="" value="" class="form-control ih10">
+        <input type="text" name="" value="0" class="form-control ih10">
         {% else %}
         <input type="text" name="" value="{{i.h10}}" class="form-control ih10">
         {% endif %}
@@ -167,7 +199,7 @@
       <td>
         
         {% if i.h11 == 0 %}
-        <input type="text" name="" value="" class="form-control ih11">
+        <input type="text" name="" value="0" class="form-control ih11">
         {% else %}
         <input type="text" name="" value="{{i.h11}}" class="form-control ih11">
         {% endif %}
