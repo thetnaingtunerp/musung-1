@@ -161,7 +161,7 @@ def daily_rep_filter_by_line(request,id):
     today = datetime.date.today()
     lis = line.objects.all()
     ls = line.objects.get(id=id)
-    op = daily_report.objects.filter(created_date=today,line=ls, absant=False)
+    op = daily_report.objects.filter(created_date=today,line=ls)
     context = {'lis':lis, 'op':op, 'ls':ls}
     return render(request, 'daily_rep_view.html', context)
 
@@ -1037,7 +1037,8 @@ def redcolor_by_supervisor(request):
             today = datetime.date.today()
             first_date = today.replace(day=1)
             op = operator.objects.filter(line=lid)
-            context = {'op':op, 'fd':fd, 'td':td, 'first_date':first_date, "mesg":mesg, 'fdate':fdate, 'tdate':tdate, 'ln':lid }
+            lna = line.objects.get(id=lid)
+            context = {'op':op, 'fd':fd, 'td':td, 'first_date':first_date, "mesg":mesg, 'fdate':fdate, 'tdate':tdate, 'ln':lid, 'lna':lna }
             return render(request, 'redcolor_by_supervisor.html', context)
         else:
             return render(request, 'redcolor_by_supervisor.html', context)

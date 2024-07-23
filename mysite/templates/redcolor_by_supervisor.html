@@ -4,7 +4,7 @@
 
 
 <form method="post" action="{% url 'myapp:redcolor_by_supervisor' %}">{% csrf_token %}
-   <div class="row m-3 p-3">
+   <div class="m-3 p-3 col-md-4 d-none d-sm-none d-md-block">
      <div class="col" hidden>
         
        <input type="date" class="form-control" name="fdate" value="{{fdate}}" hidden>
@@ -13,7 +13,7 @@
         
        <input type="date" class="form-control" name="tdate" value="{{tdate}}" hidden>
      </div>      
-     <div class="col-md-2">
+     <div class="col">
         
        <input type="number" class="form-control" name="lid" value="{{ln}}" hidden>
        <input type="submit" class="form-control btn btn-md btn-danger" value="RED Target">
@@ -22,9 +22,8 @@
    </div>
  </form>
 
+<div><h5><span class="text-primary h4">{{lna}}</span> Target Report (From <span class="text-primary h5">{{fd}}</span> to <span class="text-primary h5">{{td}}</span> ) </h5></div>
 <hr>
-<hr>
-
 <div>     
 
 {% for operator in op %}
@@ -32,22 +31,25 @@
 <table class="bg-white table-responsive">
    <tbody>
    <tr>
-      <td class="h5 p-2">{{forloop.counter}}</td>
-      <td style="min-width: 200px; max-width: 200px;" class="p-3 text-primary">{{operator.name}}<br><span class="text-dark">-{{operator.point}}</span></td>
+      <!-- <td class="h5 p-2">{{forloop.counter}}</td> -->
+      <!-- <td style="min-width: 200px; max-width: 200px;" class="p-3 text-primary">{{operator.name}}<br><span class="text-dark">-{{operator.point}}</span></td> -->
       {% for entry in operator.daily_report_set.all %}
 
-      {% if entry.created_date < fd or entry.created_date > td %}
+      {% if entry.created_date >= fd and entry.created_date <= td %}
 
-      {% else %}
+      
       {% if entry.target_per < 50 %}
       <td width="130px;" class="">
          <table width="130px">
+            <tr class="border">
+               <td class="text-primary h6">{{entry.operator_name}}</td>
+            </tr>
             <tr class="border">
                <td class="">{{entry.created_date}}</td>
             </tr>
             <tr class="border">
               
-               <td class=" bg-danger text-center">{{entry.target_per}}%</td>
+               <td class=" bg-danger text-center text-white">{{entry.target_per}}%</td>
               
             </tr>
             <tr class="border">
@@ -58,10 +60,11 @@
       </td>      
       {% else %}
       
+      
       {% endif %}
       
       
-
+      
 
 
       {% endif %}
@@ -71,7 +74,7 @@
    <!-- <hr> -->
 </tbody>
 </table>
-<hr>
+<!-- <hr> -->
 
 
 {% endfor %}

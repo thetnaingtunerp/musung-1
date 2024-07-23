@@ -123,8 +123,8 @@
 <table class="bg-white table-responsive">
    <tbody>
    <tr>
-      <td class="h5 p-2">{{forloop.counter}}</td>
-      <td style="min-width: 200px; max-width: 200px;" class="p-3 text-primary">{{operator.name}}</td>
+      <!-- <td class="h5 p-2">{{forloop.counter}}</td> -->
+      <!-- <td style="min-width: 200px; max-width: 200px;" class="p-3 text-primary">{{operator.name}}</td> -->
       {% for entry in operator.daily_report_set.all %}
 
       {% if entry.created_date < monday %}
@@ -132,12 +132,15 @@
       {% if entry.target_per < 50 %}
       <td width="130px;" class="">
          <table width="130px">
+          <tr class="border">
+            <td class="text-primary h6">{{entry.operator_name}}</td>
+         </tr>
             <tr class="border">
                <td class="">{{entry.created_date}}</td>
             </tr>
             <tr class="border">
                
-               <td class=" bg-danger text-center">{{entry.target_per}}%</td>
+               <td class=" bg-danger text-center text-white">{{entry.target_per}}%</td>
                               
                
             </tr>

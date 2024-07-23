@@ -108,8 +108,11 @@
       
       <td><a href="{% url 'myapp:dailyrep_delete' i.id %}">{{forloop.counter}}</a></td>
       <td style="min-width: 200px;">
-        
-        <a href="{% url 'myapp:update_combine' i.id %}">{{i.operator_name}}</a>
+        {% if i.absant %}
+        <a href="{% url 'myapp:update_combine' i.id %}" class="text-danger h6">{{i.operator_name}}</a>
+        {% else %}
+        <a href="{% url 'myapp:update_combine' i.id %}" class="text-dark">{{i.operator_name}}</a>
+        {% endif %}
         
       </td>
 
