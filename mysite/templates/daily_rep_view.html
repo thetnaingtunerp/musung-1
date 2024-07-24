@@ -215,24 +215,265 @@
       
       <td><strong style="font-size:18px;">{{i.target_qty}}</strong></td>
 
-      <td>
-        {% if i.target_per > 80 %}
-        <a href="#" class="btn btn-sm btn-success d-block">{{i.target_per}}%</a>
-        {% elif i.target_per < 50 %}
-        <a href="#" class="btn btn-sm btn-danger d-block">{{i.target_per}}%</a>
-        {% else %}
-        <a href="#" class="btn btn-sm btn-outline-secondary d-block">{{i.target_per}}%</a>
-        {% endif %}
+      <td id="cc-{{i.id}}">      
+
+        <!-- {{i.target_per}} -->
+       
+
+<!-- get color hourly -->
+<script type="text/javascript">
+var foo ={{i.hourcount}};
+switch (foo) {
+  case 1:
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var data = (s2/t2)*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+        
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+        
+      }else{
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+      }
+    break;
+  case 2: // Value of foo matches this criteria; execution starts from here
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = t2 + t2
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+        
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+        
+      }else{
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+      }
+    break;
+  case 3: // no break statement in 'case 0:' so this case will run as well
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = t2 + t2 + t2
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+        
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+        
+      }else{
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+      }
+    break;
+  case 4:
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = t2 + t2 + t2 + t2
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+        
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+        
+      }else{
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+      }
+    break;
+  case 5:
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = t2 + t2 + t2 + t2 + t2
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+        
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+        
+      }else{
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+      }
+    break;
+  case 6:
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = t2 + t2 + t2 + t2 + t2 + t2
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+        
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+        
+      }else{
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+      }
+    break;
+  case 7:
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = t2 + t2 + t2 + t2 + t2 + t2 + t2
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+        
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+        
+      }else{
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+      }
+    break;
+  case 8:
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+        
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+        
+      }else{
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+      }
+    break;
+  case 9:
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+        
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+        
+      }else{
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+      }
+    break;
+  case 10:
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+        
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+        
+      }else{
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+      }
+    break;
+  case 11:
+  var s2 = {{i.target_qty}}
+  var t2 = {{i.target}}/11
+  var t3 = {{i.target}}
+  var data = s2/t3*100
+  if (data < 50) {
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+        
+      } else if (data >= 80){
+        document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+        
+      }else{
+        document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
+      }
+    break;
+  default:
+    console.log("default log")
+  // document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
+}
+// Logs 0 and 1
+
+</script>
+
+
       </td>
+
+
+
       <td style="min-width: 130px;">
-        <a href="{% url 'myapp:update_combine' i.id %}" class="btn-sm btn-info"><i class="fas fa-edit"></i></a>
+        <!-- <a href="{% url 'myapp:update_combine' i.id %}" class="btn-sm btn-info"><i class="fas fa-edit"></i></a> -->
+        
+        
+        <a class="btn-sm btn-info" data-toggle="modal" data-target="#exampleModal-{{i.id}}"><i class="fas fa-user-cog"></i></a>
         <a href="{% url 'myapp:dailyrep_delete' i.id %}" class="btn-sm btn-danger"><i class="fas fa-trash"></i></a>
-        {% if i.remark %}
-        <a href="#" class="btn-sm btn-warning"  data-toggle="tooltip" data-placement="left" title="{{i.remark}}">
-          <i class="fa-solid fa-comments"></i>
-        </a>
-        <!-- <a href="#" class="btn-sm btn-warning"><i class="fa-solid fa-comments"></i></a> -->
-        {% endif %}
+        <!-- Modal -->
+<div class="modal fade" id="exampleModal-{{i.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel-{{i.id}}"><span class="text-primary">{{i.operator_name}}</span></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="POST" action="{% url 'myapp:daily_rep_update' %}">
+      <div class="modal-body">
+        
+          <!-- Security token by Django -->
+          {% csrf_token %}
+      
+          <!-- form as paragraph -->
+          <input type="number" value="{{i.id}}" hidden name="repid">
+          <label for="itarget">Target</label>
+          <input type="number" class="form-control col-md-6"  name="itarget" value="{{i.target}}">
+          <hr>
+          <label for="ab" class="text-danger h6">Absant : </label>
+  <select name="ab">
+    {% if i.absant == False %}
+    <option value="False">_is_attendance</option>
+    {% else %}
+    <option value="True">_is_absant</option>
+    {% endif %}
+    
+    <option value="True" >Absant</option>
+    <option value="False" >Attendance</option>
+    
+  </select>
+      
+          <textarea name="rmk" id="" cols="30" rows="10" class="form-control">{{i.remark}}</textarea>
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-danger">Absant</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
         
         
       </td>

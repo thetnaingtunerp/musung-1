@@ -109,7 +109,11 @@
       <td><a href="{% url 'myapp:dailyrep_delete' i.id %}">{{forloop.counter}}</a></td>
       <td style="min-width: 200px;">
         
-        <a href="{% url 'myapp:update_combine' i.id %}">{{i.operator_name}}</a>
+        {% if i.absant %}
+        <a href="{% url 'myapp:update_combine' i.id %}" class="text-danger h6">{{i.operator_name}}</a>
+        {% else %}
+        <a href="{% url 'myapp:update_combine' i.id %}" class="text-dark">{{i.operator_name}}</a>
+        {% endif %}
         
       </td>
 
@@ -222,14 +226,11 @@
         {% endif %}
       </td>
       <td style="min-width: 130px;">
-        <a href="{% url 'myapp:update_combine' i.id %}" class="btn-sm btn-info"><i class="fas fa-edit"></i></a>
+       
+        
+        
         <a href="{% url 'myapp:dailyrep_delete' i.id %}" class="btn-sm btn-danger"><i class="fas fa-trash"></i></a>
-        {% if i.remark %}
-        <a href="#" class="btn-sm btn-warning"  data-toggle="tooltip" data-placement="left" title="{{i.remark}}">
-          <i class="fa-solid fa-comments"></i>
-        </a>
-        <!-- <a href="#" class="btn-sm btn-warning"><i class="fa-solid fa-comments"></i></a> -->
-        {% endif %}
+        
         
         
       </td>

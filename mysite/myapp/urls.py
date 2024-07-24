@@ -32,6 +32,7 @@ urlpatterns = [
     path('monthly_filterby_line/', views.monthly_filterby_line, name='monthly_filterby_line'),
     path('reportbyoperator/<int:id>/', views.reportbyoperator, name='reportbyoperator'),
     path('update_combine/<int:id>/', views.update_combine, name='update_combine'),
+    path('daily_rep_update/', views.daily_rep_update, name='daily_rep_update'),
     path('daily_line_attendance/', views.daily_line_attendance, name='daily_line_attendance'),
 
     #search

@@ -165,6 +165,21 @@ def daily_rep_filter_by_line(request,id):
     context = {'lis':lis, 'op':op, 'ls':ls}
     return render(request, 'daily_rep_view.html', context)
 
+
+def daily_rep_update(request):
+    repid = request.POST.get('repid')
+    target = request.POST.get('itarget')
+    absant = request.POST.get('ab')
+    remark = request.POST.get('rmk')
+    print(repid)
+    print(target)
+    print(absant)
+    print(remark)
+    op = daily_report.objects.filter(id=repid).update(target=target, absant=absant, remark=remark)
+    return redirect(request.META.get('HTTP_REFERER'))
+
+
+
 def daily_rep_search(request):
     emp = request.GET.get('emp')
     lid = request.GET.get('lid')
@@ -180,8 +195,9 @@ def daily_rep_filter_operator(request,id):
     # gop = request.GET.get('id')
     p =  operator.objects.get(id=id)
     pk = id
+    
     op = daily_report.objects.filter(operator_name=p)
-    context = {'op':op, 'optr_obj':pk}
+    context = {'op':op, 'optr_obj':pk, 'form':form}
     return render(request, 'daily_rep_filter_operator.html', context)
 
 def daily_rep_filter_bydate(request):
@@ -849,6 +865,8 @@ def backdate_dataentry(request):
         op = daily_report.objects.filter(created_date=duedate, line=ls)
         context = {'op':op, 'lis':lis, 'duedate':duedate, 'ls':ls}
         return render(request, "backdate_dataentry.html", context)
+    else:
+        return render(request, "backdate_dataentry.html")
 
 
 def duedatefilter_by_line(request):
