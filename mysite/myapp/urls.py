@@ -12,6 +12,7 @@ urlpatterns = [
     path('operator_delete/<int:id>/', views.operator_delete, name='operator_delete'),
     path('operatortarget/<int:id>/', views.operatortarget, name='operatortarget'),
     path('operatoratt/<int:id>/', views.operatoratt, name='operatoratt'),
+    path('operator_profile_update/', views.operator_profile_update, name='operator_profile_update'),
     path('save_att_daily/', views.save_att_daily, name='save_att_daily'),
     path('daily_rep_view/', views.daily_rep_view, name='daily_rep_view'),
     path('save_daily_rep_view/', views.save_daily_rep_view, name='save_daily_rep_view'),

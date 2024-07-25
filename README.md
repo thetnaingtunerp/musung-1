@@ -1,4 +1,5 @@
 # musung
 Musung Garment Daily Production
-he
-mgmg
+
+
+adding srno to modal daily report and operator

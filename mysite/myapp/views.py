@@ -89,7 +89,7 @@ def daily_line_attendance(request):
     opt = operator.objects.filter(line=l_obj,resign=False)
 
     for i in opt:
-        dr = daily_report(operator_name=i, line=l_obj, target=l_obj.target, created_date=today)
+        dr = daily_report(operator_name=i, line=l_obj, target=l_obj.target, created_date=today, srno=i.srno)
         dr.save()
         
 
@@ -112,7 +112,7 @@ def save_attendance_backdate(request):
     opt = operator.objects.filter(line=l_obj,resign=False)
 
     for i in opt:
-        dr = daily_report(operator_name=i, line=l_obj, target=l_obj.target, created_date=fd)
+        dr = daily_report(operator_name=i, line=l_obj, target=l_obj.target, created_date=fd, srno=i.srno)
         dr.save()
         
 
@@ -161,7 +161,7 @@ def daily_rep_filter_by_line(request,id):
     today = datetime.date.today()
     lis = line.objects.all()
     ls = line.objects.get(id=id)
-    op = daily_report.objects.filter(created_date=today,line=ls)
+    op = daily_report.objects.filter(created_date=today,line=ls).order_by('srno')
     context = {'lis':lis, 'op':op, 'ls':ls}
     return render(request, 'daily_rep_view.html', context)
 
@@ -778,6 +778,23 @@ def update_combine(request,id):
  
     return render(request, "update_combine.html", context)
 
+def operator_profile_update(request):
+    if request.method =="POST":
+        srno = request.POST.get('srno')
+        name = request.POST.get('name')
+        burmese = request.POST.get('burmese')
+        point = request.POST.get('point')
+        resign = request.POST.get('resign')
+        opid = request.POST.get('opid')
+        opupt = operator.objects.filter(id=opid).update(name=name, burmese=burmese, point=point, resign=resign, srno=srno)
+        return redirect(request.META.get('HTTP_REFERER'))
+    else:
+        return redirect(request.META.get('HTTP_REFERER'))
+
+    print('success method!!')
+    return redirect(request.META.get('HTTP_REFERER'))
+
+
 
 def operatorupdate(request,id):
     context ={}
@@ -856,13 +873,15 @@ def duedatefilter(request):
         return render(request, "duedatefilter.html", context)
 
 
+
+
 def backdate_dataentry(request):
     if request.method=="POST":
         duedate = request.POST.get('duedate')
         linename = request.POST.get('linename')
         ls = line.objects.get(id=linename)
         lis = line.objects.all()
-        op = daily_report.objects.filter(created_date=duedate, line=ls)
+        op = daily_report.objects.filter(created_date=duedate, line=ls).order_by('srno')
         context = {'op':op, 'lis':lis, 'duedate':duedate, 'ls':ls}
         return render(request, "backdate_dataentry.html", context)
     else:

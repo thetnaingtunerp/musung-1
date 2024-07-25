@@ -106,7 +106,7 @@
     <tr class="drvtbltr">
       
       
-      <td><a href="{% url 'myapp:dailyrep_delete' i.id %}">{{forloop.counter}}</a></td>
+      <td><a href="{% url 'myapp:dailyrep_delete' i.id %}">{{i.srno}}</a></td>
       <td style="min-width: 200px;">
         
         {% if i.absant %}
@@ -229,8 +229,53 @@
        
         
         
+        <a class="btn-sm btn-info" data-toggle="modal" data-target="#exampleModal-{{i.id}}"><i class="fas fa-user-cog"></i></a>
         <a href="{% url 'myapp:dailyrep_delete' i.id %}" class="btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+        <!-- Modal -->
+<div class="modal fade" id="exampleModal-{{i.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel-{{i.id}}"><span class="text-primary">{{i.operator_name}}</span></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <div class="modal-body">
         
+          <!-- Security token by Django -->
+        
+      
+          <!-- form as paragraph -->
+          <input type="number" value="{{i.id}}" hidden name="repid">
+          <label for="itarget">Target</label>
+          <input type="number" class="form-control col-md-6"  name="itarget" value="{{i.target}}">
+          <hr>
+          <label for="ab" class="text-danger h6">Absant : </label>
+  <select name="ab">
+    {% if i.absant == False %}
+    <option value="False">_is_attendance</option>
+    {% else %}
+    <option value="True">_is_absant</option>
+    {% endif %}
+    
+    <option value="True" >Absant</option>
+    <option value="False" >Attendance</option>
+    
+  </select>
+      
+          <textarea name="rmk" id="" cols="30" rows="10" class="form-control">{{i.remark}}</textarea>
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-info">Save Change</button>
+      </div>
+    
+    </div>
+  </div>
+</div>
         
         
       </td>

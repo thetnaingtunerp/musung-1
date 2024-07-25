@@ -30,6 +30,8 @@ class operator(models.Model):
     burmese = models.CharField(max_length=255, blank=True, null=True)
     role = models.CharField(max_length=255, blank=True, null=True)
     daily_target = models.PositiveIntegerField(default=0)
+    
+    srno = models.PositiveIntegerField(default=0)
     resign = models.BooleanField(default=False)
     status = models.BooleanField(default=False)
     def __str__(self):
@@ -57,6 +59,7 @@ class daily_report(models.Model):
     absant = models.BooleanField(default=False)
     remark = models.TextField(blank=True, null=True)
     hourcount = models.PositiveIntegerField(default=0)
+    srno = models.PositiveIntegerField(default=0)
     
     created_date = models.DateField(blank=True, null=True)
     updated_at = models.DateTimeField(auto_now=True)
