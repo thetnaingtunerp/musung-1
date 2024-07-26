@@ -60,6 +60,7 @@ class daily_report(models.Model):
     remark = models.TextField(blank=True, null=True)
     hourcount = models.PositiveIntegerField(default=0)
     srno = models.PositiveIntegerField(default=0)
+    point = models.CharField(max_length=255, blank=True, null=True)
     
     created_date = models.DateField(blank=True, null=True)
     updated_at = models.DateTimeField(auto_now=True)

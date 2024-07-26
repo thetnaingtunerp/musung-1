@@ -89,7 +89,7 @@ def daily_line_attendance(request):
     opt = operator.objects.filter(line=l_obj,resign=False)
 
     for i in opt:
-        dr = daily_report(operator_name=i, line=l_obj, target=l_obj.target, created_date=today, srno=i.srno)
+        dr = daily_report(operator_name=i, line=l_obj, target=l_obj.target, created_date=today, srno=i.srno, point=i.point)
         dr.save()
         
 
