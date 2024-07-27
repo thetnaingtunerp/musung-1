@@ -241,7 +241,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      
+      <form method="POST" action="{% url 'myapp:daily_rep_update' %}">{% csrf_token %}
       <div class="modal-body">
         
           <!-- Security token by Django -->
@@ -272,7 +272,7 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-info">Save Change</button>
       </div>
-    
+    </form>
     </div>
   </div>
 </div>
