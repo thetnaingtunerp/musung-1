@@ -43,6 +43,10 @@
       <td>
       	
         <button type="button" class="btn btn-sm btn-info optattbtn">AttendanceBtn</button>
+        {% if i.status == True %}
+      <button class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-circle-xmark"></i></button>
+      
+      {% endif %}
 
       </td>
       <td>
@@ -55,10 +59,17 @@
       {% else %}
       <button class="btn btn-sm btn-danger"><i class="fa-solid fa-circle-xmark"></i></button>
       {% endif %}
+
+      
       </td>
 
 
       <td>
+
+        
+
+
+
         <a class="btn-sm btn-info" data-toggle="modal" data-target="#exampleModal-{{i.id}}"><i class="fas fa-user-cog"></i></a>
         
         <!-- Modal -->
@@ -88,7 +99,7 @@
           <label for="point">Point</label>
           <input type="text" class="form-control"  name="point" value="{{i.point}}">
           <hr>
-          <label for="resign" class="text-danger h6">Resign : Active </label>
+          <label for="resign" class="text-danger h6">Resign :  </label>
   <select name="resign">
     {% if i.resign == False %}
   <option value="False">Active</option>
@@ -96,6 +107,20 @@
     {% else %}
   <option value="True">Resigned</option>
   <option value="False" class="btn-success">Active</option>
+    {% endif %}
+    
+
+  </select>
+
+  <hr>
+  <label for="attcollect" class="text-success h6">Attendance Collection </label>
+  <select name="attcollect">
+    {% if i.status == False %}
+  <option value="False">Yes</option>
+  <option value="True" class="btn-danger">No</option>
+    {% else %}
+  <option value="True">No</option>
+  <option value="False" class="btn-success">Yes</option>
     {% endif %}
     
 

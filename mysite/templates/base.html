@@ -621,6 +621,37 @@ $("#invlist").on('click', '.dueattendance', function() {
 });//End Back Date Line Attendance
 
 
+//Data Entry Update
+$("#drvtbl").on('click', '.rpupt', function() {
+  var currenttr = $(this).closest(".drvtbltr");
+  var iid = currenttr.find(".iid").val();
+  var point = currenttr.find(".point").val();
+  var itarget = currenttr.find(".itarget").val();
+  var ab = currenttr.find(".ab").val();
+  var rmk = currenttr.find(".rmk").val();
+  // console.log(ab);
+  $.ajax({
+    url: "/daily_rep_update_ajax/",
+    method: "GET",
+    data:{iid:iid, point:point, itarget:itarget, ab:ab, rmk:rmk},
+    success: function(data){
+  
+        // alert('Update Successfully');
+        window.setTimeout(function(){ } ,100);
+                        location.reload();      
+    },
+    error:function(){
+        alert('Error contact to 09-969255445');
+    },
+                    
+  });//end ajax
+});
+
+//End Data Entry Update
+
+
+
+
 
 
 // SaveData

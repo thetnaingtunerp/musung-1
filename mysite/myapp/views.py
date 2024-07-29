@@ -86,7 +86,7 @@ def daily_line_attendance(request):
     l_obj = line.objects.get(id=l)
     today = datetime.date.today()
 
-    opt = operator.objects.filter(line=l_obj,resign=False)
+    opt = operator.objects.filter(line=l_obj,resign=False, status=False)
 
     for i in opt:
         dr = daily_report(operator_name=i, line=l_obj, target=l_obj.target, created_date=today, srno=i.srno, point=i.point)
@@ -167,18 +167,26 @@ def daily_rep_filter_by_line(request,id):
 
 
 def daily_rep_update(request):
-    repid = request.POST.get('repid')
-    target = request.POST.get('itarget')
-    absant = request.POST.get('ab')
-    remark = request.POST.get('rmk')
-    print(repid)
-    print(target)
-    print(absant)
-    print(remark)
-    op = daily_report.objects.filter(id=repid).update(target=target, absant=absant, remark=remark)
-    return redirect(request.META.get('HTTP_REFERER'))
+    if request.method == 'POST':
+        repid = request.POST.get('repid')
+        point = request.POST.get('point')
+        target = request.POST.get('itarget')
+        absant = request.POST.get('ab')
+        remark = request.POST.get('rmk')
+        op = daily_report.objects.filter(id=repid).update(target=target, absant=absant, remark=remark, point=point)
+        return redirect(request.META.get('HTTP_REFERER'))
+    else:
+        return redirect(request.META.get('HTTP_REFERER'))
 
-
+def daily_rep_update_ajax(request):
+    iid = request.GET.get('iid')
+    point = request.GET.get('point')
+    target = request.GET.get('itarget')
+    absant = request.GET.get('ab')
+    remark = request.GET.get('rmk')
+    # print('Success Ajax')
+    op = daily_report.objects.filter(id=iid).update(target=target, absant=absant, remark=remark, point=point)
+    return JsonResponse({'status':'success'})
 
 def daily_rep_search(request):
     emp = request.GET.get('emp')
@@ -785,8 +793,9 @@ def operator_profile_update(request):
         burmese = request.POST.get('burmese')
         point = request.POST.get('point')
         resign = request.POST.get('resign')
+        status = request.POST.get('attcollect')
         opid = request.POST.get('opid')
-        opupt = operator.objects.filter(id=opid).update(name=name, burmese=burmese, point=point, resign=resign, srno=srno)
+        opupt = operator.objects.filter(id=opid).update(name=name, burmese=burmese, point=point, resign=resign, srno=srno, status=status)
         return redirect(request.META.get('HTTP_REFERER'))
     else:
         return redirect(request.META.get('HTTP_REFERER'))

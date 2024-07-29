@@ -81,5 +81,7 @@ urlpatterns = [
     path('testpref/', views.testpref, name='testpref'),
     path('dailyreport_selectrelated/', views.dailyreport_selectrelated, name='dailyreport_selectrelated'),
     
+    path('daily_rep_update_ajax/', views.daily_rep_update_ajax, name='daily_rep_update_ajax'),
+    
 
 ]

@@ -440,19 +440,23 @@ switch (foo) {
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form method="POST" action="{% url 'myapp:daily_rep_update' %}">
+      <!-- <form method="POST" action="{% url 'myapp:daily_rep_update' %}"> -->
       <div class="modal-body">
         
           <!-- Security token by Django -->
-          {% csrf_token %}
+          <!-- {% csrf_token %} -->
       
           <!-- form as paragraph -->
-          <input type="number" value="{{i.id}}" hidden name="repid">
+
+          <input type="number" value="{{i.id}}" hidden name="repid" class="iid">
+          <label for="point">Point</label>
+          <input type="text" name="point" class="form-control col-md-6 point" value="{{i.point}}">
+
           <label for="itarget">Target</label>
-          <input type="number" class="form-control col-md-6"  name="itarget" value="{{i.target}}">
+          <input type="number" class="form-control col-md-6 itarget"  name="itarget" value="{{i.target}}">
           <hr>
           <label for="ab" class="text-danger h6">Absant : </label>
-  <select name="ab">
+  <select name="ab" class="ab">
     {% if i.absant == False %}
     
     
@@ -466,14 +470,15 @@ switch (foo) {
   </select>
   <hr>
       <label for="rmk">Remark Note</label>
-          <textarea name="rmk" id="" cols="30" rows="10" class="form-control">{{i.remark}}</textarea>
+          <textarea name="rmk" id="" cols="30" rows="10" class="form-control rmk">{{i.remark}}</textarea>
       
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-info">Save Change</button>
+        <!-- <button type="submit" class="btn btn-info">Save Change</button> -->
+        <button type="button" class="btn btn-primary rpupt">Update</button>
       </div>
-    </form>
+    <!-- </form> -->
     </div>
   </div>
 </div>
