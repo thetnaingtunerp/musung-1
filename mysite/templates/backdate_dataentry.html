@@ -231,7 +231,7 @@
         
         <a class="btn-sm btn-info" data-toggle="modal" data-target="#exampleModal-{{i.id}}"><i class="fas fa-user-cog"></i></a>
         <a href="{% url 'myapp:dailyrep_delete' i.id %}" class="btn-sm btn-danger"><i class="fas fa-trash"></i></a>
-        <!-- Modal -->
+       <!-- Modal -->
 <div class="modal fade" id="exampleModal-{{i.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -241,38 +241,45 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form method="POST" action="{% url 'myapp:daily_rep_update' %}">{% csrf_token %}
+      <!-- <form method="POST" action="{% url 'myapp:daily_rep_update' %}"> -->
       <div class="modal-body">
         
           <!-- Security token by Django -->
-        
+          <!-- {% csrf_token %} -->
       
           <!-- form as paragraph -->
-          <input type="number" value="{{i.id}}" hidden name="repid">
+
+          <input type="number" value="{{i.id}}" hidden name="repid" class="iid">
+          <label for="point">Point</label>
+          <input type="text" name="point" class="form-control col-md-6 point" value="{{i.point}}">
+
           <label for="itarget">Target</label>
-          <input type="number" class="form-control col-md-6"  name="itarget" value="{{i.target}}">
+          <input type="number" class="form-control col-md-6 itarget"  name="itarget" value="{{i.target}}">
           <hr>
           <label for="ab" class="text-danger h6">Absant : </label>
-  <select name="ab">
+  <select name="ab" class="ab">
     {% if i.absant == False %}
-    <option value="False">_is_attendance</option>
-    {% else %}
-    <option value="True">_is_absant</option>
-    {% endif %}
     
+    
+    <option value="False" >Attendance</option>
+    <option value="True" >Absant</option>
+    {% else %}
     <option value="True" >Absant</option>
     <option value="False" >Attendance</option>
+    {% endif %}
     
   </select>
-      
-          <textarea name="rmk" id="" cols="30" rows="10" class="form-control">{{i.remark}}</textarea>
+  <hr>
+      <label for="rmk">Remark Note</label>
+          <textarea name="rmk" id="" cols="30" rows="10" class="form-control rmk">{{i.remark}}</textarea>
       
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-info">Save Change</button>
+        <!-- <button type="submit" class="btn btn-info">Save Change</button> -->
+        <button type="button" class="btn btn-primary rpupt">Update</button>
       </div>
-    </form>
+    <!-- </form> -->
     </div>
   </div>
 </div>

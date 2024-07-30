@@ -35,9 +35,11 @@ def save_operator(request):
         form = OptForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('myapp:operatorlist')
+            return redirect(request.META.get('HTTP_REFERER'))
+            # return redirect('myapp:operatorlist')
     else:
-        return redirect('myapp:operatorlist')
+        return redirect(request.META.get('HTTP_REFERER'))
+        # return redirect('myapp:operatorlist')
     return redirect('myapp:operatorlist')
 
 
@@ -64,7 +66,10 @@ def operatortarget(request,id):
 
 def operatoratt(request,id):
     op = operator.objects.filter(line=id)
-    context = {'op':op}
+    form = OptForm()
+    context = {'op':op, 'form':form}
+
+    # context = {'op':op}
     return render(request, 'operatoratt.html', context)
 
 def save_att_daily(request):
