@@ -19,8 +19,26 @@ def lic(request):
         # print('success')
         return JsonResponse({'status':'success'})
     
-
     
+def activate_lic(request):
+    lid = request.GET.get('lid')
+    key = int(lid)
+    if key == 302017:
+        exp = licencedate.objects.get(id=1)
+        today = datetime.date.today()
+        # print(today)
+        dudate = today.replace(today.year + 1) 
+        activate = licencedate.objects.filter(id=1).update(expired_date=dudate)
+        return JsonResponse({'status':'success'})
+    else:
+        return JsonResponse({'status':'error'})
+        
+    
+
+def key_activate(request):
+    return render(request, 'key_activate.html')
+
+
 def operatorlist(request):
     op = operator.objects.all()
     form = OptForm()
@@ -740,6 +758,31 @@ def update_h12(request):
     return JsonResponse({'status':'success'})
 
 
+def backdate_data_sync(request):
+    rid = request.GET.get('iid')
+    ih1 = request.GET.get('ih1')
+    ih2 = request.GET.get('ih2')
+    ih3 = request.GET.get('ih3')
+    ih4 = request.GET.get('ih4')
+    ih5 = request.GET.get('ih5')
+    ih6 = request.GET.get('ih6')
+    ih7 = request.GET.get('ih7')
+    ih8 = request.GET.get('ih8')
+    ih9 = request.GET.get('ih9')
+    ih10 = request.GET.get('ih10')
+    ih11 = request.GET.get('ih11')
+    rr = daily_report.objects.filter(id=int(rid))
+    rg = daily_report.objects.get(id=int(rid))
+    total = int(ih1)+int(ih2)+int(ih3)+int(ih4)+int(ih5)+int(ih6)+int(ih7)+int(ih8)+int(ih9)+int(ih10)+int(ih11)
+    comb = rg.combine
+    optar = rg.target
+    percen = (total/optar)*100*comb
+    rr.update(target_qty=total, target_per=percen)
+    # print(rr)
+    return JsonResponse({'status':'success'})
+
+
+
 def monthly_filterby_line(request):
     if request.method=="POST":
         fd = request.POST.get('filterdate')
@@ -794,13 +837,14 @@ def update_combine(request,id):
 def operator_profile_update(request):
     if request.method =="POST":
         srno = request.POST.get('srno')
+        employee_code = request.POST.get('employee_code')
         name = request.POST.get('name')
         burmese = request.POST.get('burmese')
         point = request.POST.get('point')
         resign = request.POST.get('resign')
         status = request.POST.get('attcollect')
         opid = request.POST.get('opid')
-        opupt = operator.objects.filter(id=opid).update(name=name, burmese=burmese, point=point, resign=resign, srno=srno, status=status)
+        opupt = operator.objects.filter(id=opid).update(name=name, burmese=burmese, point=point, resign=resign, srno=srno, status=status, employee_code=employee_code)
         return redirect(request.META.get('HTTP_REFERER'))
     else:
         return redirect(request.META.get('HTTP_REFERER'))

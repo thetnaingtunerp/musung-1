@@ -4,6 +4,9 @@ from . import views
 app_name = 'myapp'
 urlpatterns = [
     path('lic/', views.lic, name='lic'),
+    path('activate_lic/', views.activate_lic, name='activate_lic'),
+    path('key_activate/', views.key_activate, name='key_activate'),
+
     path('operatorlist/', views.operatorlist, name='operatorlist'),
     path('operatorupdate/<int:id>/', views.operatorupdate, name='operatorupdate'),
     path('save_operator/', views.save_operator, name='save_operator'),
@@ -42,6 +45,7 @@ urlpatterns = [
     #DueDate
     path('duedatefilter/', views.duedatefilter, name='duedatefilter'),
     path('duedatefilter_by_line/', views.duedatefilter_by_line, name='duedatefilter_by_line'),
+    path('backdate_data_sync/', views.backdate_data_sync, name='backdate_data_sync'),
     
     #Report
     path('report_groupby_operator/', views.report_groupby_operator, name='report_groupby_operator'),

@@ -127,16 +127,45 @@ $.ajax({
     method: "GET",
     data:{lid:1},
     success: function(data){
-        console.log(data.status);
+        // console.log(data.status);
 
     },
     error:function(){
-        alert('Session Expired - contact to : 09969255445');
+        alert('Session Expired  Please Activate - contact to : 09969255445');
         window.setTimeout(function(){ } ,1000);
                         location.reload();
+                        window.location.href = '/key_activate/';
     },
                     
   });//end ajax Lic    
+
+  $("#activatekeyform").on('click', '.activatekey', function() {
+        // var drvcurrenttr = $(this).closest(".akey");
+        // var ot1 = drvcurrenttr.find(".key").val();
+        var lid = $(".key").val()
+        // console.log(k);
+        $.ajax({
+        url: "/activate_lic/",
+        method: "GET",
+        data:{lid:lid},
+        success: function(data){
+          
+          window.location.href = '/';
+        
+
+    },
+    error:function(){
+        alert('Session Expired  Please Activate - contact to : 09969255445');
+        window.setTimeout(function(){ } ,1000);
+                        location.reload();
+                        window.location.href = '/key_activate/';
+    },
+                    
+  });//end ajax Lic    
+    });
+
+
+
 
 
 //start update line target
@@ -266,7 +295,7 @@ $(".ih2").change(function(){
         console.log('h2');
   
         // alert('Update Successfully');
-        // window.setTimeout(function(){ } ,100);
+        // window.setTimeout(function(){ } ,80);
         //                 location.reload();      
     },
     error:function(){
@@ -312,7 +341,7 @@ $(".ih4").change(function(){
     success: function(data){
         console.log('h3');
         // alert('Update Successfully');
-        // window.setTimeout(function(){ } ,100);
+        // window.setTimeout(function(){ } ,80);
         //                 location.reload();      
     },
     error:function(){
@@ -337,7 +366,7 @@ $(".ih5").change(function(){
         // alert('Update Successfully');
         // window.setTimeout(function(){ } ,100);
         //                 location.reload();
-        console.log('updated');      
+        // console.log('updated');      
     },
     error:function(){
         alert('Error contact to 09-969255445');
@@ -359,9 +388,9 @@ $(".ih6").change(function(){
     success: function(data){
   
         // alert('Update Successfully');
-        // window.setTimeout(function(){ } ,100);
+        // window.setTimeout(function(){ } ,80);
         //                 location.reload(); 
-        console.log('updated');      
+        // console.log('updated');      
     },
     error:function(){
         alert('Error contact to 09-969255445');
@@ -386,7 +415,7 @@ $(".ih7").change(function(){
         // alert('Update Successfully');
         // window.setTimeout(function(){ } ,100);
         //                 location.reload(); 
-        console.log('updated');      
+        // console.log('updated');      
     },
     error:function(){
         alert('Error contact to 09-969255445');
@@ -409,9 +438,9 @@ $(".ih8").change(function(){
     success: function(data){
   
         // alert('Update Successfully');
-        // window.setTimeout(function(){ } ,100);
+        // window.setTimeout(function(){ } ,80);
         //                 location.reload();
-        console.log('updated');       
+        // console.log('updated');       
     },
     error:function(){
         alert('Error contact to 09-969255445');
@@ -435,7 +464,7 @@ $(".ih9").change(function(){
         // alert('Update Successfully');
         // window.setTimeout(function(){ } ,100);
         //                 location.reload();
-        console.log('updated');       
+        // console.log('updated');       
     },
     error:function(){
         alert('Error contact to 09-969255445');
@@ -457,9 +486,9 @@ $(".ih10").change(function(){
     success: function(data){
   
         // alert('Update Successfully');
-        // window.setTimeout(function(){ } ,100);
-        //                 location.reload(); 
-        console.log('updated');      
+        // // window.setTimeout(function(){ } ,100);
+        // //                 location.reload(); 
+        // console.log('updated');      
     },
     error:function(){
         alert('Error contact to 09-969255445');
@@ -481,9 +510,9 @@ $(".ih11").change(function(){
     success: function(data){
   
         // alert('Update Successfully');
-        // window.setTimeout(function(){ } ,100);
+        // window.setTimeout(function(){ } ,10);
         //                 location.reload(); 
-        console.log('updated');      
+        // console.log('updated');      
     },
     error:function(){
         alert('Error contact to 09-969255445');
@@ -619,6 +648,41 @@ $("#invlist").on('click', '.dueattendance', function() {
                     
   });//end ajax
 });//End Back Date Line Attendance
+
+
+//Back Date Data Sync 
+$("#drvtbl").on('click', '.bsync', function() {
+  var currenttr = $(this).closest(".drvtbltr");
+  var iid = currenttr.find(".iid").val();
+  var ih1 = currenttr.find(".ih1").val();
+  var ih2 = currenttr.find(".ih2").val();
+  var ih3 = currenttr.find(".ih3").val();
+  var ih4 = currenttr.find(".ih4").val();
+  var ih5 = currenttr.find(".ih5").val();
+  var ih6 = currenttr.find(".ih6").val();
+  var ih7 = currenttr.find(".ih7").val();
+  var ih8 = currenttr.find(".ih8").val();
+  var ih9 = currenttr.find(".ih9").val();
+  var ih10 = currenttr.find(".ih10").val();
+  var ih11 = currenttr.find(".ih11").val();
+  // console.log(iid);
+  $.ajax({
+    url: "/backdate_data_sync/",
+    method: "GET",
+    data:{iid:iid, ih1:ih1, ih2:ih2, ih3:ih3, ih4:ih4, ih5:ih5, ih6:ih6, ih7:ih7, ih8:ih8, ih9:ih9, ih10:ih10, ih11:ih11},
+    success: function(data){
+  
+        // alert('Update Successfully');
+        window.setTimeout(function(){ } ,100);
+                        location.reload();      
+    },
+    error:function(){
+        alert('Error contact to 09-969255445');
+    },
+                    
+  });//end ajax
+});
+//End Back Date Data Sync
 
 
 //Data Entry Update
