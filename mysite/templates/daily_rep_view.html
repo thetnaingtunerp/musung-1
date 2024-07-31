@@ -429,8 +429,8 @@ switch (foo) {
         
         
         <a class="btn-sm btn-info" data-toggle="modal" data-target="#exampleModal-{{i.id}}"><i class="fas fa-user-cog"></i></a>
-        <a href="{% url 'myapp:dailyrep_delete' i.id %}" class="btn-sm btn-danger"><i class="fas fa-trash"></i></a>
-        
+        <!-- <a href="{% url 'myapp:dailyrep_delete' i.id %}" class="btn-sm btn-danger"><i class="fas fa-trash"></i></a> -->
+        <a href="" class="btn-sm btn-danger" data-toggle="modal" data-target="#myModal-{{i.id}}"><i class="fas fa-trash"></i></a>
         <!-- Modal -->
 <div class="modal fade" id="exampleModal-{{i.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -484,6 +484,34 @@ switch (foo) {
   </div>
 </div>
         
+
+<!-- Trigger the modal with a button -->
+<!-- <button type="button" >Open Modal</button> -->
+
+<!-- Modal -->
+<div id="myModal-{{i.id}}" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content deletemodal">
+      <div class="modal-header bg-danger">
+        <h5 class="modal-title text-white">Are You Sure to Delete ?</h5>
+        <!-- <p class="did">{{i.id}}</p> -->
+         <input type="number" class="did" value="{{i.id}}" hidden>
+        <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+        
+      </div>
+      <!-- <div class="modal-body">
+        <p>Some text in the modal.-{{i.id}}</p>
+      </div> -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger dbtn">Delete</button>
+      </div>
+    </div>
+
+  </div>
+</div>
         
       </td>
 

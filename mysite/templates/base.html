@@ -682,7 +682,40 @@ $("#drvtbl").on('click', '.bsync', function() {
                     
   });//end ajax
 });
-//End Back Date Data Sync
+//End Back Data Sync
+
+
+//Dataentry data Delete
+
+$("#drvtbl").on('click', '.dbtn', function() {
+  var currenttr = $(this).closest(".drvtbltr");
+  var did = currenttr.find(".did").val();
+  // alert(did);
+  $.ajax({
+    url: "/delete_datentry/",
+    method: "GET",
+    data:{did:did},
+    success: function(data){
+  
+        // alert('Delete Data');
+        window.setTimeout(function(){ } ,100);
+                        location.reload();      
+    },
+    error:function(){
+        alert('Error contact to 09-969255445');
+    },
+                    
+  });//end ajax
+
+});
+
+
+
+
+
+//End Dataentry data Delete
+
+
 
 
 //Data Entry Update

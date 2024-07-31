@@ -41,6 +41,7 @@ urlpatterns = [
 
     #search
     path('daily_rep_search/', views.daily_rep_search, name='daily_rep_search'),
+    path('delete_datentry/', views.delete_datentry, name='delete_datentry'),
 
     #DueDate
     path('duedatefilter/', views.duedatefilter, name='duedatefilter'),

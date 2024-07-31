@@ -781,7 +781,12 @@ def backdate_data_sync(request):
     # print(rr)
     return JsonResponse({'status':'success'})
 
-
+def delete_datentry(request):
+    did = request.GET.get('did')
+    rr = daily_report.objects.get(id=int(did))
+    rr.delete()
+    return JsonResponse({'status':'success'})
+    
 
 def monthly_filterby_line(request):
     if request.method=="POST":
