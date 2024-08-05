@@ -10,6 +10,9 @@ admin.site.register(operatortargetrep)
 admin.site.register(opreport)
 admin.site.register(licencedate)
 admin.site.register(point)
+# admin.site.register(dailyhour)
+
+
 
 class operatorAdmin(admin.ModelAdmin):
   list_display = ("name", "line",)

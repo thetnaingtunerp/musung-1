@@ -11,6 +11,7 @@ urlpatterns = [
     path('operatorupdate/<int:id>/', views.operatorupdate, name='operatorupdate'),
     path('save_operator/', views.save_operator, name='save_operator'),
     path('', views.linelist, name='linelist'),
+    path('updatehr/', views.updatehr, name='updatehr'),
     path('update_line_target/', views.update_line_target, name='update_line_target'),
     path('operator_delete/<int:id>/', views.operator_delete, name='operator_delete'),
     path('operatortarget/<int:id>/', views.operatortarget, name='operatortarget'),

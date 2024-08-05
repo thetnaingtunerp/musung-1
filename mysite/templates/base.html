@@ -603,11 +603,37 @@ $("#optattend").on('click', '.optatten', function() {
 
 });//end operator attendance
 
+//Update Hour
+$("#workhrdata").on('click', '.uwhbtn', function() {
+  var hrval = $('#hrval').val();
+
+  $.ajax({
+    url: "/updatehr/",
+    method: "GET",
+    data:{hrval:hrval},
+    success: function(data){
+  
+        alert('Update  Successfully');
+        window.setTimeout(function(){ } ,100);
+                        location.reload();      
+    },
+    error:function(){
+        alert('Error contact to 09-969255445');
+    },
+                    
+  });//end ajax
+
+
+});
+//End Update Hour
+
+
+
 //Line Attendance
 $("#invlist").on('click', '.lineatt', function() {
     var currenttr = $(this).closest(".linetr");
     var lid = currenttr.find(".lid").html();
-    console.log(lid);
+    // console.log(lid);
     $.ajax({
     url: "/daily_line_attendance/",
     method: "GET",

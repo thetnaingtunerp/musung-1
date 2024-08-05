@@ -63,8 +63,19 @@ def save_operator(request):
 
 def linelist(request):
     lis = line.objects.all()
-    context = {'lis':lis}
+    hr = dailyhour.objects.get(id=1)
+    context = {'lis':lis, 'hr':hr}
     return render(request, 'line.html', context)
+
+
+def updatehr(request):
+    hrval = request.GET.get('hrval')
+    t = int(hrval)
+    h = dailyhour.objects.filter(id=1).update(timehr=t)
+    return JsonResponse({'status':'success'})
+
+
+
 
 def update_line_target(request):
     lid = request.GET.get('lid')

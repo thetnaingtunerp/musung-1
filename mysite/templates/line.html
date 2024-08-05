@@ -10,6 +10,14 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div> -->
+  
+  
+<div class="input-group mb-3 col-md-4 m-2" id="workhrdata">
+  <input type="text" class="form-control" value="{{hr}}" aria-describedby="button-addon2" id="hrval">
+  <button class="btn btn-outline-secondary uwhbtn" type="button" id="button-addon2">Update Working Hour</button>
+</div>
+
+
  
   <form method="post" action="{% url 'myapp:attendance_backdate' %}">{% csrf_token %}
     <div class="row m-2">
@@ -19,6 +27,10 @@
     </div>
   </form>
   
+
+
+
+
 </div>
 
 
@@ -26,6 +38,7 @@
 <div class="card border-info mb-3">
   <div class="card-body">
 
+    
    
 
 <table class="table table-striped" id="invlist">

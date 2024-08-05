@@ -110,3 +110,5 @@ class opreport(models.Model):
 class dailyhour(models.Model):
     timehr = models.PositiveIntegerField(default=0)
     
+    def __str__(self):
+        return str(self.timehr)
