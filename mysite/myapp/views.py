@@ -119,11 +119,13 @@ def daily_line_attendance(request):
     
     l_obj = line.objects.get(id=l)
     today = datetime.date.today()
+    t = dailyhour.objects.get(id=1)
+    wh = int(t.timehr)
 
     opt = operator.objects.filter(line=l_obj,resign=False, status=False)
 
     for i in opt:
-        dr = daily_report(operator_name=i, line=l_obj, target=l_obj.target, created_date=today, srno=i.srno, point=i.point)
+        dr = daily_report(operator_name=i, line=l_obj, target=l_obj.target, created_date=today, srno=i.srno, point=i.point, workinghr=wh)
         dr.save()
         
 

@@ -227,7 +227,7 @@ var foo ={{i.hourcount}};
 switch (foo) {
   case 1:
   var s2 = {{i.target_qty}}
-  var t2 = {{i.target}}/11
+  var t2 = {{i.target}}/{{i.workinghr}}
   var data = (s2/t2)*100
   if (data < 50) {
         document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
@@ -243,7 +243,7 @@ switch (foo) {
     break;
   case 2: // Value of foo matches this criteria; execution starts from here
   var s2 = {{i.target_qty}}
-  var t2 = {{i.target}}/11
+  var t2 = {{i.target}}/{{i.workinghr}}
   var t3 = t2 + t2
   var data = s2/t3*100
   if (data < 50) {
@@ -260,7 +260,7 @@ switch (foo) {
     break;
   case 3: // no break statement in 'case 0:' so this case will run as well
   var s2 = {{i.target_qty}}
-  var t2 = {{i.target}}/11
+  var t2 = {{i.target}}/{{i.workinghr}}
   var t3 = t2 + t2 + t2
   var data = s2/t3*100
   if (data < 50) {
@@ -277,7 +277,7 @@ switch (foo) {
     break;
   case 4:
   var s2 = {{i.target_qty}}
-  var t2 = {{i.target}}/11
+  var t2 = {{i.target}}/{{i.workinghr}}
   var t3 = t2 + t2 + t2 + t2
   var data = s2/t3*100
   if (data < 50) {
@@ -294,7 +294,7 @@ switch (foo) {
     break;
   case 5:
   var s2 = {{i.target_qty}}
-  var t2 = {{i.target}}/11
+  var t2 = {{i.target}}/{{i.workinghr}}
   var t3 = t2 + t2 + t2 + t2 + t2
   var data = s2/t3*100
   if (data < 50) {
@@ -311,7 +311,7 @@ switch (foo) {
     break;
   case 6:
   var s2 = {{i.target_qty}}
-  var t2 = {{i.target}}/11
+  var t2 = {{i.target}}/{{i.workinghr}}
   var t3 = t2 + t2 + t2 + t2 + t2 + t2
   var data = s2/t3*100
   if (data < 50) {
@@ -328,7 +328,7 @@ switch (foo) {
     break;
   case 7:
   var s2 = {{i.target_qty}}
-  var t2 = {{i.target}}/11
+  var t2 = {{i.target}}/{{i.workinghr}}
   var t3 = t2 + t2 + t2 + t2 + t2 + t2 + t2
   var data = s2/t3*100
   if (data < 50) {
@@ -345,7 +345,7 @@ switch (foo) {
     break;
   case 8:
   var s2 = {{i.target_qty}}
-  var t2 = {{i.target}}/11
+  var t2 = {{i.target}}/{{i.workinghr}}
   var t3 = t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2
   var data = s2/t3*100
   if (data < 50) {
@@ -362,7 +362,7 @@ switch (foo) {
     break;
   case 9:
   var s2 = {{i.target_qty}}
-  var t2 = {{i.target}}/11
+  var t2 = {{i.target}}/{{i.workinghr}}
   var t3 = t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2
   var data = s2/t3*100
   if (data < 50) {
@@ -379,7 +379,7 @@ switch (foo) {
     break;
   case 10:
   var s2 = {{i.target_qty}}
-  var t2 = {{i.target}}/11
+  var t2 = {{i.target}}/{{i.workinghr}}
   var t3 = t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2
   var data = s2/t3*100
   if (data < 50) {
@@ -396,7 +396,7 @@ switch (foo) {
     break;
   case 11:
   var s2 = {{i.target_qty}}
-  var t2 = {{i.target}}/11
+  var t2 = {{i.target}}/{{i.workinghr}}
   var t3 = {{i.target}}
   var data = s2/t3*100
   if (data < 50) {
