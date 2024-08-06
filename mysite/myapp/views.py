@@ -197,8 +197,11 @@ def daily_rep_filter_by_line(request,id):
     today = datetime.date.today()
     lis = line.objects.all()
     ls = line.objects.get(id=id)
+    dh = dailyhour.objects.get(id=1)
+    dhr = dh.timehr
     op = daily_report.objects.filter(created_date=today,line=ls).order_by('srno')
-    context = {'lis':lis, 'op':op, 'ls':ls}
+    
+    context = {'lis':lis, 'op':op, 'ls':ls , 'dh':dhr}
     return render(request, 'daily_rep_view.html', context)
 
 
@@ -1016,7 +1019,7 @@ def supervisor_getdaily_filter(request):
     lname = line.objects.get(id=lid)
     ln = lid
     op = daily_report.objects.filter(created_date=dudate, line=lname)
-    context = {'op':op, 'lname':lname, 'ln':ln}
+    context = {'op':op, 'lname':lname, 'ln':ln, 'dudate':dudate}
     return render(request, 'supervisor_getdaily_filter.html', context)
 
 

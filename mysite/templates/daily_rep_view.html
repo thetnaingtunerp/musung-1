@@ -82,14 +82,61 @@
       <th scope="col">8:30 AM</th>
       <th scope="col">9:30 AM</th>
       <th scope="col">10:30 AM</th>
+      
+      
       <th scope="col">11:30 AM</th>
+      
+     
+      {% if dh >= 5 %}
       <th scope="col">1:00 PM</th>
+      {% else %}
+      <th></th>
+      {% endif %}
+      
+
+      {% if dh >= 6 %}
       <th scope="col">2:00 PM</th>
+      {% else %}
+      <th></th>
+      {% endif %}
+     
+      
+      {% if dh >= 7 %}
       <th scope="col">3:00 PM</th>
+      {% else %}
+      <th></th>
+      {% endif %}
+      
+     
+      {% if dh >= 8 %}
       <th scope="col">4:00 PM</th>
+      {% else %}
+      <th></th>
+      {% endif %}
+     
+      
+      {% if dh >= 9 %}
       <th scope="col">5:00 PM</th>
+      {% else %}
+      <th></th>
+      {% endif %}
+      
+
+      {% if dh >= 10 %}
       <th scope="col">6:00 PM</th>
+      {% else %}
+      <th></th>
+      {% endif %}
+     
+
+      {% if dh >= 11 %}
       <th scope="col">7:00 PM</th>
+      {% else %}
+      <th></th>
+      {% endif %}
+      
+      
+
       <th scope="col">Target</th>
       <th scope="col">Total</th>
       <th scope="col">%</th>
@@ -117,7 +164,7 @@
         
       </td>
 
-      
+      {% if i.workinghr > 1 %}
       <td>
         <input type="number" class="dvrtblid" value="{{i.id}}" hidden>
         
@@ -127,6 +174,9 @@
         <input type="text" name="" value="{{i.h1}}" class="form-control ih1">
         {% endif %}
       </td>
+
+      {% endif %}
+
       <td>
         
        {% if i.h2 == 0 %}
@@ -144,6 +194,8 @@
         <input type="text" name="" value="{{i.h3}}" class="form-control ih3">
         {% endif %}
       </td>
+
+      {% if i.workinghr >= 4 %}
       <td>
         
         {% if i.h4 == 0 %}
@@ -152,6 +204,9 @@
         <input type="text" name="" value="{{i.h4}}" class="form-control ih4">
         {% endif %}
       </td>
+      {% endif %}
+
+      {% if i.workinghr >= 5 %}
       <td>
         
         {% if i.h5 == 0 %}
@@ -160,6 +215,11 @@
         <input type="text" name="" value="{{i.h5}}" class="form-control ih5">
         {% endif %}
       </td>
+      {% else %}
+      <td></td>
+      {% endif %}
+
+      {% if i.workinghr >= 6 %}
       <td>
         
         {% if i.h6 == 0 %}
@@ -168,6 +228,11 @@
         <input type="text" name="" value="{{i.h6}}" class="form-control ih6">
         {% endif %}
       </td>
+      {% else %}
+      <td></td>
+      {% endif %}
+
+      {% if i.workinghr >= 7 %}
       <td>
         
         {% if i.h7 == 0 %}
@@ -176,6 +241,11 @@
         <input type="text" name="" value="{{i.h7}}" class="form-control ih7">
         {% endif %}
       </td>
+      {% else %}
+      <td></td>
+      {% endif %}
+
+      {% if i.workinghr >= 8 %}
       <td>
         
         {% if i.h8 == 0 %}
@@ -184,6 +254,11 @@
         <input type="text" name="" value="{{i.h8}}" class="form-control ih8">
         {% endif %}
       </td>
+      {% else %}
+      <td></td>
+      {% endif %}
+
+      {% if i.workinghr >= 9 %}
       <td>
         
         {% if i.h9 == 0 %}
@@ -192,6 +267,11 @@
         <input type="text" name="" value="{{i.h9}}" class="form-control ih9">
         {% endif %}
       </td>
+      {% else %}
+      <td></td>
+      {% endif %}
+
+      {% if i.workinghr >= 10 %}
       <td>
         
         {% if i.h10 == 0 %}
@@ -200,6 +280,11 @@
         <input type="text" name="" value="{{i.h10}}" class="form-control ih10">
         {% endif %}
       </td>
+      {% else %}
+      <td></td>
+      {% endif %}
+
+      {% if i.workinghr >= 11 %}
       <td>
         
         {% if i.h11 == 0 %}
@@ -208,6 +293,9 @@
         <input type="text" name="" value="{{i.h11}}" class="form-control ih11">
         {% endif %}
       </td>
+      {% else %}
+      <td></td>
+      {% endif %}
 
 
       <td>
