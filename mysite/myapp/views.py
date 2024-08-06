@@ -1023,6 +1023,15 @@ def supervisor_getdaily_filter(request):
     return render(request, 'supervisor_getdaily_filter.html', context)
 
 
+def supervisor_point_filter(request):
+    dudate = request.POST.get('duedate')
+    lid = request.POST.get('lid')
+    pointfilter = request.POST.get('pointfilter')
+    lname = line.objects.get(id=lid)
+    ln = lid
+    op = daily_report.objects.filter(created_date=dudate, line=lname, point__contains=pointfilter)
+    context = {'op':op, 'lname':lname, 'ln':ln, 'dudate':dudate}
+    return render(request, 'supervisor_getdaily_filter.html', context)
 
 
 

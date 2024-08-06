@@ -20,10 +20,10 @@
 </form> -->
 
 
-<form method="post" action="{% url 'myapp:supervisor_getdaily_filter' %}">{% csrf_token %}
+<form method="post" action="{% url 'myapp:supervisor_point_filter' %}">{% csrf_token %}
   <div class="row m-2">
-    <input type="number" name="lid" value="{{ln}}">
-    <input type="date" name="duedate" id="" class="datepicker" value="{{dudate}}">
+    <input type="number" name="lid" value="{{ln}}" hidden>
+    <input type="date" name="duedate" id="" class="datepicker" value="{{dudate}}" hidden>
     <input type="text" name="pointfilter" id="" class="form-control" placeholder="point filter">
     <input type="submit" class="form-control btn btn-md btn-info col" value="" hidden>
   </div>

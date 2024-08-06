@@ -52,6 +52,7 @@
       <th scope="col">#</th>
       <th scope="col">EID</th>
       <th scope="col">Name</th>
+      <th scope="col">Point</th>
       <th scope="col">Line</th>
       
       <th scope="col">Status</th>
@@ -72,6 +73,7 @@
      
     <a href="{% url 'myapp:operatorupdate' i.id %}">{{i.name}}</a></td>
 
+      <td>{{i.point}}</td>
       <td>{{i.line}}</td>
       
       <td>
