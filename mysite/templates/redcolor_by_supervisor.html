@@ -37,6 +37,9 @@
 
       {% if entry.created_date >= fd and entry.created_date <= td %}
 
+      {% if entry.target == 0 %}
+               
+      {% else %}
       
       {% if entry.target_per < 50 %}
       <td width="130px;" class="">
@@ -61,6 +64,7 @@
       {% else %}
       
       
+      {% endif %}
       {% endif %}
       
       

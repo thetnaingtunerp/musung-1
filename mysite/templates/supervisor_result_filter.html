@@ -45,6 +45,10 @@
                <td class="">{{entry.created_date}}</td>
             </tr>
             <tr class="border">
+               {% if entry.target == 0 %}
+               <td class=" text-center">{{entry.target_per}}%</td>
+               {% else %}
+
                {% if entry.target_per < 50 %}
                <td class=" bg-danger text-center">{{entry.target_per}}%</td>
                {% elif entry.target_per > 100 %}
@@ -54,6 +58,8 @@
                
                {% else %}
                <td class=" text-center">{{entry.target_per}}%</td>
+               {% endif %}
+
                {% endif %}
             </tr>
             <tr class="border">
