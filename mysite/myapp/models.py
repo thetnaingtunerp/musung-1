@@ -113,3 +113,8 @@ class dailyhour(models.Model):
     
     def __str__(self):
         return str(self.timehr)
+
+
+class ferry(models.Model):
+    ferryname = models.CharField(max_length=255)
+    lic_number = models.CharField(max_length=255, blank=True, null=True)

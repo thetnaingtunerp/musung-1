@@ -90,7 +90,7 @@
 
 <!-- End Jumbotron -->
 
-
+<div class="jumbotron-fluid bg-secondary text-center float-bottom">Developed by : Thet Naing Tun</div>
 
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
@@ -752,16 +752,17 @@ $("#drvtbl").on('click', '.rpupt', function() {
   var itarget = currenttr.find(".itarget").val();
   var ab = currenttr.find(".ab").val();
   var rmk = currenttr.find(".rmk").val();
+  var whour = currenttr.find(".whour").val();
   // console.log(ab);
   $.ajax({
     url: "/daily_rep_update_ajax/",
     method: "GET",
-    data:{iid:iid, point:point, itarget:itarget, ab:ab, rmk:rmk},
+    data:{iid:iid, point:point, itarget:itarget, ab:ab, rmk:rmk, whour:whour},
     success: function(data){
   
         // alert('Update Successfully');
-        window.setTimeout(function(){ } ,100);
-                        location.reload();      
+        // window.setTimeout(function(){});
+                        location.reload(true);      
     },
     error:function(){
         alert('Error contact to 09-969255445');
