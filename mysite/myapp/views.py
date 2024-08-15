@@ -225,8 +225,19 @@ def daily_rep_update_ajax(request):
     remark = request.GET.get('rmk')
     workinghr = request.GET.get('whour')
 
-    # print('Success Ajax')
+
+    
+
     op = daily_report.objects.filter(id=iid).update(target=target, absant=absant, remark=remark, point=point, workinghr=workinghr)
+    
+    cper = daily_report.objects.get(id=iid)
+    tg = cper.target
+    tt = cper.target_qty
+    cb = cper.combine
+    percen = (tt/tg)*100*cb
+
+    a = daily_report.objects.filter(id=iid).update(target_per=percen)
+
     return JsonResponse({'status':'success'})
 
 def daily_rep_search(request):

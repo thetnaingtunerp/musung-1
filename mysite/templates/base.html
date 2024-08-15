@@ -90,7 +90,7 @@
 
 <!-- End Jumbotron -->
 
-<div class="jumbotron-fluid bg-secondary text-center float-bottom">Developed by : Thet Naing Tun</div>
+<!-- <div class="jumbotron-fluid bg-secondary text-center float-bottom">Developed by : Thet Naing Tun</div> -->
 
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
@@ -698,9 +698,9 @@ $("#drvtbl").on('click', '.bsync', function() {
     data:{iid:iid, ih1:ih1, ih2:ih2, ih3:ih3, ih4:ih4, ih5:ih5, ih6:ih6, ih7:ih7, ih8:ih8, ih9:ih9, ih10:ih10, ih11:ih11},
     success: function(data){
   
-        // alert('Update Successfully');
-        window.setTimeout(function(){ } ,100);
-                        location.reload();      
+        alert('Update Successfully');
+        // window.setTimeout(function(){ } ,100);
+        //                 location.reload();      
     },
     error:function(){
         alert('Error contact to 09-969255445');
@@ -753,16 +753,16 @@ $("#drvtbl").on('click', '.rpupt', function() {
   var ab = currenttr.find(".ab").val();
   var rmk = currenttr.find(".rmk").val();
   var whour = currenttr.find(".whour").val();
-  // console.log(ab);
+  
+
   $.ajax({
     url: "/daily_rep_update_ajax/",
     method: "GET",
     data:{iid:iid, point:point, itarget:itarget, ab:ab, rmk:rmk, whour:whour},
     success: function(data){
   
-        alert('Update Successfully');
-        // window.setTimeout(function(){});
-                        // location.reload(true);      
+        // alert('Update Successfully');
+        $('.modal').modal('hide');    
     },
     error:function(){
         alert('Error contact to 09-969255445');
