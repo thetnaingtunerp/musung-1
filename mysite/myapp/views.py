@@ -109,7 +109,7 @@ def save_att_daily(request):
     l_obj = line.objects.get(line_name=lie)
     today = datetime.date.today()
     # print(l_obj)
-    dr = daily_report(operator_name=op_obj, line=l_obj, target=l_obj.target, created_date=today)
+    dr = daily_report(operator_name=op_obj, line=l_obj, target=l_obj.target, created_date=today,srno=op_obj.srno)
     dr.save()
     return JsonResponse({'status':'success'})
 

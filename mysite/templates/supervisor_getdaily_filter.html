@@ -159,7 +159,7 @@
     <tr class="drvtbltr">
       
       
-      <td><a href="{% url 'myapp:dailyrep_delete' i.id %}">{{forloop.counter}}</a></td>
+      <td><a href="{% url 'myapp:dailyrep_delete' i.id %}">{{i.srno}}</a></td>
       <td style="min-width: 200px;">
 
          {% if i.absant %}
