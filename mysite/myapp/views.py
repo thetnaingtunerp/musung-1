@@ -108,8 +108,10 @@ def save_att_daily(request):
     lie = op_obj.line
     l_obj = line.objects.get(line_name=lie)
     today = datetime.date.today()
+    t = dailyhour.objects.get(id=1)
+    wh = int(t.timehr)
     # print(l_obj)
-    dr = daily_report(operator_name=op_obj, line=l_obj, target=l_obj.target, created_date=today,srno=op_obj.srno)
+    dr = daily_report(operator_name=op_obj, line=l_obj, target=l_obj.target, created_date=today,srno=op_obj.srno, workinghr=wh, point=op_obj.point)
     dr.save()
     return JsonResponse({'status':'success'})
 
