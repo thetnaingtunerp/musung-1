@@ -40,10 +40,26 @@
 <div class="card border-info mb-3">
   <div class="card-body">
     
-      <a class="text-white btn-success btn m-2" href="{% url 'myapp:operatorlist' %}">Operator <span class="sr-only">(current)</span></a>
+      
       <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#createNewInv">
         + Create New Operator
       </button> -->
+      <div class="row">
+        
+          
+        
+          <a class="text-white btn-success btn m-2" href="{% url 'myapp:operatorlist' %}">View Operator <span class="sr-only">(current)</span></a>
+        
+          <form action="{% url 'myapp:operator_point_filter' %}" method="post">{% csrf_token %}
+            <input type="number" name="kw" value="{{kwag}}" hidden>
+            <input type="text" name="point" class="form-control m-2" placeholder="Point Filter">
+            <button type="submit" hidden>search</button>
+          </form>
+        
+        
+      </div>
+
+      
 <hr>
 
 <table class="table table-striped" id="optattend">

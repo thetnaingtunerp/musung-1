@@ -96,10 +96,25 @@ def operatortarget(request,id):
 def operatoratt(request,id):
     op = operator.objects.filter(line=id)
     form = OptForm()
-    context = {'op':op, 'form':form}
+    kwag = id
+    context = {'op':op, 'form':form, 'kwag':kwag}
 
     # context = {'op':op}
     return render(request, 'operatoratt.html', context)
+
+
+def operator_point_filter(request):
+    point = request.POST.get('point')
+    kwag = request.POST.get('kw')
+    op = operator.objects.filter(line=kwag, point__contains=point)
+    
+    context = {'op':op, 'kwag':kwag}
+    return render(request, 'operatoratt.html', context)
+    
+
+
+
+
 
 def save_att_daily(request):
     opi = request.GET.get('oid')

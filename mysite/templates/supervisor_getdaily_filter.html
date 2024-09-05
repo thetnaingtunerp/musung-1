@@ -169,8 +169,8 @@
         {% endif %}
         
       </td>
-      <td><span class="text-danger">{{i.operator_name.employee_code}}</span></td>
-      <td><span class="text-primary">{{i.operator_name.point}}</span></td>
+      <td><span class="text-primary">{{i.operator_name.employee_code}}</span></td>
+      <td><span class="text-primary">{{i.point}}</span></td>
 
       
       <td id="ih1-{{i.id}}">
@@ -189,7 +189,7 @@
       <td id="ih2-{{i.id}}">
         
        {% if i.h2 == 0 %}
-        -
+        
         {% else %}
         <strong>{{i.h2}}</strong>
         
@@ -200,7 +200,7 @@
       <td id="ih3-{{i.id}}">
         
        {% if i.h3 == 0 %}
-       -
+       
         {% else %}
         <strong>{{i.h3}}</strong>
         
@@ -210,7 +210,7 @@
       <td id="ih4-{{i.id}}">
         
         {% if i.h4 == 0 %}
-        -
+        
         {% else %}
         <strong>{{i.h4}}</strong>
         
@@ -220,7 +220,7 @@
       <td id="ih5-{{i.id}}">
         
         {% if i.h5 == 0 %}
-        -
+        
         {% else %}
         <strong>{{i.h5}}</strong>
         
@@ -230,7 +230,7 @@
       <td id="ih6-{{i.id}}">
         
         {% if i.h6 == 0 %}
-        -
+        
         {% else %}
         <strong>{{i.h6}}</strong>
         
@@ -240,7 +240,7 @@
       <td id="ih7-{{i.id}}">
         
         {% if i.h7 == 0 %}
-        -
+        
         {% else %}
         <strong>{{i.h7}}</strong>
         
@@ -250,7 +250,7 @@
       <td id="ih8-{{i.id}}">
         
         {% if i.h8 == 0 %}
-        -
+        
         {% else %}
         <strong>{{i.h8}}</strong>
         
@@ -260,7 +260,7 @@
       <td id="ih9-{{i.id}}">
         
         {% if i.h9 == 0 %}
-        -
+        
         {% else %}
         <strong>{{i.h9}}</strong>
         
@@ -270,7 +270,7 @@
       <td id="ih10-{{i.id}}">
         
         {% if i.h10 == 0 %}
-        -
+        
         {% else %}
         <strong>{{i.h10}}</strong>
         
@@ -281,7 +281,7 @@
       <td id="ih11-{{i.id}}">
         
         {% if i.h11 == 0 %}
-        -
+        
         {% else %}
         <strong>{{i.h11}}</strong>
         
@@ -504,14 +504,14 @@ switch (foo) {
       <td id="rmk-{{i.id}}">
         {% if i.remark %}
         
-        <a href="#" class="btn btn-sm btn-warning"  data-toggle="tooltip" data-placement="left" title="{{i.remark}}">
+        <a href="#" class="btn btn-sm btn-outline-secondary"  data-toggle="tooltip" data-placement="left" title="{{i.remark}}">
           <i class="fa-solid fa-comments"></i>
         </a>
         {% endif %}
 
-        {% if i.absant == True %}
+        <!-- {% if i.absant == True %}
         <a href="#" class="btn-sm btn-danger">absant</a>
-        {% endif %}
+        {% endif %} -->
       </td>
 
 
