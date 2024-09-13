@@ -51,6 +51,8 @@
             
       <th scope="col">Status</th>
       <th scope="col">Line Attendance</th>
+      <th scope="col">red/succes</th>
+      <!-- <th scope="col">success</th> -->
     </tr>
   </thead>
   <tbody id="linelistTbl">
@@ -104,6 +106,54 @@
       <td>
         <button type="button" class="lineatt btn btn-sm btn-warning">Attendance</button>
       </td>
+
+      <td>
+
+<!-- Button trigger modal -->
+ <a href="#" data-toggle="modal" data-target="#redsuccess-{{i.id}}" class="btn btn-sm btn-danger">{{i.redcolor}}</a>
+ <a href="#" data-toggle="modal" data-target="#redsuccess-{{i.id}}" class="btn btn-sm btn-success">{{i.successcolor}}</a>
+
+
+<!-- Modal -->
+<div class="modal fade" id="redsuccess-{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{i.line_name}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      
+      <div class="modal-body">
+
+        <input type="number" name="" class="form-control is-invalid red" value="{{i.redcolor}}">
+        <hr>
+        <input type="number" name="" class="form-control is-valid suc" value="{{i.successcolor}}">
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info uptColorTarget">Update%</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+      </div>
+       
+
+    </div>
+  </div>
+</div>
+
+      </td>
+
+      <!-- <td style="width: 130px;">
+        <input type="number" name="" class="form-control is-invalid red" value="{{i.redcolor}}">
+        
+      </td>
+      <td style="width: 130px;">
+        <input type="number" name="" class="form-control is-valid suc" value="{{i.successcolor}}">
+      </td> -->
     </tr>
     {% endfor %}
 

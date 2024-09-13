@@ -49,11 +49,11 @@
                <td class=" text-center">{{entry.target_per}}%</td>
                {% else %}
 
-               {% if entry.target_per < 50 %}
+               {% if entry.target_per < entry.redcolor %}
                <td class=" bg-danger text-center">{{entry.target_per}}%</td>
-               {% elif entry.target_per > 100 %}
+               {% elif entry.target_per > entry.successcolor %}
                <td class=" bg-success text-center">{{entry.target_per}}%</td>
-               {% elif entry.target_per > 80 %}
+               {% elif entry.target_per > entry.successcolor %}
                <td class=" bg-success text-center">{{entry.target_per}}%</td>
                
                {% else %}

@@ -18,6 +18,8 @@ class point(models.Model):
 class line(models.Model):
     line_name = models.CharField(max_length=255)
     target = models.PositiveIntegerField(default=0)
+    redcolor = models.PositiveIntegerField(default=0)
+    successcolor = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.line_name
@@ -62,6 +64,9 @@ class daily_report(models.Model):
     srno = models.PositiveIntegerField(default=0)
     point = models.CharField(max_length=255, blank=True, null=True)
     workinghr = models.PositiveIntegerField(default=11)
+
+    redcolor = models.PositiveIntegerField(default=50)
+    successcolor = models.PositiveIntegerField(default=80)
     
     created_date = models.DateField(blank=True, null=True)
     updated_at = models.DateTimeField(auto_now=True)

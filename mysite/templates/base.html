@@ -207,6 +207,41 @@ $("#linelistTbl").on('click', '.uptLineTarget', function() {
 });//end update line target
 
 
+//start update red and success percent
+$("#linelistTbl").on('click', '.uptColorTarget', function() {
+  var currenttr = $(this).closest(".linetr");
+  var lid = currenttr.find(".lid").html();
+  var red = currenttr.find(".red").val();
+  var suc = currenttr.find(".suc").val();
+  // alert(suc + red);
+  $.ajax({
+    url: "/update_color_percent/",
+    method: "GET",
+    data:{lid:lid, red:red, suc:suc},
+    success: function(data){
+        // console.log(data.status);
+
+        // alert('Item Add Successfully');
+        window.setTimeout(function(){ } ,2000);
+                        location.reload();
+
+        // window.location.href = '/admin/';
+        // window.open('https://www.codexworld.com', '_blank');
+    },
+    error:function(){
+        alert('having some error contact to developer');
+    },
+                    
+  });//end ajax
+  
+});
+//end update red and success percent
+
+
+
+
+
+
 //start operator attendance
 $("#optattend").on('click', '.optattbtn', function() {
   var currenttr = $(this).closest(".opattr");

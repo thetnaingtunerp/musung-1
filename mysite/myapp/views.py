@@ -87,6 +87,16 @@ def update_line_target(request):
     l = line.objects.filter(id=i).update(target=t)
     return JsonResponse({'status':'success'})
 
+
+def update_color_percent(request):
+    lid = int(request.GET.get('lid'))
+    red = int(request.GET.get('red'))
+    suc = int(request.GET.get('suc'))
+    l = line.objects.filter(id=lid).update(redcolor=red, successcolor=suc)
+    return JsonResponse({'status': 'success'})
+
+
+
 def operatortarget(request,id):
     lis = line.objects.all()
     op = daily_report.objects.filter(line=id)
@@ -142,7 +152,7 @@ def daily_line_attendance(request):
     opt = operator.objects.filter(line=l_obj,resign=False, status=False)
 
     for i in opt:
-        dr = daily_report(operator_name=i, line=l_obj, target=l_obj.target, created_date=today, srno=i.srno, point=i.point, workinghr=wh)
+        dr = daily_report(operator_name=i, line=l_obj, target=l_obj.target, created_date=today, srno=i.srno, point=i.point, workinghr=wh, redcolor=l_obj.redcolor, successcolor=l_obj.successcolor)
         dr.save()
         
 
@@ -165,7 +175,7 @@ def save_attendance_backdate(request):
     opt = operator.objects.filter(line=l_obj,resign=False)
 
     for i in opt:
-        dr = daily_report(operator_name=i, line=l_obj, target=l_obj.target, created_date=fd, srno=i.srno)
+        dr = daily_report(operator_name=i, line=l_obj, target=l_obj.target, created_date=fd, srno=i.srno, redcolor=l_obj.redcolor, successcolor=l_obj.successcolor)
         dr.save()
         
 

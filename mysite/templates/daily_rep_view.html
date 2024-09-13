@@ -312,16 +312,19 @@
 <!-- get color hourly -->
 <script type="text/javascript">
 var foo ={{i.hourcount}};
+var rd = {{i.redcolor}};
+var su = {{i.successcolor}};
 switch (foo) {
   case 1:
   var s2 = {{i.target_qty}}
   var t2 = {{i.target}}/{{i.workinghr}}
   var data = (s2/t2)*100
-  if (data < 50) {
+  
+  if (data < rd) {
         document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
         document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
         
-      } else if (data >= 80){
+      } else if (data >= su){
         document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
         document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
         
@@ -334,11 +337,11 @@ switch (foo) {
   var t2 = {{i.target}}/{{i.workinghr}}
   var t3 = t2 + t2
   var data = s2/t3*100
-  if (data < 50) {
+  if (data < rd) {
         document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
         document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
         
-      } else if (data >= 80){
+      } else if (data >= su){
         document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
         document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
         
@@ -351,11 +354,11 @@ switch (foo) {
   var t2 = {{i.target}}/{{i.workinghr}}
   var t3 = t2 + t2 + t2
   var data = s2/t3*100
-  if (data < 50) {
+  if (data < rd) {
         document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
         document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
         
-      } else if (data >= 80){
+      } else if (data >= su){
         document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
         document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
         
@@ -368,11 +371,11 @@ switch (foo) {
   var t2 = {{i.target}}/{{i.workinghr}}
   var t3 = t2 + t2 + t2 + t2
   var data = s2/t3*100
-  if (data < 50) {
+  if (data < rd) {
         document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
         document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
         
-      } else if (data >= 80){
+      } else if (data >= su){
         document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
         document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
         
@@ -385,11 +388,11 @@ switch (foo) {
   var t2 = {{i.target}}/{{i.workinghr}}
   var t3 = t2 + t2 + t2 + t2 + t2
   var data = s2/t3*100
-  if (data < 50) {
+  if (data < rd) {
         document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
         document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
         
-      } else if (data >= 80){
+      } else if (data >= su){
         document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
         document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
         
@@ -402,11 +405,11 @@ switch (foo) {
   var t2 = {{i.target}}/{{i.workinghr}}
   var t3 = t2 + t2 + t2 + t2 + t2 + t2
   var data = s2/t3*100
-  if (data < 50) {
+  if (data < rd) {
         document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
         document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
         
-      } else if (data >= 80){
+      } else if (data >= su){
         document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
         document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
         
@@ -419,11 +422,11 @@ switch (foo) {
   var t2 = {{i.target}}/{{i.workinghr}}
   var t3 = t2 + t2 + t2 + t2 + t2 + t2 + t2
   var data = s2/t3*100
-  if (data < 50) {
+  if (data < rd) {
         document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
         document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
         
-      } else if (data >= 80){
+      } else if (data >= su){
         document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
         document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
         
@@ -436,11 +439,11 @@ switch (foo) {
   var t2 = {{i.target}}/{{i.workinghr}}
   var t3 = t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2
   var data = s2/t3*100
-  if (data < 50) {
+  if (data < rd) {
         document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
         document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
         
-      } else if (data >= 80){
+      } else if (data >= su){
         document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
         document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
         
@@ -453,11 +456,11 @@ switch (foo) {
   var t2 = {{i.target}}/{{i.workinghr}}
   var t3 = t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2
   var data = s2/t3*100
-  if (data < 50) {
+  if (data < rd) {
         document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
         document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
         
-      } else if (data >= 80){
+      } else if (data >= su){
         document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
         document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
         
@@ -470,11 +473,11 @@ switch (foo) {
   var t2 = {{i.target}}/{{i.workinghr}}
   var t3 = t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2 + t2
   var data = s2/t3*100
-  if (data < 50) {
+  if (data < rd) {
         document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
         document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
         
-      } else if (data >= 80){
+      } else if (data >= su){
         document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
         document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
         
@@ -487,11 +490,11 @@ switch (foo) {
   var t2 = {{i.target}}/{{i.workinghr}}
   var t3 = {{i.target}}
   var data = s2/t3*100
-  if (data < 50) {
+  if (data < rd) {
         document.getElementById("cc-{{i.id}}").style.backgroundColor ='#ed3b3b';
         document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
         
-      } else if (data >= 80){
+      } else if (data >= su){
         document.getElementById("cc-{{i.id}}").style.backgroundColor ='#32a852';
         document.getElementById("cc-{{i.id}}").innerHTML = parseFloat(data).toFixed(0);
         

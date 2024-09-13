@@ -13,6 +13,7 @@ urlpatterns = [
     path('', views.linelist, name='linelist'),
     path('updatehr/', views.updatehr, name='updatehr'),
     path('update_line_target/', views.update_line_target, name='update_line_target'),
+    path('update_color_percent/', views.update_color_percent, name='update_color_percent'),
     path('operator_delete/<int:id>/', views.operator_delete, name='operator_delete'),
     path('operatortarget/<int:id>/', views.operatortarget, name='operatortarget'),
     path('operatoratt/<int:id>/', views.operatoratt, name='operatoratt'),
