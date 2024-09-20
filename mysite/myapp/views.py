@@ -907,11 +907,26 @@ def operator_profile_update(request):
         opid = request.POST.get('opid')
         opupt = operator.objects.filter(id=opid).update(name=name, burmese=burmese, point=point, resign=resign, srno=srno, status=status, employee_code=employee_code)
         return redirect(request.META.get('HTTP_REFERER'))
+        # return HttpResponse('success update')
     else:
         return redirect(request.META.get('HTTP_REFERER'))
 
     print('success method!!')
     return redirect(request.META.get('HTTP_REFERER'))
+
+def update_operator_profile(request):
+    today = datetime.date.today()
+    srno = request.GET.get('srno')
+    employee_code = request.GET.get('employee_code')
+    name = request.GET.get('name')
+    burmese = request.GET.get('burmese')
+    point = request.GET.get('point')
+    resign = request.GET.get('resign')
+    status = request.GET.get('attcollect')
+    opid = request.GET.get('opid')
+    opupt = operator.objects.filter(id=opid).update(name=name, burmese=burmese, point=point, resign=resign, srno=srno, status=status, employee_code=employee_code)
+    today_data_upt = daily_report.objects.filter(operator_name=opid, created_date=today).update(point=point)
+    return JsonResponse({'status':'success'})
 
 
 

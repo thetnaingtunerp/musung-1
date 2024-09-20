@@ -806,7 +806,9 @@ $("#drvtbl").on('click', '.rpupt', function() {
     success: function(data){
   
         // alert('Update Successfully');
-        $('.modal').modal('hide');    
+        
+        $('.modal').modal('hide');
+        
     },
     error:function(){
         alert('Error contact to 09-969255445');
@@ -818,6 +820,35 @@ $("#drvtbl").on('click', '.rpupt', function() {
 //End Data Entry Update
 
 
+$("#optattend").on('click', '.opupt', function() {
+  var currenttr = $(this).closest(".opattr");
+  var opid = currenttr.find(".opid").val();
+  var srno = currenttr.find(".srno").val();
+  var employee_code = currenttr.find("employee_code").val();
+  var name = currenttr.find(".name").val();
+
+  var burmese = currenttr.find(".burmese").val();
+  var point = currenttr.find(".point").val();
+  var resign = currenttr.find("select[name=resign]").val();
+  var attcollect = currenttr.find("select[name=attcollect]").val();
+
+  $.ajax({
+    url: "/update_operator_profile/",
+    method: "GET",
+    data:{opid:opid, srno:srno, employee_code:employee_code, name:name, burmese:burmese, burmese:burmese, point:point, resign:resign, attcollect:attcollect},
+    success: function(data){
+  
+        // alert('Update Successfully');
+        $('.modal').modal('hide');
+        location.reload(true);    
+    },
+    error:function(){
+        alert('Error contact to 09-969255445');
+    },
+                    
+  });//end ajax
+  
+});
 
 
 
@@ -826,6 +857,13 @@ $("#drvtbl").on('click', '.rpupt', function() {
 $("#SaveData").click(function(){
             location.reload(true);
         });
+
+
+
+
+
+
+
 
 
 });//Ready Function

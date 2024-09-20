@@ -134,29 +134,29 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form method="POST" action="{% url 'myapp:operator_profile_update' %}">
+      <!-- <form method="POST" action="{% url 'myapp:operator_profile_update' %}"> -->
       <div class="modal-body">
         
           <!-- Security token by Django -->
-         {% csrf_token %}
+         <!-- {% csrf_token %} -->
       
           <!-- form as paragraph -->
-          <input type="number" value="{{i.id}}" name="opid" hidden>
+          <input type="number" value="{{i.id}}" name="opid" class="opid" hidden>
           <label for="srno">SirNo</label>
-          <input type="number" class="form-control col-md-6"  name="srno" value="{{i.srno}}">
+          <input type="number" class="form-control col-md-6 srno"  name="srno" value="{{i.srno}}">
 
           <label for="employee_code">Employee Code</label>
-          <input type="text" class="form-control col-md-6"  name="employee_code" value="{{i.employee_code}}">
+          <input type="text" class="form-control col-md-6 employee_code"  name="employee_code" value="{{i.employee_code}}">
 
           <label for="name">name</label>
-          <input type="text" class="form-control"  name="name" value="{{i.name}}">
+          <input type="text" class="form-control name"  name="name" value="{{i.name}}">
           <label for="bur">burmese</label>
-          <input type="text" class="form-control"  name="burmese" value="{{i.burmese}}">
+          <input type="text" class="form-control burmese"  name="burmese" value="{{i.burmese}}">
           <label for="point">Point</label>
-          <input type="text" class="form-control"  name="point" value="{{i.point}}">
+          <input type="text" class="form-control point"  name="point" value="{{i.point}}">
           <hr>
           <label for="resign" class="text-danger h6">Resign :  </label>
-  <select name="resign">
+  <select name="resign" class="resign">
     {% if i.resign == False %}
   <option value="False">Active</option>
   <option value="True" class="btn-danger">Resigned</option>
@@ -170,7 +170,7 @@
 
   <hr>
   <label for="attcollect" class="text-success h6">Attendance Collection </label>
-  <select name="attcollect">
+  <select name="attcollect" class="attcollect">
     {% if i.status == False %}
   <option value="False">Yes</option>
   <option value="True" class="btn-danger">No</option>
@@ -187,9 +187,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-info opupt">Save Change</button>
+        <button type="button" class="btn btn-info opupt">Save Change</button>
       </div>
-    </form>
+    <!-- </form> -->
     </div>
   </div>
 </div>

@@ -7,6 +7,8 @@ urlpatterns = [
     path('activate_lic/', views.activate_lic, name='activate_lic'),
     path('key_activate/', views.key_activate, name='key_activate'),
 
+    path('update_operator_profile/', views.update_operator_profile, name='update_operator_profile'),
+
     path('operatorlist/', views.operatorlist, name='operatorlist'),
     path('operatorupdate/<int:id>/', views.operatorupdate, name='operatorupdate'),
     path('save_operator/', views.save_operator, name='save_operator'),
