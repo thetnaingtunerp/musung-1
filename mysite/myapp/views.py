@@ -8,6 +8,7 @@ import datetime
 # today = datetime.date.today()
 from .models import *
 from .forms import *
+from django.db.models import Sum,Count,F
 
 def lic(request):
     lid = request.GET.get('lid')
@@ -26,7 +27,7 @@ def activate_lic(request):
     if key == 302017:
         exp = licencedate.objects.get(id=1)
         today = datetime.date.today()
-        # print(today)
+        print(today)
         dudate = today.replace(today.year + 1) 
         activate = licencedate.objects.filter(id=1).update(expired_date=dudate)
         return JsonResponse({'status':'success'})
@@ -1224,6 +1225,26 @@ def redcolor_by_supervisor(request):
             return render(request, 'redcolor_by_supervisor.html', context)
     else:
         return render(request, 'redcolor_by_supervisor.html', context)
+
+
+def operator_target_filter(request):
+    
+    # c_product = CartProduct.objects.values('product__item_name',
+    #                                                'product__sell_price',
+    #                                                'product__balance_qty',
+    #                                                'product__pruchase_price').annotate(sum=Sum('subtotal'),
+    #                                                                                    quantity=Sum('quantity'),
+    #                                                                                    pur=(F('product__sell_price') - F('product__pruchase_price')) * F('quantity')).filter(created_at__range=[fromdate, todate])
+    today = datetime.date.today()
+    fdate = request.POST.get('fdate')
+    tdate = request.POST.get('tdate')
+    lid = request.POST.get('lid')
+    lna = line.objects.get(id=lid)
+    report = daily_report.objects.values('operator_name__name', 'operator_name__point').annotate(totaltarget=Sum('target'), totalqty=Sum('target_qty'), perc=( (F('totalqty')*100)/ F('totaltarget'))).filter(created_date__range=[fdate, tdate], line=lna)
+    context ={'report':report}
+    return render(request, 'operator_target_filter.html', context)
+
+
 
 
 #Have Error            

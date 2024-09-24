@@ -87,6 +87,8 @@ urlpatterns = [
     path('update_h11/', views.update_h11, name='update_h11'),
     path('update_h12/', views.update_h12, name='update_h12'),
 
+    path('operator_target_filter/', views.operator_target_filter, name='operator_target_filter'),
+
     #Test
     path('monday_week/', views.monday_week, name='monday_week'),
     path('testpref/', views.testpref, name='testpref'),

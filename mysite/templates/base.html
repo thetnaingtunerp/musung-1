@@ -898,7 +898,13 @@ $('#operatortargettbl').DataTable();
 $('#operatorlist').DataTable();
 
 
-
+new DataTable('#operatorreportlist', {
+    layout: {
+        topStart: {
+            buttons: ['excel', 'pdf', 'print']
+        }
+    }
+});
 
 
 </script>

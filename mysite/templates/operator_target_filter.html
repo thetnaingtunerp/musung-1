@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+
+<table class="table table-striped" id="operatorreportlist">
+    <thead>
+      <tr>
+        
+        
+        <th scope="col">Name</th>
+        <th>Point</th>
+        <th scope="col">Target</th>
+        <th scope="col">Total</th>
+        <th scope="col" class="text-center">%</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in report %}
+      <tr>
+        
+        
+        <td>
+  
+          <a href="#">{{i.operator_name__name}}</a>
+        
+      </td>
+      <td>{{i.operator_name__point}}</td>
+      <td>{{i.totaltarget}}</td>
+        <td>{{i.totalqty}}</td>
+        <td class="text-center">{{i.perc}}</td>
+      
+        
+       
+      </tr>
+      {% endfor %}
+  
+    </tbody>
+  </table>
+  
+
+{% endblock content %}
