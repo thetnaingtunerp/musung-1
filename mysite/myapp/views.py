@@ -1241,9 +1241,20 @@ def operator_target_filter(request):
     lid = request.POST.get('lid')
     lna = line.objects.get(id=lid)
     report = daily_report.objects.values('operator_name__name', 'operator_name__point', 'operator_name__srno').annotate(totaltarget=Sum('target'), totalqty=Sum('target_qty'), perc=( (F('totalqty')*100)/ F('totaltarget'))).filter(created_date__range=[fdate, tdate], line=lna)
-    context ={'report':report}
+    context ={'report':report, 'fdate':fdate, 'tdate':tdate, 'lid':lid}
     return render(request, 'operator_target_filter.html', context)
 
+
+def operator_target_point_filter(request):
+    today = datetime.date.today()
+    fdate = request.POST.get('fdate')
+    tdate = request.POST.get('tdate')
+    lid = request.POST.get('lid')
+    point = request.POST.get('point')
+    lna = line.objects.get(id=lid)
+    report = daily_report.objects.values('operator_name__name', 'operator_name__point', 'operator_name__srno').annotate(totaltarget=Sum('target'), totalqty=Sum('target_qty'), perc=( (F('totalqty')*100)/ F('totaltarget'))).filter(created_date__range=[fdate, tdate], line=lna, point__contains=point)
+    context ={'report':report, 'fdate':fdate, 'tdate':tdate, 'lid':lid}
+    return render(request, 'operator_target_filter.html', context)
 
 
 

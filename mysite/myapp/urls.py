@@ -88,6 +88,7 @@ urlpatterns = [
     path('update_h12/', views.update_h12, name='update_h12'),
 
     path('operator_target_filter/', views.operator_target_filter, name='operator_target_filter'),
+    path('operator_target_point_filter/', views.operator_target_point_filter, name='operator_target_point_filter'),
 
     #Test
     path('monday_week/', views.monday_week, name='monday_week'),
