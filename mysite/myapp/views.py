@@ -925,6 +925,7 @@ def update_operator_profile(request):
     resign = request.GET.get('resign')
     status = request.GET.get('attcollect')
     opid = request.GET.get('opid')
+    print(employee_code)
     opupt = operator.objects.filter(id=opid).update(name=name, burmese=burmese, point=point, resign=resign, srno=srno, status=status, employee_code=employee_code)
     today_data_upt = daily_report.objects.filter(operator_name=opid, created_date=today).update(point=point)
     return JsonResponse({'status':'success'})

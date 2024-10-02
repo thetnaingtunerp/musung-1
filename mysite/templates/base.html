@@ -618,9 +618,10 @@ $("#workhourtbl").on('click', '.tch', function() {
 
 
 //start update operator with ajax
-$("#optattend").on('click', '.opupt', function() {
-  var currenttr = $(this).closest(".opattr");
-});
+//$("#optattend").on('click', '.opupt', function() {
+  // var currenttr = $(this).closest(".opattr");
+
+// });
 //end update operator with ajax
 
 
@@ -824,7 +825,7 @@ $("#optattend").on('click', '.opupt', function() {
   var currenttr = $(this).closest(".opattr");
   var opid = currenttr.find(".opid").val();
   var srno = currenttr.find(".srno").val();
-  var employee_code = currenttr.find("employee_code").val();
+  var employee_code = currenttr.find(".employee_code").val();
   var name = currenttr.find(".name").val();
 
   var burmese = currenttr.find(".burmese").val();
@@ -838,9 +839,9 @@ $("#optattend").on('click', '.opupt', function() {
     data:{opid:opid, srno:srno, employee_code:employee_code, name:name, burmese:burmese, burmese:burmese, point:point, resign:resign, attcollect:attcollect},
     success: function(data){
   
-        // alert('Update Successfully');
+        alert('Update Successfully');
         $('.modal').modal('hide');
-        location.reload(true);    
+        // location.reload(true);    
     },
     error:function(){
         alert('Error contact to 09-969255445');
